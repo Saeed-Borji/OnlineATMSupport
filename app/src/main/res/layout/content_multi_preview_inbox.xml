@@ -1,0 +1,1157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    android:background="@drawable/background">
+
+    <fragment
+        android:id="@+id/nav_host_fragment"
+        android:name="androidx.navigation.fragment.NavHostFragment"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:defaultNavHost="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:navGraph="@navigation/nav_graph7" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        tools:ignore="MissingConstraints">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        tools:ignore="MissingConstraints">
+
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="18dp"
+            android:textStyle="bold"
+            android:textAlignment="center"
+            android:textColor="@color/design_default_color_background"
+            android:text="@string/app_p_name" />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        tools:ignore="MissingConstraints">
+
+        <TextView
+            android:id="@+id/textnavigate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="12dp"
+            android:textAlignment="center"
+            android:textColor="@color/design_default_color_on_primary"
+            android:text="@string/product_name" />
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:stretchColumns="1">
+
+            <!-- everything you already have -->
+
+            <LinearLayout
+                android:id="@+id/msg1layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:gravity="center|right"
+                android:orientation="horizontal"
+                android:background="@drawable/framebevel"
+                android:visibility="gone">
+
+                <ImageButton
+                    android:id="@+id/msg1voice"
+                    android:layout_width="50dp"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/transparent"
+                    app:srcCompat="@drawable/mic"
+                    android:visibility="visible"/>
+
+                <ImageButton
+                    android:id="@+id/msg1pic"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="30dp"
+                    android:foreground="@drawable/ic_menu_camera"
+                    android:background="@drawable/buttom"
+                    android:visibility="visible"/>
+
+                <ImageButton
+                    android:id="@+id/msg1txt"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="30dp"
+                    android:foreground="@drawable/message"
+                    android:background="@drawable/buttom"
+                    android:visibility="visible"/>
+
+                <Button
+                    android:id="@+id/msg1btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginRight="10dp"
+                    android:text="نمایش پیام"
+                    android:visibility="visible"/>
+
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/msg1layoutview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:gravity="center|top"
+                android:orientation="horizontal"
+                android:background="@drawable/framebevel"
+                android:visibility="gone">
+
+                <EditText
+                    android:id="@+id/msg1layouttxt"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:background="@drawable/buttonw"
+                    android:ems="10"
+                    android:inputType="textMultiLine"
+                    android:lines="8"
+                    android:singleLine="false"
+                    android:hint="توضیحات:"
+                    android:textColor="@color/design_default_color_on_secondary"
+                    android:textColorHighlight="#009688"
+                    android:textColorLink="#009688"
+                    android:textCursorDrawable="@color/design_default_color_on_secondary"
+                    android:textSize="14sp"/>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/msg2layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:gravity="center|right"
+                android:orientation="horizontal"
+                android:background="@drawable/framebevel"
+                android:visibility="gone">
+
+                <ImageButton
+                    android:id="@+id/msg2voice"
+                    android:layout_width="50dp"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/transparent"
+                    app:srcCompat="@drawable/mic"
+                    android:visibility="visible"/>
+
+                <ImageButton
+                    android:id="@+id/msg2pic"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="30dp"
+                    android:foreground="@drawable/ic_menu_camera"
+                    android:background="@drawable/buttom"
+                    android:visibility="visible"/>
+
+                <ImageButton
+                    android:id="@+id/msg2txt"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="30dp"
+                    android:foreground="@drawable/message"
+                    android:background="@drawable/buttom"
+                    android:visibility="visible"/>
+
+                <Button
+                    android:id="@+id/msg2btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginRight="10dp"
+                    android:text="نمایش پیام"
+                    android:visibility="visible"/>
+
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/msg2layoutview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:gravity="center|top"
+                android:orientation="horizontal"
+                android:background="@drawable/framebevel"
+                android:visibility="gone">
+
+                <EditText
+                    android:id="@+id/msg2layouttxt"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:background="@drawable/buttonw"
+                    android:ems="10"
+                    android:inputType="textMultiLine"
+                    android:lines="8"
+                    android:singleLine="false"
+                    android:hint="توضیحات:"
+                    android:textColor="@color/design_default_color_on_secondary"
+                    android:textColorHighlight="#009688"
+                    android:textColorLink="#009688"
+                    android:textCursorDrawable="@color/design_default_color_on_secondary"
+                    android:textSize="14sp"/>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/msg3layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:gravity="center|right"
+                android:orientation="horizontal"
+                android:background="@drawable/framebevel"
+                android:visibility="gone">
+
+                <ImageButton
+                    android:id="@+id/msg3voice"
+                    android:layout_width="50dp"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/transparent"
+                    app:srcCompat="@drawable/mic"
+                    android:visibility="visible"/>
+
+                <ImageButton
+                    android:id="@+id/msg3pic"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="30dp"
+                    android:foreground="@drawable/ic_menu_camera"
+                    android:background="@drawable/buttom"
+                    android:visibility="visible"/>
+
+                <ImageButton
+                    android:id="@+id/msg3txt"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="30dp"
+                    android:foreground="@drawable/message"
+                    android:background="@drawable/buttom"
+                    android:visibility="visible"/>
+
+                <Button
+                    android:id="@+id/msg3btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginRight="10dp"
+                    android:text="نمایش پیام"
+                    android:visibility="visible"/>
+
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/msg3layoutview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:gravity="center|top"
+                android:orientation="horizontal"
+                android:background="@drawable/framebevel"
+                android:visibility="gone">
+
+                <EditText
+                    android:id="@+id/msg3layouttxt"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:background="@drawable/buttonw"
+                    android:ems="10"
+                    android:inputType="textMultiLine"
+                    android:lines="8"
+                    android:singleLine="false"
+                    android:hint="توضیحات:"
+                    android:textColor="@color/design_default_color_on_secondary"
+                    android:textColorHighlight="#009688"
+                    android:textColorLink="#009688"
+                    android:textCursorDrawable="@color/design_default_color_on_secondary"
+                    android:textSize="14sp"/>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/msg4layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:gravity="center|right"
+                android:orientation="horizontal"
+                android:background="@drawable/framebevel"
+                android:visibility="gone">
+
+                <ImageButton
+                    android:id="@+id/msg4voice"
+                    android:layout_width="50dp"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/transparent"
+                    app:srcCompat="@drawable/mic"
+                    android:visibility="visible"/>
+
+                <ImageButton
+                    android:id="@+id/msg4pic"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="30dp"
+                    android:foreground="@drawable/ic_menu_camera"
+                    android:background="@drawable/buttom"
+                    android:visibility="visible"/>
+
+                <ImageButton
+                    android:id="@+id/msg4txt"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="30dp"
+                    android:foreground="@drawable/message"
+                    android:background="@drawable/buttom"
+                    android:visibility="visible"/>
+
+                <Button
+                    android:id="@+id/msg4btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginRight="10dp"
+                    android:text="نمایش پیام"
+                    android:visibility="visible"/>
+
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/msg4layoutview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:gravity="center|top"
+                android:orientation="horizontal"
+                android:background="@drawable/framebevel"
+                android:visibility="gone">
+
+                <EditText
+                    android:id="@+id/msg4layouttxt"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:background="@drawable/buttonw"
+                    android:ems="10"
+                    android:inputType="textMultiLine"
+                    android:lines="8"
+                    android:singleLine="false"
+                    android:hint="توضیحات:"
+                    android:textColor="@color/design_default_color_on_secondary"
+                    android:textColorHighlight="#009688"
+                    android:textColorLink="#009688"
+                    android:textCursorDrawable="@color/design_default_color_on_secondary"
+                    android:textSize="14sp"/>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/msg5layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:gravity="center|right"
+                android:orientation="horizontal"
+                android:background="@drawable/framebevel"
+                android:visibility="gone">
+
+                <ImageButton
+                    android:id="@+id/msg5voice"
+                    android:layout_width="50dp"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/transparent"
+                    app:srcCompat="@drawable/mic"
+                    android:visibility="visible"/>
+
+                <ImageButton
+                    android:id="@+id/msg5pic"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="30dp"
+                    android:foreground="@drawable/ic_menu_camera"
+                    android:background="@drawable/buttom"
+                    android:visibility="visible"/>
+
+                <ImageButton
+                    android:id="@+id/msg5txt"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="30dp"
+                    android:foreground="@drawable/message"
+                    android:background="@drawable/buttom"
+                    android:visibility="visible"/>
+
+                <Button
+                    android:id="@+id/msg5btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginRight="10dp"
+                    android:text="نمایش پیام"
+                    android:visibility="visible"/>
+
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/msg5layoutview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:gravity="center|top"
+                android:orientation="horizontal"
+                android:background="@drawable/framebevel"
+                android:visibility="gone">
+
+                <EditText
+                    android:id="@+id/msg5layouttxt"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:background="@drawable/buttonw"
+                    android:ems="10"
+                    android:inputType="textMultiLine"
+                    android:lines="8"
+                    android:singleLine="false"
+                    android:hint="توضیحات:"
+                    android:textColor="@color/design_default_color_on_secondary"
+                    android:textColorHighlight="#009688"
+                    android:textColorLink="#009688"
+                    android:textCursorDrawable="@color/design_default_color_on_secondary"
+                    android:textSize="14sp"/>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/msg6layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:gravity="center|right"
+                android:orientation="horizontal"
+                android:background="@drawable/framebevel"
+                android:visibility="gone">
+
+                <ImageButton
+                    android:id="@+id/msg6voice"
+                    android:layout_width="50dp"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/transparent"
+                    app:srcCompat="@drawable/mic"
+                    android:visibility="visible"/>
+
+                <ImageButton
+                    android:id="@+id/msg6pic"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="30dp"
+                    android:foreground="@drawable/ic_menu_camera"
+                    android:background="@drawable/buttom"
+                    android:visibility="visible"/>
+
+                <ImageButton
+                    android:id="@+id/msg6txt"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="30dp"
+                    android:foreground="@drawable/message"
+                    android:background="@drawable/buttom"
+                    android:visibility="visible"/>
+
+                <Button
+                    android:id="@+id/msg6btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginRight="10dp"
+                    android:text="نمایش پیام"
+                    android:visibility="visible"/>
+
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/msg6layoutview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:gravity="center|top"
+                android:orientation="horizontal"
+                android:background="@drawable/framebevel"
+                android:visibility="gone">
+
+                <EditText
+                    android:id="@+id/msg6layouttxt"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:background="@drawable/buttonw"
+                    android:ems="10"
+                    android:inputType="textMultiLine"
+                    android:lines="8"
+                    android:singleLine="false"
+                    android:hint="توضیحات:"
+                    android:textColor="@color/design_default_color_on_secondary"
+                    android:textColorHighlight="#009688"
+                    android:textColorLink="#009688"
+                    android:textCursorDrawable="@color/design_default_color_on_secondary"
+                    android:textSize="14sp"/>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/msg7layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:gravity="center|right"
+                android:orientation="horizontal"
+                android:background="@drawable/framebevel"
+                android:visibility="gone">
+
+                <ImageButton
+                    android:id="@+id/msg7voice"
+                    android:layout_width="50dp"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/transparent"
+                    app:srcCompat="@drawable/mic"
+                    android:visibility="visible"/>
+
+                <ImageButton
+                    android:id="@+id/msg7pic"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="30dp"
+                    android:foreground="@drawable/ic_menu_camera"
+                    android:background="@drawable/buttom"
+                    android:visibility="visible"/>
+
+                <ImageButton
+                    android:id="@+id/msg7txt"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="30dp"
+                    android:foreground="@drawable/message"
+                    android:background="@drawable/buttom"
+                    android:visibility="visible"/>
+
+                <Button
+                    android:id="@+id/msg7btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginRight="10dp"
+                    android:text="نمایش پیام"
+                    android:visibility="visible"/>
+
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/msg7layoutview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:gravity="center|top"
+                android:orientation="horizontal"
+                android:background="@drawable/framebevel"
+                android:visibility="gone">
+
+                <EditText
+                    android:id="@+id/msg7layouttxt"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:background="@drawable/buttonw"
+                    android:ems="10"
+                    android:inputType="textMultiLine"
+                    android:lines="8"
+                    android:singleLine="false"
+                    android:hint="توضیحات:"
+                    android:textColor="@color/design_default_color_on_secondary"
+                    android:textColorHighlight="#009688"
+                    android:textColorLink="#009688"
+                    android:textCursorDrawable="@color/design_default_color_on_secondary"
+                    android:textSize="14sp"/>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/msg8layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:gravity="center|right"
+                android:orientation="horizontal"
+                android:background="@drawable/framebevel"
+                android:visibility="gone">
+
+                <ImageButton
+                    android:id="@+id/msg8voice"
+                    android:layout_width="50dp"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/transparent"
+                    app:srcCompat="@drawable/mic"
+                    android:visibility="visible"/>
+
+                <ImageButton
+                    android:id="@+id/msg8pic"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="30dp"
+                    android:foreground="@drawable/ic_menu_camera"
+                    android:background="@drawable/buttom"
+                    android:visibility="visible"/>
+
+                <ImageButton
+                    android:id="@+id/msg8txt"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="30dp"
+                    android:foreground="@drawable/message"
+                    android:background="@drawable/buttom"
+                    android:visibility="visible"/>
+
+                <Button
+                    android:id="@+id/msg8btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginRight="10dp"
+                    android:text="نمایش پیام"
+                    android:visibility="visible"/>
+
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/msg8layoutview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:gravity="center|top"
+                android:orientation="horizontal"
+                android:background="@drawable/framebevel"
+                android:visibility="gone">
+
+                <EditText
+                    android:id="@+id/msg8layouttxt"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:background="@drawable/buttonw"
+                    android:ems="10"
+                    android:inputType="textMultiLine"
+                    android:lines="8"
+                    android:singleLine="false"
+                    android:hint="توضیحات:"
+                    android:textColor="@color/design_default_color_on_secondary"
+                    android:textColorHighlight="#009688"
+                    android:textColorLink="#009688"
+                    android:textCursorDrawable="@color/design_default_color_on_secondary"
+                    android:textSize="14sp"/>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/msg9layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:gravity="center|right"
+                android:orientation="horizontal"
+                android:background="@drawable/framebevel"
+                android:visibility="gone">
+
+                <ImageButton
+                    android:id="@+id/msg9voice"
+                    android:layout_width="50dp"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/transparent"
+                    app:srcCompat="@drawable/mic"
+                    android:visibility="visible"/>
+
+                <ImageButton
+                    android:id="@+id/msg9pic"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="30dp"
+                    android:foreground="@drawable/ic_menu_camera"
+                    android:background="@drawable/buttom"
+                    android:visibility="visible"/>
+
+                <ImageButton
+                    android:id="@+id/msg9txt"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="30dp"
+                    android:foreground="@drawable/message"
+                    android:background="@drawable/buttom"
+                    android:visibility="visible"/>
+
+                <Button
+                    android:id="@+id/msg9btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginRight="10dp"
+                    android:text="نمایش پیام"
+                    android:visibility="visible"/>
+
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/msg9layoutview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:gravity="center|top"
+                android:orientation="horizontal"
+                android:background="@drawable/framebevel"
+                android:visibility="gone">
+
+                <EditText
+                    android:id="@+id/msg9layouttxt"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:background="@drawable/buttonw"
+                    android:ems="10"
+                    android:inputType="textMultiLine"
+                    android:lines="8"
+                    android:singleLine="false"
+                    android:hint="توضیحات:"
+                    android:textColor="@color/design_default_color_on_secondary"
+                    android:textColorHighlight="#009688"
+                    android:textColorLink="#009688"
+                    android:textCursorDrawable="@color/design_default_color_on_secondary"
+                    android:textSize="14sp"/>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/msg10layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:gravity="center|right"
+                android:orientation="horizontal"
+                android:background="@drawable/framebevel"
+                android:visibility="gone">
+
+                <ImageButton
+                    android:id="@+id/msg10voice"
+                    android:layout_width="50dp"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/transparent"
+                    app:srcCompat="@drawable/mic"
+                    android:visibility="visible"/>
+
+                <ImageButton
+                    android:id="@+id/msg10pic"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="30dp"
+                    android:foreground="@drawable/ic_menu_camera"
+                    android:background="@drawable/buttom"
+                    android:visibility="visible"/>
+
+                <ImageButton
+                    android:id="@+id/msg10txt"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="30dp"
+                    android:foreground="@drawable/message"
+                    android:background="@drawable/buttom"
+                    android:visibility="visible"/>
+
+                <Button
+                    android:id="@+id/msg10btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginRight="10dp"
+                    android:text="نمایش پیام"
+                    android:visibility="visible"/>
+
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/msg10layoutview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:gravity="center|top"
+                android:orientation="horizontal"
+                android:background="@drawable/framebevel"
+                android:visibility="gone">
+
+                <EditText
+                    android:id="@+id/msg10layouttxt"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:background="@drawable/buttonw"
+                    android:ems="10"
+                    android:inputType="textMultiLine"
+                    android:lines="8"
+                    android:singleLine="false"
+                    android:hint="توضیحات:"
+                    android:textColor="@color/design_default_color_on_secondary"
+                    android:textColorHighlight="#009688"
+                    android:textColorLink="#009688"
+                    android:textCursorDrawable="@color/design_default_color_on_secondary"
+                    android:textSize="14sp"/>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/msg11layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:gravity="center|right"
+                android:orientation="horizontal"
+                android:background="@drawable/framebevel"
+                android:visibility="gone">
+
+                <ImageButton
+                    android:id="@+id/msg11voice"
+                    android:layout_width="50dp"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/transparent"
+                    app:srcCompat="@drawable/mic"
+                    android:visibility="visible"/>
+
+                <ImageButton
+                    android:id="@+id/msg11pic"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="30dp"
+                    android:foreground="@drawable/ic_menu_camera"
+                    android:background="@drawable/buttom"
+                    android:visibility="visible"/>
+
+                <ImageButton
+                    android:id="@+id/msg11txt"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="30dp"
+                    android:foreground="@drawable/message"
+                    android:background="@drawable/buttom"
+                    android:visibility="visible"/>
+
+                <Button
+                    android:id="@+id/msg11btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginRight="10dp"
+                    android:text="نمایش پیام"
+                    android:visibility="visible"/>
+
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/msg11layoutview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:gravity="center|top"
+                android:orientation="horizontal"
+                android:background="@drawable/framebevel"
+                android:visibility="gone">
+
+                <EditText
+                    android:id="@+id/msg11layouttxt"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:background="@drawable/buttonw"
+                    android:ems="10"
+                    android:inputType="textMultiLine"
+                    android:lines="8"
+                    android:singleLine="false"
+                    android:hint="توضیحات:"
+                    android:textColor="@color/design_default_color_on_secondary"
+                    android:textColorHighlight="#009688"
+                    android:textColorLink="#009688"
+                    android:textCursorDrawable="@color/design_default_color_on_secondary"
+                    android:textSize="14sp"/>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/msg12layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:gravity="center|right"
+                android:orientation="horizontal"
+                android:background="@drawable/framebevel"
+                android:visibility="gone">
+
+                <ImageButton
+                    android:id="@+id/msg12voice"
+                    android:layout_width="50dp"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/transparent"
+                    app:srcCompat="@drawable/mic"
+                    android:visibility="visible"/>
+
+                <ImageButton
+                    android:id="@+id/msg12pic"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="30dp"
+                    android:foreground="@drawable/ic_menu_camera"
+                    android:background="@drawable/buttom"
+                    android:visibility="visible"/>
+
+                <ImageButton
+                    android:id="@+id/msg12txt"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="30dp"
+                    android:foreground="@drawable/message"
+                    android:background="@drawable/buttom"
+                    android:visibility="visible"/>
+
+                <Button
+                    android:id="@+id/msg12btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginRight="10dp"
+                    android:text="نمایش پیام"
+                    android:visibility="visible"/>
+
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/msg12layoutview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:gravity="center|top"
+                android:orientation="horizontal"
+                android:background="@drawable/framebevel"
+                android:visibility="gone">
+
+                <EditText
+                    android:id="@+id/msg12layouttxt"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:background="@drawable/buttonw"
+                    android:ems="10"
+                    android:inputType="textMultiLine"
+                    android:lines="8"
+                    android:singleLine="false"
+                    android:hint="توضیحات:"
+                    android:textColor="@color/design_default_color_on_secondary"
+                    android:textColorHighlight="#009688"
+                    android:textColorLink="#009688"
+                    android:textCursorDrawable="@color/design_default_color_on_secondary"
+                    android:textSize="14sp"/>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/msg13layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:gravity="center|right"
+                android:orientation="horizontal"
+                android:background="@drawable/framebevel"
+                android:visibility="gone">
+
+                <ImageButton
+                    android:id="@+id/msg13voice"
+                    android:layout_width="50dp"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/transparent"
+                    app:srcCompat="@drawable/mic"
+                    android:visibility="visible"/>
+
+                <ImageButton
+                    android:id="@+id/msg13pic"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="30dp"
+                    android:foreground="@drawable/ic_menu_camera"
+                    android:background="@drawable/buttom"
+                    android:visibility="visible"/>
+
+                <ImageButton
+                    android:id="@+id/msg13txt"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="30dp"
+                    android:foreground="@drawable/message"
+                    android:background="@drawable/buttom"
+                    android:visibility="visible"/>
+
+                <Button
+                    android:id="@+id/msg13btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginRight="10dp"
+                    android:text="نمایش پیام"
+                    android:visibility="visible"/>
+
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/msg13layoutview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:gravity="center|top"
+                android:orientation="horizontal"
+                android:background="@drawable/framebevel"
+                android:visibility="gone">
+
+                <EditText
+                    android:id="@+id/msg13layouttxt"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:background="@drawable/buttonw"
+                    android:ems="10"
+                    android:inputType="textMultiLine"
+                    android:lines="8"
+                    android:singleLine="false"
+                    android:hint="توضیحات:"
+                    android:textColor="@color/design_default_color_on_secondary"
+                    android:textColorHighlight="#009688"
+                    android:textColorLink="#009688"
+                    android:textCursorDrawable="@color/design_default_color_on_secondary"
+                    android:textSize="14sp"/>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/pnlButtons"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:layout_marginRight="40dp"
+                android:layout_marginLeft="40dp"
+                android:layout_marginBottom="30dp"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <Button
+                    android:id="@+id/buttoninbox"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginBottom="5dp"
+                    android:textColor="@color/design_default_color_secondary_variant"
+                    android:textSize="20dp"
+                    android:text="ثبت جواب درست"/>
+
+                <Button
+                    android:id="@+id/buttontechnicalsupport"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginBottom="5dp"
+                    android:textColor="@color/design_default_color_secondary_variant"
+                    android:textSize="20dp"
+                    android:text="ثبت جواب پشتیبان فنی"
+                    android:visibility="invisible"/>
+            </LinearLayout>
+
+        </TableLayout>
+    </ScrollView>
+
+
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
