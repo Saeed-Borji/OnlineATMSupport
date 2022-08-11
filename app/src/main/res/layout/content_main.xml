@@ -249,6 +249,7 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
+                    android:gravity="center"
                     android:orientation="horizontal">
 
                     <LinearLayout
@@ -257,11 +258,12 @@
                         android:layout_marginRight="10dp"
                         android:layout_marginLeft="10dp"
                         android:layout_marginTop="5dp"
-                        android:gravity="center|right"
+                        android:gravity="center"
                         android:orientation="horizontal">
 
                         <EditText
                             android:id="@+id/UsernameBox"
+                            android:hint="Username"
                             android:layout_width="wrap_content"
                             android:layout_height="30dp"
                             android:layout_gravity="center"
@@ -269,11 +271,12 @@
                             android:background="@drawable/framebevel"
                             android:ems="10"
                             android:inputType="textPersonName"
-                            android:textColorHint="@color/design_default_color_surface"
+                            android:textColorHint="#32FFFFFF"
                             android:textAlignment="center"
                             android:textColor="#FBF8F8"
                             android:textColorHighlight="#009688"
                             android:textColorLink="#009688"
+                            android:gravity="center"
                             android:textCursorDrawable="@color/cardview_light_background" />
 
                         <TextView
@@ -284,7 +287,8 @@
                             android:textAlignment="textStart"
                             android:textColor="@color/colorPrimaryDark"
                             android:textSize="15dp"
-                            android:textStyle="bold" />
+                            android:textStyle="bold"
+                            android:visibility="visible"/>
 
                     </LinearLayout>
                 </LinearLayout>
@@ -293,6 +297,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:orientation="horizontal"
+                    android:gravity="center"
                     android:visibility="visible">
 
                     <LinearLayout
@@ -301,20 +306,22 @@
                         android:layout_marginRight="10dp"
                         android:layout_marginLeft="10dp"
                         android:layout_marginTop="5dp"
-                        android:gravity="center|right"
+                        android:gravity="center"
                         android:orientation="horizontal">
 
                         <EditText
                             android:id="@+id/PasswordBox"
+                            android:hint="Password"
                             android:layout_width="wrap_content"
                             android:layout_height="30dp"
                             android:layout_gravity="center"
-                            android:layout_marginLeft="40dp"
+                            android:layout_marginLeft="5dp"
                             android:background="@drawable/framebevel"
                             android:ems="10"
                             android:inputType="textPassword"
-                            android:textColorHint="@color/design_default_color_surface"
+                            android:textColorHint="#32FFFFFF"
                             android:textAlignment="center"
+                            android:gravity="center"
                             android:textColor="#FAF7F7"/>
 
                         <TextView
@@ -325,7 +332,8 @@
                             android:textAlignment="textStart"
                             android:textColor="@color/colorPrimaryDark"
                             android:textSize="15dp"
-                            android:textStyle="bold" />
+                            android:textStyle="bold"
+                            android:visibility="visible"/>
 
                     </LinearLayout>
                 </LinearLayout>

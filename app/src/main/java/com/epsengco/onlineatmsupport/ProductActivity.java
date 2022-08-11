@@ -107,7 +107,7 @@ public class ProductActivity extends AppCompatActivity {
 
         //$.B _ Check Have Any Message for View in Inbox \/
         File folder = new File(Environment.getExternalStorageDirectory() +
-                File.separator + "SB_Inbox");
+                File.separator + Username +"_SB_Inbox");
         if (!folder.exists()){//$.B _ If Have not Question Message
             QuestionNotRead = 0;
         }else{

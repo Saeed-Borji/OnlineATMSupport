@@ -789,7 +789,7 @@ public class ModuleActivity extends AppCompatActivity implements AdapterView.OnI
     private void SaveQuestionMessage(String Message,byte[] Pic, byte[] Voice) throws IOException {
 
         File folder = new File(Environment.getExternalStorageDirectory() +
-                File.separator + "SB_Inbox");
+                File.separator + Username +"_SB_Inbox");
         boolean success = true;
         if (!folder.exists()) {
             success = folder.mkdirs();

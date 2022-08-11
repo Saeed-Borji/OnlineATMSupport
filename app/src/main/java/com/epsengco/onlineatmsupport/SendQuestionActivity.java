@@ -21,6 +21,7 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -40,10 +41,21 @@ public class SendQuestionActivity extends AppCompatActivity {
 
     private ImageView ErrorPicViewer;
     int BigPreview = 0;
+
+    private TextView Navigate;
     //private Layout ErrorTextViewerLayout;
 
 
     Bitmap pic1 = null;
+
+    String Username = "";
+    int Accounttype = -1;
+    String Accounttypename = "";
+    String Check = "";
+    String ProductName = "";
+    String HardSoft = "";
+    String ProductModel = "";
+    String SelectModelstr = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,6 +75,22 @@ public class SendQuestionActivity extends AppCompatActivity {
 
         //$.B
 
+        //$.B \/
+
+        Bundle extras = getIntent().getExtras();//Recive Message
+        if(extras !=null) {
+            Username = extras.getString("Username");
+            Accounttype = extras.getInt("Accounttype");
+            Accounttypename = extras.getString("Accounttypename");
+            Check = extras.getString("Check");
+            ProductName = extras.getString("ProductName");
+            //ProductModel = extras.getString("ProductModel");
+        }
+        Navigate = (TextView)findViewById(R.id.textnavigate);
+        Navigate.setText(Username + " > " + Accounttypename+ " > " + ProductName + " > ");
+
+
+
         Question = (EditText)findViewById(R.id.questionbox);
         PlayVoice = (ImageButton)findViewById(R.id.Voiceplayerbtn);
         progressBar = (ProgressBar)findViewById(R.id.progressBar);
@@ -74,7 +102,7 @@ public class SendQuestionActivity extends AppCompatActivity {
 
         //$.B _ Read Message.txt \/
         final File folder = new File(Environment.getExternalStorageDirectory() +
-                File.separator + "SB_Inbox");
+                File.separator + Username +"_SB_Inbox");
         boolean success = true;
         if (!folder.exists()) {
             //success = folder.mkdirs();
