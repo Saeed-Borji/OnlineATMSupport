@@ -6,7 +6,7 @@ android {
 
     defaultConfig {
         applicationId "com.epsengco.onlineatmsupport"
-        minSdk 23
+        minSdk 20
         targetSdkVersion 30
         versionCode 1
         versionName "1.0"

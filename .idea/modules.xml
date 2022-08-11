@@ -4,6 +4,9 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/OnlineATMSupport.iml" filepath="$PROJECT_DIR$/OnlineATMSupport.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/OnlineATMSupport.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/OnlineATMSupport.app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/OnlineATMSupport.app.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app/OnlineATMSupport.app.androidTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/OnlineATMSupport.app.main.iml" filepath="$PROJECT_DIR$/.idea/modules/app/OnlineATMSupport.app.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/OnlineATMSupport.app.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app/OnlineATMSupport.app.unitTest.iml" />
     </modules>
   </component>
 </project>
