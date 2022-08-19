@@ -11,8 +11,11 @@ import androidx.appcompat.widget.Toolbar;
 
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 public class PreviewInboxActivity extends AppCompatActivity {
+
+    private TextView Navigate;
 
     String Username = "";
     int Accounttype = -1;
@@ -65,6 +68,9 @@ public class PreviewInboxActivity extends AppCompatActivity {
             ReciveInbox.setText("سوال های ارسال شده");
         }
 
+        Navigate = (TextView)findViewById(R.id.textnavigate);
+        Navigate.setText(Username + " > " + Accounttypename+ " > Inbox");
+
 
         if (QuestionNotRead == 1 && AnswerNotRead == 1){
             SendInbox.setBackgroundResource(R.drawable.buttonnotif);
@@ -84,7 +90,12 @@ public class PreviewInboxActivity extends AppCompatActivity {
         SendInbox.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(PreviewInboxActivity.this, SendQuestionActivity.class);
+                Intent intent = new Intent(PreviewInboxActivity.this, SendQuestionActivity.class);//سوال ارسالی
+                intent.putExtra("Username",Username.toString());//send Username to next class
+                intent.putExtra("Accounttype",Accounttype);
+                intent.putExtra("Accounttypename",Accounttypename);
+                intent.putExtra("Check",Check);//send data to next class
+                intent.putExtra("ProductName",ProductName.toString());//send ProductName to next class
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP |  Intent.FLAG_ACTIVITY_SINGLE_TOP);
                 startActivityForResult(intent, 2);
             }
@@ -93,7 +104,7 @@ public class PreviewInboxActivity extends AppCompatActivity {
         ReciveInbox.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(PreviewInboxActivity.this, MultiPreviewInboxActivity.class);
+                Intent intent = new Intent(PreviewInboxActivity.this, MultiPreviewInboxActivity.class);// جواب های دریافتی
                 intent.putExtra("Username",Username.toString());//send Username to next class
                 intent.putExtra("Accounttype",Accounttype);
                 intent.putExtra("Accounttypename",Accounttypename);

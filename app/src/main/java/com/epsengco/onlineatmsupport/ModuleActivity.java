@@ -407,6 +407,7 @@ public class ModuleActivity extends AppCompatActivity implements AdapterView.OnI
         setPic(0);
 
     }
+
     public String getPath(Uri uri)//$.B
     {
         String[] projection = { MediaStore.Images.Media.DATA };

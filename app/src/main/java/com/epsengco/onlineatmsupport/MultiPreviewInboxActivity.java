@@ -13,6 +13,7 @@ import android.text.Layout;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 public class MultiPreviewInboxActivity extends AppCompatActivity {
 
@@ -31,6 +32,7 @@ public class MultiPreviewInboxActivity extends AppCompatActivity {
     private Button MSG3;
     int VisibilityButton3 = 0;
 
+    private TextView Navigate;
 
     String Username = "";
     int Accounttype = -1;
@@ -73,7 +75,8 @@ public class MultiPreviewInboxActivity extends AppCompatActivity {
             MessageCount = extras.getInt("MessageCount");//Tedad message haye markaz
         }
 
-
+        Navigate = (TextView)findViewById(R.id.textnavigate);
+        Navigate.setText(Username + " > " + Accounttypename+ " > Server Inbox = "+MessageCount);
 
         MSG1layou = (LinearLayout)findViewById(R.id.msg1layout);
         MSG1layoutview = (LinearLayout)findViewById(R.id.msg1layoutview);

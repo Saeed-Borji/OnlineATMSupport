@@ -306,13 +306,13 @@
             android:background="@drawable/framebevel">
 
             <ImageView
-                android:id="@+id/Errorpicimg"
+                android:id="@+id/Errorpic"
                 android:layout_width="150dp"
                 android:layout_height="80dp"
                 android:layout_marginLeft="50dp"
                 android:layout_marginTop="5dp"
                 android:layout_marginBottom="5dp"
-                android:gravity="center"
+                android:gravity="left"
                 android:visibility="visible"/>
 
             <ImageView

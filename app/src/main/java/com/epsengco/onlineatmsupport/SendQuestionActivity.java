@@ -1,6 +1,7 @@
 package com.epsengco.onlineatmsupport;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Matrix;
@@ -15,6 +16,8 @@ import androidx.appcompat.widget.Toolbar;
 
 import android.os.Environment;
 import android.os.Handler;
+import android.os.Message;
+import android.provider.MediaStore;
 import android.text.Layout;
 import android.view.View;
 import android.widget.EditText;
@@ -22,6 +25,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -38,6 +42,7 @@ public class SendQuestionActivity extends AppCompatActivity {
     private ProgressBar progressBar;
     private ImageView ErrorPic;
     private ImageButton PicViewer;
+    String Path1 = null;
 
     private ImageView ErrorPicViewer;
     int BigPreview = 0;
@@ -87,8 +92,8 @@ public class SendQuestionActivity extends AppCompatActivity {
             //ProductModel = extras.getString("ProductModel");
         }
         Navigate = (TextView)findViewById(R.id.textnavigate);
-        Navigate.setText(Username + " > " + Accounttypename+ " > " + ProductName + " > ");
-
+        //Navigate.setText(Username + " > " + Accounttypename+ " > " + ProductName + " > ");
+        Navigate.setText(Username + " > " + Accounttypename+ " > Local Inbox");
 
 
         Question = (EditText)findViewById(R.id.questionbox);
@@ -106,6 +111,7 @@ public class SendQuestionActivity extends AppCompatActivity {
         boolean success = true;
         if (!folder.exists()) {
             //success = folder.mkdirs();
+            Toast.makeText(getApplicationContext(), "Don't have any question files in your application", Toast.LENGTH_SHORT).show();
         }
         if (success) {
             // Do something on success
@@ -230,7 +236,10 @@ public class SendQuestionActivity extends AppCompatActivity {
         PlayVoice.setEnabled(true);
     }
 
+
     public void SetPic(String Path){
+
+        File sdcard = Environment.getExternalStorageDirectory();
         File f = new File(Path + "//pic.jpg");
 
         if(f.exists()) {
@@ -242,33 +251,23 @@ public class SendQuestionActivity extends AppCompatActivity {
                 Path="2";//2 = Access denied to Path
                 //ImageView Rot1 = (ImageView) findViewById(R.id.RotatePhoto1);
                 //Rot1.setVisibility(View.INVISIBLE);
-
             }else {
                 if (pic0.getHeight() < 120 || pic0.getWidth() < 120) {
                     //txtresult.setText("The quality of the left side photo is low. It must be Height>120 _ Width>120");
                     Path = "";
+
                 }else {
                     Matrix matrix = new Matrix();
                     matrix.preRotate(0);
                     pic1 = Bitmap.createBitmap(pic0,0,0, pic0.getWidth(),pic0.getHeight(),matrix, true);//Rotate 90
-                    pic1 = Bitmap.createScaledBitmap(pic1,800,600,true);//W=800 H=600
+                    pic1 = Bitmap.createScaledBitmap(pic1,800,300,true);//W=800 H=600
                     pic0.recycle();
+                    pic0 = Bitmap.createBitmap(pic1,0,0, pic1.getWidth(),pic1.getHeight(),matrix, true);//Rotate 90
+                    pic0 = Bitmap.createScaledBitmap(pic0,150,80,true);//W=800 H=600
 
-                    /*
-                    Bitmap circleBitmap = Bitmap.createBitmap(pic1.getWidth(), pic1.getHeight(), Bitmap.Config.ARGB_8888);//Make Circle \/
-                    BitmapShader shader = new BitmapShader(pic1,  Shader.TileMode.CLAMP, Shader.TileMode.CLAMP);
-                    Paint paint = new Paint();
-                    paint.setShader(shader);
-                    paint.setAntiAlias(true);
-                    Canvas c = new Canvas(circleBitmap);
-                    c.drawCircle(pic1.getWidth()/2, pic1.getHeight()/2, pic1.getWidth()/2, paint);//Make Circle /\
-
-                     */
-
-                    //ImageView btn1 = (ImageView) findViewById(R.id.Photo1);//$.B
-                    ErrorPic.setImageBitmap(pic1);//(circleBitmap);//$.B for circle
                     ErrorPicViewer.setImageBitmap(pic1);//$.B _ Big Preview
-                    //btn1.setBackgroundResource(R.drawable.freebackground);
+
+                    ErrorPic.setImageBitmap(pic0);//(circleBitmap);//$.B for circle
                     ErrorPic.setEnabled(true);//$.B
                     ErrorPic.setBackground(null);
                 }
@@ -280,5 +279,8 @@ public class SendQuestionActivity extends AppCompatActivity {
             //btn1.setBackgroundResource(R.drawable.circlebackground);
             //btn1.setEnabled(true);//$.B
         }
+
     }
+
+
 }
