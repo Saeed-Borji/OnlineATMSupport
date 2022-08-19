@@ -27,6 +27,7 @@ public class SoftHardActivity extends AppCompatActivity implements AdapterView.O
 
     private TextView Navigate;
 
+    String Test = "";
     String Username = "";
     int Accounttype = -1;
     String Accounttypename = "";
