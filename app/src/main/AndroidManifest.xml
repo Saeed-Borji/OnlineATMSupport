@@ -16,9 +16,14 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
+            android:name=".GetQuestionSetAnswer"
+            android:exported="false"
+            android:label="@string/title_activity_get_question_set_answer"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
             android:name=".MultiPreviewInboxActivity"
             android:label="@string/title_activity_multi_preview_inbox"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".SendQuestionActivity"
             android:label="@string/title_activity_send_question"

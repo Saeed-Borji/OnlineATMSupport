@@ -1,6 +1,7 @@
 package com.epsengco.onlineatmsupport;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -14,26 +15,17 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MultiPreviewInboxActivity extends AppCompatActivity {
 
-    private LinearLayout MSG1layou;
-    private LinearLayout MSG1layoutview;
-    private Button MSG1;
-    int VisibilityButton1 = 0;
-
-    private LinearLayout MSG2layou;
-    private LinearLayout MSG2layoutview;
-    private Button MSG2;
-    int VisibilityButton2 = 0;
-
-    private LinearLayout MSG3layou;
-    private LinearLayout MSG3layoutview;
-    private Button MSG3;
-    int VisibilityButton3 = 0;
+    private Button SelectTrueAnser;
+    private Button CreateAnser;
+    private Button MSGbtn;
 
     private TextView Navigate;
 
+    String Textbtn;
     String Username = "";
     int Accounttype = -1;
     String Accounttypename = "";
@@ -64,7 +56,7 @@ public class MultiPreviewInboxActivity extends AppCompatActivity {
         //$.B \/
 
         Bundle extras = getIntent().getExtras();//Recive Message
-        if(extras !=null) {
+        if (extras != null) {
             Username = extras.getString("Username");
             Accounttype = extras.getInt("Accounttype");
             Accounttypename = extras.getString("Accounttypename");
@@ -75,107 +67,67 @@ public class MultiPreviewInboxActivity extends AppCompatActivity {
             MessageCount = extras.getInt("MessageCount");//Tedad message haye markaz
         }
 
-        Navigate = (TextView)findViewById(R.id.textnavigate);
-        Navigate.setText(Username + " > " + Accounttypename+ " > Server Inbox = "+MessageCount);
+        Navigate = (TextView) findViewById(R.id.textnavigate);
+        Navigate.setText(Username + " > " + Accounttypename + " > Server Inbox = " + MessageCount);
 
-        MSG1layou = (LinearLayout)findViewById(R.id.msg1layout);
-        MSG1layoutview = (LinearLayout)findViewById(R.id.msg1layoutview);
-        MSG1 = (Button)findViewById(R.id.msg1btn);
-
-        MSG2layou = (LinearLayout)findViewById(R.id.msg2layout);
-        MSG2layoutview = (LinearLayout)findViewById(R.id.msg2layoutview);
-        MSG2 = (Button)findViewById(R.id.msg2btn);
-
-        MSG3layou = (LinearLayout)findViewById(R.id.msg3layout);
-        MSG3layoutview = (LinearLayout)findViewById(R.id.msg3layoutview);
-        MSG3 = (Button)findViewById(R.id.msg3btn);
-        //...
-
-
+        SelectTrueAnser = (Button) findViewById(R.id.buttonSelectTrueAnser);//Field
+        CreateAnser = (Button) findViewById(R.id.buttonCreateAnser);//Technical
 
         //$.B \/ Set Visibility
-        if (MessageCount == 1){
-            MSG1layou.setVisibility(View.VISIBLE);
-            MSG1.setVisibility(View.VISIBLE);
-        }else if (MessageCount == 2){
-            MSG1layou.setVisibility(View.VISIBLE);
-            //MSG1layoutview.setVisibility(View.VISIBLE);
-            MSG2layou.setVisibility(View.VISIBLE);
-            //MSG2layoutview.setVisibility(View.VISIBLE);
-        }else if (MessageCount == 3){
-            MSG1layou.setVisibility(View.VISIBLE);
-            //MSG1layoutview.setVisibility(View.VISIBLE);
-            MSG2layou.setVisibility(View.VISIBLE);
-            //MSG2layoutview.setVisibility(View.VISIBLE);
-            MSG3layou.setVisibility(View.VISIBLE);
-            //MSG3layoutview.setVisibility(View.VISIBLE);
-        } //...
+        if (Accounttypename.equals("Field")) {
+            SelectTrueAnser.setVisibility(View.INVISIBLE);//VISIBLE
+            CreateAnser.setVisibility(View.INVISIBLE);
+            Textbtn = "پاسخ کارشناس ";
+        } else if (Accounttypename.equals("Technical")) {
+            SelectTrueAnser.setVisibility(View.INVISIBLE);
+            CreateAnser.setVisibility(View.INVISIBLE);//VISIBLE
+            Textbtn = "سوال کارشناس ";
+        }
+        //$.B /\ Set Visibility
 
+        LinearLayout MSGlayout= (LinearLayout) findViewById(R.id.msglayout);
+        for (int i = 0; i < MessageCount; i++) {
 
+            MSGbtn = new Button (MultiPreviewInboxActivity.this);
+            MSGbtn.setWidth(40);
+            MSGbtn.setHeight(20);
+            MSGbtn.setId(i);
+            MSGbtn.setText(Textbtn + (i+1));
+            MSGlayout.addView(MSGbtn);
 
-        //$.B OnClick \/
-        MSG1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (VisibilityButton1 == 0){
-                    //Desable();
-                    MSG1layoutview.setVisibility(View.VISIBLE);
-                    VisibilityButton1 = 1;
-                }else if (VisibilityButton1 == 1){
-                    //Desable();
-                    MSG1layoutview.setVisibility(View.GONE);
-                    VisibilityButton1 = 0;
+            MSGbtn =(Button)findViewById(i);
+            int btnid = i;
+            MSGbtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    goQoustionClass(btnid);
                 }
-            }
-        });
+            });
 
-        MSG2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (VisibilityButton2 == 0){
-                    //Desable();
-                    MSG2layoutview.setVisibility(View.VISIBLE);
-                    VisibilityButton2 = 1;
-                }else if (VisibilityButton2 == 1){
-                    //Desable();
-                    MSG2layoutview.setVisibility(View.GONE);
-                    VisibilityButton2 = 0;
-                }
-            }
-        });
+        }
 
-        MSG3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (VisibilityButton3 == 0){
-                    //Desable();
-                    MSG3layoutview.setVisibility(View.VISIBLE);
-                    VisibilityButton3 = 1;
-                }else if (VisibilityButton3 == 1){
-                    //Desable();
-                    MSG3layoutview.setVisibility(View.GONE);
-                    VisibilityButton3 = 0;
-                }
-            }
-        });
+    }
 
 
+    public void goQoustionClass(int number){
+        Intent intent = new Intent(MultiPreviewInboxActivity.this, GetQuestionSetAnswer.class);
+        intent.putExtra("Username",Username);//send data to next class
+        intent.putExtra("Accounttype",Accounttype);
+        intent.putExtra("Accounttypename",Accounttypename);
+        intent.putExtra("Check",Check);//send data to next class
+        intent.putExtra("MessageCount",MessageCount);
+        intent.putExtra("QuestionNumber",number);//send data to next class
+        startActivityForResult(intent, 2);
+
+        Toast.makeText(MultiPreviewInboxActivity.this, "x "+number , Toast.LENGTH_SHORT).show();
     }
 
     public void Enable(){
-        //MSG1layoutview.setVisibility(View.VISIBLE);
-        //MSG2layoutview.setVisibility(View.VISIBLE);
-        //MSG3layoutview.setVisibility(View.VISIBLE);
+
     }
 
     public void Desable(){
-        MSG1layoutview.setVisibility(View.GONE);
-        VisibilityButton1=0;
-        MSG2layoutview.setVisibility(View.GONE);
-        VisibilityButton2=0;
-        MSG3layoutview.setVisibility(View.GONE);
-        VisibilityButton3=0;
-        //...
+
     }
 
 }

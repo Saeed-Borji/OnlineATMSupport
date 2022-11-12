@@ -217,17 +217,17 @@ public class MainActivity extends AppCompatActivity {
             params.put("password",password);
             //params.put("photo2", new ByteArrayInputStream(vArrPhoto2), "photo2.jpg");
 
-            boolean NET = false;
-            try {
-                Process p1 = java.lang.Runtime.getRuntime().exec("ping -c 1 www.google.com");
-                int returnVal = p1.waitFor();
-                boolean reachable = (returnVal == 0);
-                NET = reachable;
-            } catch (Exception e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
-                NET = false;
-            }
+            boolean NET = true;
+//            try {
+//                Process p1 = java.lang.Runtime.getRuntime().exec("ping -c 1 www.google.com");
+//                int returnVal = p1.waitFor();
+//                boolean reachable = (returnVal == 0);
+//                NET = reachable;
+//            } catch (Exception e) {
+//                // TODO Auto-generated catch block
+//                e.printStackTrace();
+//                NET = false;
+//            }
 
             if (NET == false) {
                 Toast.makeText(getApplicationContext(),"Plaese check your internet conection",Toast.LENGTH_LONG).show();

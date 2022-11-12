@@ -73,14 +73,16 @@
             <!-- everything you already have -->
 
             <LinearLayout
-                android:id="@+id/msg1layout"
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:id="@+id/msglayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 android:gravity="center|right"
-                android:orientation="horizontal"
+                android:orientation="vertical"
                 android:background="@drawable/framebevel"
-                android:visibility="gone">
+                android:visibility="visible">
 
                 <ImageButton
                     android:id="@+id/msg1voice"
@@ -88,7 +90,7 @@
                     android:layout_height="match_parent"
                     android:background="@drawable/transparent"
                     app:srcCompat="@drawable/mic"
-                    android:visibility="visible"/>
+                    android:visibility="gone"/>
 
                 <ImageButton
                     android:id="@+id/msg1pic"
@@ -97,7 +99,7 @@
                     android:layout_marginLeft="30dp"
                     android:foreground="@drawable/ic_menu_camera"
                     android:background="@drawable/buttom"
-                    android:visibility="visible"/>
+                    android:visibility="gone"/>
 
                 <ImageButton
                     android:id="@+id/msg1txt"
@@ -106,16 +108,16 @@
                     android:layout_marginLeft="30dp"
                     android:foreground="@drawable/message"
                     android:background="@drawable/buttom"
-                    android:visibility="visible"/>
+                    android:visibility="gone"/>
 
                 <Button
-                    android:id="@+id/msg1btn"
+                    android:id="@+id/msgbtn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="30dp"
                     android:layout_marginRight="10dp"
                     android:text="نمایش پیام"
-                    android:visibility="visible"/>
+                    android:visibility="gone"/>
 
             </LinearLayout>
             <LinearLayout
@@ -1124,7 +1126,7 @@
                 android:orientation="vertical">
 
                 <Button
-                    android:id="@+id/buttoninbox"
+                    android:id="@+id/buttonSelectTrueAnser"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
                     android:layout_marginRight="10dp"
@@ -1135,7 +1137,7 @@
                     android:text="ثبت جواب درست"/>
 
                 <Button
-                    android:id="@+id/buttontechnicalsupport"
+                    android:id="@+id/buttonCreateAnser"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
                     android:layout_marginRight="10dp"

@@ -45,7 +45,7 @@ public class SendQuestionActivity extends AppCompatActivity {
     String Path1 = null;
 
     private ImageView ErrorPicViewer;
-    int BigPreview = 0;
+    int BigPreview = 1;
 
     private TextView Navigate;
     //private Layout ErrorTextViewerLayout;
@@ -163,16 +163,16 @@ public class SendQuestionActivity extends AppCompatActivity {
         PicViewer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (BigPreview == 0){
+                if (BigPreview == 1){
                     ErrorPicViewer.setVisibility(View.VISIBLE);
-                    Question.setText("");
+                    //Question.setText("");
                     ErrorTextViewerLayout.setVisibility(View.INVISIBLE);
-                    BigPreview = 1;
-                }else if (BigPreview == 1){
-                    ErrorPicViewer.setVisibility(View.INVISIBLE);
-                    ReadtxtMessage(folder.toString());
-                    ErrorTextViewerLayout.setVisibility(View.VISIBLE);
                     BigPreview = 0;
+                }else if (BigPreview == 0){
+                    ErrorPicViewer.setVisibility(View.INVISIBLE);
+                    //ReadtxtMessage(folder.toString());
+                    ErrorTextViewerLayout.setVisibility(View.VISIBLE);
+                    BigPreview = 1;
                 }
 
             }

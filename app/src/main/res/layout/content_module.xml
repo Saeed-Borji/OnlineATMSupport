@@ -161,6 +161,7 @@
 
         </LinearLayout>
 
+
         <LinearLayout
             android:id="@+id/messageTexttxt"
             android:layout_width="match_parent"
@@ -178,7 +179,6 @@
                 android:visibility="visible"/>
 
         </LinearLayout>
-
 
         <LinearLayout
             android:id="@+id/logo4"

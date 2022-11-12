@@ -33,4 +33,6 @@
     <string name="title_activity_preview_inbox">PreviewInboxActivity</string>
     <string name="title_activity_send_question">SendQuestionActivity</string>
     <string name="title_activity_multi_preview_inbox">MultiPreviewInboxActivity</string>
+    <string name="title_activity_receive_question_send_anser">ReceiveQuestionSendAnser</string>
+    <string name="title_activity_get_question_set_answer">GetQuestionSetAnswer</string>
 </resources>
