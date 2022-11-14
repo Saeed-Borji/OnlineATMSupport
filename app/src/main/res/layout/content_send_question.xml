@@ -193,7 +193,6 @@
 
         </LinearLayout>
 
-
         <LinearLayout
             android:id="@+id/errortextviewerlayout"
             android:layout_width="match_parent"
