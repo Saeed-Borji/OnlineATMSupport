@@ -3,18 +3,22 @@ package com.epsengco.onlineatmsupport;
 import android.annotation.SuppressLint;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 
 import com.google.android.material.snackbar.Snackbar;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.os.Environment;
+import android.os.Handler;
 import android.util.Base64;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -29,23 +33,34 @@ import com.loopj.android.http.RequestParams;
 
 import org.json.JSONException;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+
 import cz.msebera.android.httpclient.Header;
 
 public class GetQuestionSetAnswer extends AppCompatActivity {
 
-
-    private EditText Question;
+    private int progressStatus = 0;
+    private Handler handler = new Handler();
 
     public EditText QuestionBox;
+
+    private ImageButton PlayVoice;
+    private ProgressBar progressBar;
     public LinearLayout VoicePlayer;
+    byte[] questionVoiceByte;
+    String VoicePath;
+
     public ImageView Errorpic;
     private ImageButton PicViewer;
+    byte[] ErrPicByte;
     private ImageView ErrorPicViewer;
     int BigPreview = 1;
 
     private TextView Navigate;
 
-    String Textbtn;
+
     String Username = "";
     int Accounttype = -1;
     String Accounttypename = "";
@@ -101,6 +116,9 @@ public class GetQuestionSetAnswer extends AppCompatActivity {
 
         QuestionBox = (EditText)findViewById(R.id.questionbox);
         VoicePlayer = (LinearLayout)findViewById(R.id.voiceplayerlayout);
+        PlayVoice = (ImageButton)findViewById(R.id.Voiceplayerbtn);
+        progressBar = (ProgressBar)findViewById(R.id.progressBar);
+        PicViewer = (ImageButton)findViewById(R.id.Errorpicbtn);
 
         Errorpic = (ImageView)findViewById(R.id.errorpic);
         PicViewer = (ImageButton)findViewById(R.id.Errorpicbtn);
@@ -111,6 +129,43 @@ public class GetQuestionSetAnswer extends AppCompatActivity {
 
         //$.B /\
 
+
+        PlayVoice.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                progressStatus = 0;
+
+                new Thread(new Runnable() {
+                    public void run() {
+
+                        while (progressStatus < 100) {
+                            progressStatus += 10;
+                            // Update the progress bar and display the
+                            //current value in the text view
+                            handler.post(new Runnable() {
+                                public void run() {
+                                    progressBar.setProgress(progressStatus);
+                                    if (progressStatus >99){//Enable VoiceButton
+                                        Enable();
+                                    }
+                                }
+                            });
+                            try {
+                                // Sleep for 200 milliseconds.
+                                Thread.sleep(1500);
+                            } catch (InterruptedException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                    }
+                }).start();
+
+                Disable();//Disable All Button or ...
+
+                audioPlayer(VoicePath,"");
+            }
+        });
 
         PicViewer.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -141,6 +196,34 @@ public class GetQuestionSetAnswer extends AppCompatActivity {
                 || super.onSupportNavigateUp();
     }
 
+
+    public void audioPlayer(String path, String fileName){
+        //set up MediaPlayer
+        MediaPlayer mp = new MediaPlayer();
+
+        try {
+            if (fileName.equals(""))
+            {
+                mp.setDataSource(path);
+            }
+            else
+            {
+                mp.setDataSource(path + File.separator + fileName);
+            }
+            mp.prepare();
+            mp.start();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void Disable(){//Disable All Button or ...
+        PlayVoice.setEnabled(false);
+    }
+
+    public void Enable(){//Enable All Button or ...
+        PlayVoice.setEnabled(true);
+    }
 
 
     private void PostInboxData() {
@@ -190,13 +273,25 @@ public class GetQuestionSetAnswer extends AppCompatActivity {
                             //Toast.makeText(getApplicationContext(),resultID + "متن="+questionText,Toast.LENGTH_LONG).show();
 
                             String ErrPicString = obj.getString("questionPic");
-                            byte[] ErrPicByte = Base64.decode(ErrPicString, Base64.DEFAULT);
+                            ErrPicByte = Base64.decode(ErrPicString, Base64.DEFAULT);
                             Bitmap ErrPicBitmap = BitmapFactory.decodeByteArray(ErrPicByte, 0, ErrPicByte.length);
                             Errorpic.setImageBitmap(ErrPicBitmap);
                             ErrorPicViewer.setImageBitmap(ErrPicBitmap);
 
                             String questionVoice = obj.getString("questionVoice");
-                            Toast.makeText(getApplicationContext(),questionVoice,Toast.LENGTH_LONG).show();
+                            questionVoiceByte = Base64.decode(questionVoice, Base64.DEFAULT);
+                            File tempMp3 = File.createTempFile("test", ".mp3", getCacheDir());
+                            //tempMp3.deleteOnExit();
+                            VoicePath = tempMp3.toString();
+                            FileOutputStream fos = new FileOutputStream(tempMp3);
+                            fos.write(questionVoiceByte);
+                            fos.close();
+
+                            Toast.makeText(getApplicationContext(),VoicePath.toString(),Toast.LENGTH_LONG).show();
+
+
+
+                            //Toast.makeText(getApplicationContext(),tempMp3.toString(),Toast.LENGTH_LONG).show();
 
 
                             /*
@@ -214,7 +309,7 @@ public class GetQuestionSetAnswer extends AppCompatActivity {
                             */
                             // $.B /\
 
-                        } catch (JSONException e) {
+                        } catch (JSONException | IOException e) {
                             e.printStackTrace();
                         }
                     }
