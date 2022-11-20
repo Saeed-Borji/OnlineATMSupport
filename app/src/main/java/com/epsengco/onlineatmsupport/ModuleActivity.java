@@ -485,63 +485,8 @@ public class ModuleActivity extends AppCompatActivity implements AdapterView.OnI
         }
     }
 
-    public void Alert (String title, String message){
-        AlertDialog alertDialog = new AlertDialog.Builder(this)
-//set icon
-                .setIcon(android.R.drawable.ic_dialog_alert)
-//set title
-                .setTitle(title)
-//set message
-                .setMessage(message)
-//set positive button
-                // // $.B 14/04/2022 "ادامه"
-                .setPositiveButton("", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        //set what would happen when positive button is clicked
-                        //finish();
-                        Clearcls();
-                        Enable();
-                    }
-                })
-//set negative button
-                .setNegativeButton("بازگشت", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        Clearcls();
-                        //set what should happen when negative button is clicked
-                        //Toast.makeText(getApplicationContext(),"Nothing Happened",Toast.LENGTH_LONG).show();
-                        Intent intent = new Intent(ModuleActivity.this, ChooseSituation.class);
-                        intent.putExtra("Username",Username.toString());//send data to next class
-                        intent.putExtra("Accounttype",Accounttype);
-                        intent.putExtra("Accounttypename",Accounttypename);
-                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP |  Intent.FLAG_ACTIVITY_SINGLE_TOP);
-                        startActivityForResult(intent, 2);
-                    }
-                })
-                .show();
-    }
 
-    public void GetQuestionData(){
-
-        if (!SelectModulestr.equals("") && !SelectBanknamestr.equals("")){
-
-            Questionstr = QuestionBox.getText().toString();//Text of Question Box
-            if (!Questionstr.equals("")){
-
-                //Go To Send Param Request to server
-                Disable();
-                PostData();
-
-            }else {
-                Toast.makeText(getApplicationContext(), "لطفا متن توضیح مشکل را وارد نمایید", Toast.LENGTH_SHORT).show();
-            }
-
-        }else {
-            Toast.makeText(getApplicationContext(), "لطفا نوع ماژول و نام بانک مورد نظر خود را مشخص نمایید", Toast.LENGTH_SHORT).show();
-        }
-
-    }
+    ////// SEND QUESTION TO SERVER \/
     private String path;
     private void PostData() {
 
@@ -720,6 +665,66 @@ public class ModuleActivity extends AppCompatActivity implements AdapterView.OnI
             Toast.makeText(getApplicationContext(),"exeption"+e.toString(),Toast.LENGTH_LONG).show();
             Enable();//Enable All Button or ...
         }
+    }
+    ////// SEND QUESTION TO SERVER /\
+
+    public void Alert (String title, String message){
+        AlertDialog alertDialog = new AlertDialog.Builder(this)
+//set icon
+                .setIcon(android.R.drawable.ic_dialog_alert)
+//set title
+                .setTitle(title)
+//set message
+                .setMessage(message)
+//set positive button
+                // // $.B 14/04/2022 "ادامه"
+                .setPositiveButton("", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        //set what would happen when positive button is clicked
+                        //finish();
+                        Clearcls();
+                        Enable();
+                    }
+                })
+//set negative button
+                .setNegativeButton("بازگشت", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        Clearcls();
+                        //set what should happen when negative button is clicked
+                        //Toast.makeText(getApplicationContext(),"Nothing Happened",Toast.LENGTH_LONG).show();
+                        Intent intent = new Intent(ModuleActivity.this, ChooseSituation.class);
+                        intent.putExtra("Username",Username.toString());//send data to next class
+                        intent.putExtra("Accounttype",Accounttype);
+                        intent.putExtra("Accounttypename",Accounttypename);
+                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP |  Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                        startActivityForResult(intent, 2);
+                    }
+                })
+                .show();
+    }
+
+
+    public void GetQuestionData(){
+
+        if (!SelectModulestr.equals("") && !SelectBanknamestr.equals("")){
+
+            Questionstr = QuestionBox.getText().toString();//Text of Question Box
+            if (!Questionstr.equals("")){
+
+                //Go To Send Param Request to server
+                Disable();
+                PostData();
+
+            }else {
+                Toast.makeText(getApplicationContext(), "لطفا متن توضیح مشکل را وارد نمایید", Toast.LENGTH_SHORT).show();
+            }
+
+        }else {
+            Toast.makeText(getApplicationContext(), "لطفا نوع ماژول و نام بانک مورد نظر خود را مشخص نمایید", Toast.LENGTH_SHORT).show();
+        }
+
     }
 
     private void GetPicByte (String Path){

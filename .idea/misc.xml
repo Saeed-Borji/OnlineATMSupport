@@ -10,7 +10,8 @@
         <entry key="..\:/Saeed/Project/Android/OnlineATMSupport/app/src/main/res/drawable/framebevel.xml" value="0.262" />
         <entry key="..\:/Saeed/Project/Android/OnlineATMSupport/app/src/main/res/drawable/framebevel2.xml" value="0.262" />
         <entry key="..\:/Saeed/Project/Android/OnlineATMSupport/app/src/main/res/drawable/framebevel3.xml" value="0.2725" />
-        <entry key="..\:/Saeed/Project/Android/OnlineATMSupport/app/src/main/res/layout/activity_choose_situation.xml" value="0.16197916666666667" />
+        <entry key="..\:/Saeed/Project/Android/OnlineATMSupport/app/src/main/res/drawable/side_nav_bar.xml" value="0.356" />
+        <entry key="..\:/Saeed/Project/Android/OnlineATMSupport/app/src/main/res/layout/activity_choose_situation.xml" value="0.33" />
         <entry key="..\:/Saeed/Project/Android/OnlineATMSupport/app/src/main/res/layout/activity_get_question_set_answer.xml" value="0.2677083333333333" />
         <entry key="..\:/Saeed/Project/Android/OnlineATMSupport/app/src/main/res/layout/activity_main.xml" value="0.29981884057971014" />
         <entry key="..\:/Saeed/Project/Android/OnlineATMSupport/app/src/main/res/layout/activity_module.xml" value="0.26145833333333335" />
@@ -20,6 +21,7 @@
         <entry key="..\:/Saeed/Project/Android/OnlineATMSupport/app/src/main/res/layout/activity_receive_question_send_anser.xml" value="0.26145833333333335" />
         <entry key="..\:/Saeed/Project/Android/OnlineATMSupport/app/src/main/res/layout/activity_register.xml" value="0.26145833333333335" />
         <entry key="..\:/Saeed/Project/Android/OnlineATMSupport/app/src/main/res/layout/activity_send_question.xml" value="0.29257246376811596" />
+        <entry key="..\:/Saeed/Project/Android/OnlineATMSupport/app/src/main/res/layout/activity_soft_hard.xml" value="0.2677083333333333" />
         <entry key="..\:/Saeed/Project/Android/OnlineATMSupport/app/src/main/res/layout/app_bar_main.xml" value="0.29981884057971014" />
         <entry key="..\:/Saeed/Project/Android/OnlineATMSupport/app/src/main/res/layout/content_get_question_set_answer.xml" value="0.33" />
         <entry key="..\:/Saeed/Project/Android/OnlineATMSupport/app/src/main/res/layout/content_main.xml" value="0.29981884057971014" />
@@ -29,8 +31,10 @@
         <entry key="..\:/Saeed/Project/Android/OnlineATMSupport/app/src/main/res/layout/content_product.xml" value="0.24739583333333334" />
         <entry key="..\:/Saeed/Project/Android/OnlineATMSupport/app/src/main/res/layout/content_receive_question_send_anser.xml" value="0.25" />
         <entry key="..\:/Saeed/Project/Android/OnlineATMSupport/app/src/main/res/layout/content_register.xml" value="0.24739583333333334" />
-        <entry key="..\:/Saeed/Project/Android/OnlineATMSupport/app/src/main/res/layout/content_send_question.xml" value="0.29981884057971014" />
+        <entry key="..\:/Saeed/Project/Android/OnlineATMSupport/app/src/main/res/layout/content_send_question.xml" value="0.25" />
+        <entry key="..\:/Saeed/Project/Android/OnlineATMSupport/app/src/main/res/layout/content_soft_hard.xml" value="0.2677083333333333" />
         <entry key="..\:/Saeed/Project/Android/OnlineATMSupport/app/src/main/res/layout/fragment_first.xml" value="0.26145833333333335" />
+        <entry key="..\:/Saeed/Project/Android/OnlineATMSupport/app/src/main/res/layout/fragment_first2.xml" value="0.2677083333333333" />
         <entry key="..\:/Saeed/Project/Android/OnlineATMSupport/app/src/main/res/layout/fragment_first7.xml" value="0.26145833333333335" />
         <entry key="..\:/Saeed/Project/Android/OnlineATMSupport/app/src/main/res/layout/fragment_first8.xml" value="0.26145833333333335" />
         <entry key="..\:/Saeed/Project/Android/OnlineATMSupport/app/src/main/res/layout/fragment_first9.xml" value="0.2677083333333333" />
@@ -40,6 +44,8 @@
         <entry key="..\:/Saeed/Project/Android/OnlineATMSupport/app/src/main/res/layout/fragment_second7.xml" value="0.26145833333333335" />
         <entry key="..\:/Saeed/Project/Android/OnlineATMSupport/app/src/main/res/layout/fragment_slideshow.xml" value="0.26145833333333335" />
         <entry key="..\:/Saeed/Project/Android/OnlineATMSupport/app/src/main/res/layout/nav_header_main.xml" value="0.26145833333333335" />
+        <entry key="..\:/Saeed/Project/Android/OnlineATMSupport/app/src/main/res/menu/activity_main_drawer.xml" value="0.2677083333333333" />
+        <entry key="..\:/Saeed/Project/Android/OnlineATMSupport/app/src/main/res/menu/main.xml" value="0.2677083333333333" />
         <entry key="..\:/Saeed/Project/Android/OnlineATMSupport_V004/app/src/main/res/drawable-v21/ic_menu_gallery.xml" value="0.2255" />
         <entry key="..\:/Saeed/Project/Android/OnlineATMSupport_V004/app/src/main/res/drawable-v21/ic_menu_slideshow.xml" value="0.2255" />
         <entry key="..\:/Saeed/Project/Android/OnlineATMSupport_V004/app/src/main/res/layout/activity_choose_situation.xml" value="0.22644927536231885" />

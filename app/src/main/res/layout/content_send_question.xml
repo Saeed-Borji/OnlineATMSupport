@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    android:background="@drawable/background">
+    android:background="@drawable/backgrounddark">
 
     <fragment
         android:id="@+id/nav_host_fragment"
@@ -269,12 +269,12 @@
 
             <ImageButton
                 android:id="@+id/Voiceplayerbtn"
-                android:layout_width="50dp"
-                android:layout_height="match_parent"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
                 android:layout_marginRight="50dp"
-                android:background="@drawable/transparent"
                 android:visibility="visible"
-                app:srcCompat="@drawable/mic" />
+                app:srcCompat="@drawable/playeblack"
+                android:layout_gravity="center"/>
 
         </LinearLayout>
 
@@ -327,8 +327,7 @@
                 android:id="@+id/Errorpicbtn"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:foreground="@drawable/ic_menu_camera"
-                android:background="@drawable/buttom"
+                android:background="@drawable/camtrswhite2"
                 android:layout_marginRight="10dp"
                 android:layout_marginLeft="10dp"
                 android:visibility="visible"/>

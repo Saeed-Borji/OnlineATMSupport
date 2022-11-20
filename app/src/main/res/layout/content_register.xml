@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    android:background="@drawable/background">
+    android:background="@drawable/backgrounddark">
 
     <fragment
         android:id="@+id/nav_host_fragment"
@@ -121,7 +121,7 @@
                         android:layout_height="wrap_content"
                         android:textAlignment="center"
                         android:textSize="14dp"
-                        android:textColor="@color/colorPrimaryDark"
+                        android:textColor="#023732"
                         android:text="کارشناس فیلد" />
 
                     <CheckBox
@@ -146,7 +146,7 @@
                         android:layout_height="wrap_content"
                         android:textAlignment="center"
                         android:textSize="14dp"
-                        android:textColor="@color/colorPrimaryDark"
+                        android:textColor="#023732"
                         android:text="پشتیبان فنی" />
 
                     <CheckBox
@@ -195,7 +195,7 @@
                             android:layout_height="wrap_content"
                             android:text="نام کاربری:            "
                             android:textAlignment="textStart"
-                            android:textColor="@color/colorPrimaryDark"
+                            android:textColor="#023732"
                             android:textSize="15dp"
                             android:textStyle="bold" />
 
@@ -235,7 +235,7 @@
                             android:layout_height="wrap_content"
                             android:text="کلمه عبور:             "
                             android:textAlignment="textStart"
-                            android:textColor="@color/colorPrimaryDark"
+                            android:textColor="#023732"
                             android:textSize="15dp"
                             android:textStyle="bold" />
 
@@ -275,7 +275,7 @@
                             android:layout_height="wrap_content"
                             android:text="تکرار کلمه عبور:    "
                             android:textAlignment="textStart"
-                            android:textColor="@color/colorPrimaryDark"
+                            android:textColor="#023732"
                             android:textSize="15dp"
                             android:textStyle="bold" />
 
@@ -316,7 +316,7 @@
                             android:layout_height="wrap_content"
                             android:text="شماره حساب:       "
                             android:textAlignment="textStart"
-                            android:textColor="@color/colorPrimaryDark"
+                            android:textColor="#023732"
                             android:textSize="15dp"
                             android:textStyle="bold" />
 
@@ -357,7 +357,7 @@
                             android:layout_height="wrap_content"
                             android:text="نام بانک:               "
                             android:textAlignment="textStart"
-                            android:textColor="@color/colorPrimaryDark"
+                            android:textColor="#023732"
                             android:textSize="15dp"
                             android:textStyle="bold" />
 
@@ -399,7 +399,7 @@
                             android:layout_height="wrap_content"
                             android:text="نام صاحب حساب:"
                             android:textAlignment="textStart"
-                            android:textColor="@color/colorPrimaryDark"
+                            android:textColor="#023732"
                             android:textSize="15dp"
                             android:textStyle="bold" />
 

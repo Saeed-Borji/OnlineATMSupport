@@ -28,6 +28,11 @@
         android:visibility="invisible"
         tools:ignore="MissingConstraints" />
 
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        tools:ignore="MissingConstraints">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -39,7 +44,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:background="@drawable/framebevel3">
+            android:background="@drawable/framebevel2">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -215,12 +220,11 @@
 
                 <ImageButton
                     android:id="@+id/Errorpicbtn"
-                    android:layout_width="48dp"
-                    android:layout_height="48dp"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
                     android:layout_marginLeft="10dp"
                     android:layout_marginRight="10dp"
-                    android:background="@drawable/buttom"
-                    android:foreground="@drawable/ic_menu_camera"
+                    android:background="@drawable/camtrswhite2"
                     android:visibility="visible"
                     tools:ignore="SpeakableTextPresentCheck" />
 
@@ -234,7 +238,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:background="@drawable/framebevel3">
+            android:background="@drawable/framebevel2">
 
             <LinearLayout
                 android:id="@+id/AnswerLayout"
@@ -274,7 +278,7 @@
                     <EditText
                         android:id="@+id/Answerbox"
                         android:layout_width="match_parent"
-                        android:layout_height="100dp"
+                        android:layout_height="105dp"
                         android:layout_gravity="center"
                         android:layout_marginLeft="5dp"
                         android:layout_marginTop="5dp"
@@ -337,12 +341,12 @@
 
                     <ImageButton
                         android:id="@+id/AnswerVoiceplayerbtn"
-                        android:layout_width="50dp"
-                        android:layout_height="match_parent"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
                         android:layout_marginRight="50dp"
-                        android:background="@drawable/transparent"
                         android:visibility="visible"
-                        app:srcCompat="@drawable/mic"
+                        android:background="@drawable/mic2"
+                        android:layout_gravity="center"
                         tools:ignore="SpeakableTextPresentCheck" />
 
                 </LinearLayout>
@@ -398,8 +402,7 @@
                         android:layout_height="40dp"
                         android:layout_marginLeft="10dp"
                         android:layout_marginRight="10dp"
-                        android:background="@drawable/buttom"
-                        android:foreground="@drawable/ic_menu_camera"
+                        android:background="@drawable/camtrswhite2"
                         android:visibility="visible"
                         tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
@@ -409,10 +412,49 @@
 
             </LinearLayout>
 
+            <LinearLayout
+                android:id="@+id/pnlButtons"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="40dp"
+                android:layout_marginLeft="40dp"
+                android:layout_marginBottom="20dp"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <Button
+                    android:id="@+id/buttonsendanswer"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginBottom="5dp"
+                    android:text="ارسال پاسخ"
+                    android:textColor="@color/design_default_color_secondary_variant"
+                    android:textSize="12dp"
+                    android:visibility="visible" />
+
+                <Button
+                    android:id="@+id/buttonclear"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginBottom="5dp"
+                    android:text="پاک کردن اطلاعات سوال"
+                    android:textColor="@color/design_default_color_secondary_variant"
+                    android:textSize="12dp"
+                    android:visibility="gone" />
+            </LinearLayout>
+
 
         </LinearLayout>
 
 
     </LinearLayout>
+
+    </ScrollView>
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

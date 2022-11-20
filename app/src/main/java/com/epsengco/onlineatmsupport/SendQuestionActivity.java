@@ -230,10 +230,12 @@ public class SendQuestionActivity extends AppCompatActivity {
 
     public void Disable(){//Disable All Button or ...
         PlayVoice.setEnabled(false);
+        PlayVoice.setImageResource(R.drawable.playepauseblack);
     }
 
     public void Enable(){//Enable All Button or ...
         PlayVoice.setEnabled(true);
+        PlayVoice.setImageResource(R.drawable.playeblack);
     }
 
 
