@@ -77,11 +77,11 @@ public class MultiPreviewInboxActivity extends AppCompatActivity {
         if (Accounttypename.equals("Field")) {
             SelectTrueAnser.setVisibility(View.INVISIBLE);//VISIBLE
             CreateAnser.setVisibility(View.INVISIBLE);
-            Textbtn = "پاسخ کارشناس ";
+            Textbtn = "پاسخ کارشناس لایه دو ";
         } else if (Accounttypename.equals("Technical")) {
             SelectTrueAnser.setVisibility(View.INVISIBLE);
             CreateAnser.setVisibility(View.INVISIBLE);//VISIBLE
-            Textbtn = "سوال کارشناس ";
+            Textbtn = "سوال کارشناس لایه یک ";
         }
         //$.B /\ Set Visibility
 

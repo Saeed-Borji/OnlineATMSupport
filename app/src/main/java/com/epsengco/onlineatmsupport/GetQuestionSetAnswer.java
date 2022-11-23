@@ -61,6 +61,7 @@ public class GetQuestionSetAnswer extends AppCompatActivity {
     public EditText AnswerBox;
     String Answerstr = "";
     private Button SendAnswer;
+    public LinearLayout AnswerLayout;
 
     private ImageButton PlayVoice;
     private ProgressBar progressBar;
@@ -143,12 +144,21 @@ public class GetQuestionSetAnswer extends AppCompatActivity {
         @SuppressLint("WrongViewCast") final View ErrorTextViewerLayout = (View) findViewById(R.id.errortextviewerlayout);
         PostInboxData();
 
+        AnswerLayout = (LinearLayout)findViewById(R.id.answerlayout);
         SendAnswer = (Button)findViewById(R.id.buttonsendanswer);
         AnswerBox = (EditText)findViewById(R.id.Answerbox);
 
         //$.B /\
 
-
+        //$.B \/ Set Visibility
+        if (Accounttypename.equals("Field")) {
+            AnswerLayout.setVisibility(View.GONE);
+            SendAnswer.setText("تائید پاسخ");
+        } else if (Accounttypename.equals("Technical")) {
+            AnswerLayout.setVisibility(View.VISIBLE);
+            SendAnswer.setText("ارسال پاسخ");
+        }
+        //$.B /\ Set Visibility
         PlayVoice.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -211,7 +221,12 @@ public class GetQuestionSetAnswer extends AppCompatActivity {
             public void onClick(View view) {
                 if (Check.equals("-1")){
                     Toast.makeText(getApplicationContext(), "دسترسی این کاربر > "+Username+"< تایید نشده است", Toast.LENGTH_SHORT).show();
-                }else {
+                }
+                else if (Accounttypename.equals("Field"))
+                {
+                    SetTrueAnswer();
+                }
+                else if (Accounttypename.equals("Technical")){
                     //Toast.makeText(getApplicationContext(), "Go to Send data to server", Toast.LENGTH_SHORT).show();
                     GetَAnswerData();
                 }
@@ -311,11 +326,9 @@ public class GetQuestionSetAnswer extends AppCompatActivity {
             Long vt = System.currentTimeMillis() / 1000;
 
             RequestParams params = new RequestParams();
-            //params.put("username",Username);
-            //params.put("accounttypename",Accounttypename);
-            //params.put("questionnumber",QuestionNumber);
-            //params.put("password",password);
-            //params.put("photo2", new ByteArrayInputStream(vArrPhoto2), "photo2.jpg");
+            params.put("username",Username);
+            params.put("accounttypename",Accounttypename);
+            params.put("questionnumber",QuestionNumber);
 
             boolean NET = false;
             try {
@@ -333,7 +346,7 @@ public class GetQuestionSetAnswer extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(),"لطفا اتصال به اینترنت را بررسی نمایید - Plaese check your internet conection",Toast.LENGTH_LONG).show();
 
             } else if (NET == true) {
-                PostURLUtils.Get("/SendQuestion/" + QuestionNumber, params, new JsonHttpResponseHandler(){
+                PostURLUtils.post("/SendQuestion/" , params, new JsonHttpResponseHandler(){
                     @Override
                     public void onStart() {
                         super.onStart();
@@ -465,7 +478,7 @@ public class GetQuestionSetAnswer extends AppCompatActivity {
                 RequestParams params = new RequestParams();
 
                 params.put("username",Username);
-                params.put("accountname",Accounttypename);
+                params.put("accounttypename",Accounttypename);
                 params.put("message", Answerstr);
                 params.put("questionnumber",QuestionNumber);
                 //params.put("ErrorPic", new ByteArrayInputStream(ArrPic), "ErrorPic.jpg");
@@ -533,12 +546,7 @@ public class GetQuestionSetAnswer extends AppCompatActivity {
                                     Toast.makeText(getApplicationContext(), "This User Name is not register"+resultMessage, Toast.LENGTH_SHORT).show();
                                     //txtresult.setText("The face was not Found in the first photo");
                                 }//else if (resultID == 3) {//in the first photo, the FACE was Not Found
-                                //Toast.makeText(getApplicationContext(), resultMessage, Toast.LENGTH_SHORT).show();
-                                //txtresult.setText("The face was not Found in the first photo");
-                                //}else if (resultID == 4) {//in the first photo, the FACE was Not Found
-                                // Toast.makeText(getApplicationContext(), resultMessage, Toast.LENGTH_SHORT).show();
-                                //txtresult.setText("The face was not Found in the first photo");
-                                //}
+
                                 // $.B /\
 
 
@@ -604,10 +612,142 @@ public class GetQuestionSetAnswer extends AppCompatActivity {
     }
     ////// SEND ANSWER TO SERVER /\
 
+    ////// SEND ANSWER TO SERVER \/
+    private void PostTrueAnswer(int TrueQuestionNumber) {
+
+        try {
+
+                Disable();//Disable All Button or ...
+
+                Long vt = System.currentTimeMillis() / 1000;
+
+                RequestParams params = new RequestParams();
+
+                params.put("username",Username);
+                params.put("accounttypename",Accounttypename);
+                params.put("questionnumber",TrueQuestionNumber);
+
+                boolean NET = false;
+                try {
+                    Process p1 = Runtime.getRuntime().exec("ping -c 1 www.google.com");
+                    int returnVal = p1.waitFor();
+                    boolean reachable = (returnVal == 0);
+                    NET = reachable;
+                } catch (Exception e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                    NET = false;
+                }
+
+
+                if (NET == false) {
+                    Toast.makeText(getApplicationContext(),"Plaese check your internet conection",Toast.LENGTH_LONG).show();
+
+                    Enable();
+
+                } else if (NET == true) {
+
+                    PostURLUtils.post("/SetTrueAnswer", params, new JsonHttpResponseHandler() {
+                        @Override
+                        public void onStart() {
+                            super.onStart();
+                        }
+
+                        @Override
+                        public void onSuccess(int statusCode, Header[] headers, JSONObject obj) {
+                            //Toast.makeText(getApplicationContext(),"onSuccess"+statusCode,Toast.LENGTH_LONG).show();
+                            try {
+                                //$.B \/
+                                String resultMessage = obj.getString("statusMessage");//
+                                int resultID = obj.getInt("resultID");
+
+                                //TextView result = (TextView) findViewById(R.id.voiceresult);
+                                //result.setText(resultX);
+
+                                if (resultID == 0) { //in the second photo, the FACE was Not Found
+                                    //txtresult.setText("The face was not found in the second photo");
+
+                                    //Intent intent = new Intent(MainActivity.this, ChooseSituation.class);
+                                    //intent.putExtra("KEY",UserNametxt.getText().toString());//send data to next class
+                                    //startActivityForResult(intent, 2);
+
+
+                                    Alert("Server Message",resultMessage);
+                                    //Toast.makeText(getApplicationContext(), resultMessage, Toast.LENGTH_SHORT).show();
+
+                                } else if (resultID == 1) {//in the first photo, the FACE was Not Found
+                                    Toast.makeText(getApplicationContext(), "Change User Name"+resultMessage, Toast.LENGTH_SHORT).show();
+                                    //txtresult.setText("The face was not Found in the first photo");
+                                }else if (resultID == 2) {//in the first photo, the FACE was Not Found
+                                    Toast.makeText(getApplicationContext(), "This User Name is not register"+resultMessage, Toast.LENGTH_SHORT).show();
+                                    //txtresult.setText("The face was not Found in the first photo");
+                                }//else if (resultID == 3) {//in the first photo, the FACE was Not Found
+
+                                // $.B /\
+
+
+                                Enable();//Enable All Button or ...
+
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                                Enable();//Enable All Button or ...
+                            }
+
+                            //Reciptbtn.setEnabled(true);
+                            //Registerbtn.setEnabled(false);
+                            //Path1 = "";
+                            //ReciptPictureimg.setImageBitmap(null);//(circleBitmap);//$.B for circle
+                            //ReciptPictureimg.setEnabled(true);//$.B
+                            //ReciptPictureimg.setBackground(null);
+
+                            //finish();
+
+                        }
+
+                        @Override
+                        public void onFailure(int statusCode, Header[] headers,
+                                              Throwable throwable, JSONObject errorResponse) {
+
+                            String message = throwable.getMessage();
+                            Toast.makeText(getApplicationContext(),"onFailure_"+message,Toast.LENGTH_LONG).show();
+                            //TextView result = (TextView) findViewById(R.id.voiceresult);
+                            //result.setText(message);
+                            //TextView txtresult = (TextView) findViewById(R.id.txtresult);
+                            if (message == null){
+                                //txtresult.setText("Sorry :-( . It's not available in your country.");
+                            }else {
+                                //txtresult.setText("The image was not uploaded correctly. Check your connection please." );
+                            }
+
+                            Enable();//Enable All Button or ...
+                            //Reciptbtn.setEnabled(true);
+                            //Registerbtn.setEnabled(false);
+                        }
+
+                        @Override
+                        public void onFinish() {
+                            //Register.setBackgroundResource(R.drawable.buttonbackground3);
+                            //TextView result = (TextView) findViewById(R.id.voiceresult);
+                            //result.setText("خطا در ارسال فایل ها، لطفا مجدد تلاش نمایید");
+                        }
+                    });
+                }
+
+
+
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            Toast.makeText(getApplicationContext(),"exeption"+e.toString(),Toast.LENGTH_LONG).show();
+            Enable();//Enable All Button or ...
+        }
+    }
+    ////// SEND ANSWER TO SERVER /\
+
     public void Alert (String title, String message){
         AlertDialog alertDialog = new AlertDialog.Builder(this)
 //set icon
-                .setIcon(android.R.drawable.ic_dialog_alert)
+                .setIcon(R.drawable.alert)
 //set title
                 .setTitle(title)
 //set message
@@ -643,7 +783,6 @@ public class GetQuestionSetAnswer extends AppCompatActivity {
 
 
     public void GetَAnswerData(){
-
             Answerstr = AnswerBox.getText().toString();//Text of Question Box
             if (!Answerstr.equals("")){
 
@@ -654,9 +793,51 @@ public class GetQuestionSetAnswer extends AppCompatActivity {
             }else {
                 Toast.makeText(getApplicationContext(), "لطفا متن پاسخ خود به مشکل را وارد نمایید", Toast.LENGTH_SHORT).show();
             }
+    }
 
+    public void SetTrueAnswer(){
+        AlertDialog alertDialog = new AlertDialog.Builder(this)
+//set icon
+                .setIcon(R.drawable.result)
+//set title
+                .setTitle("تایید جواب صحیح")
+//set message
+                .setMessage("آیا این جواب به حل شدن مشکل شما کمک کرد؟")
+//set positive button
+                // // $.B 14/04/2022 "ادامه"
+                .setPositiveButton("بله", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
 
+                        Disable();
 
+                        PostTrueAnswer(QuestionNumber);
+                        DeleteQuestionMessage();
+
+                        Intent intent = new Intent(GetQuestionSetAnswer.this, ChooseSituation.class);
+                        intent.putExtra("Username",Username.toString());//send data to next class
+                        intent.putExtra("Accounttype",Accounttype);
+                        intent.putExtra("Accounttypename",Accounttypename);
+                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP |  Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                        startActivityForResult(intent, 2);
+                    }
+                })
+//set negative button
+                .setNegativeButton("خیر", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        Clearcls();
+                        //set what should happen when negative button is clicked
+                        //Toast.makeText(getApplicationContext(),"Nothing Happened",Toast.LENGTH_LONG).show();
+                        Intent intent = new Intent(GetQuestionSetAnswer.this, MultiPreviewInboxActivity.class);
+                        intent.putExtra("Username",Username.toString());//send data to next class
+                        intent.putExtra("Accounttype",Accounttype);
+                        intent.putExtra("Accounttypename",Accounttypename);
+                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP |  Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                        startActivityForResult(intent, 2);
+                    }
+                })
+                .show();
     }
     /*
     private void GetPicByte (String Path){
@@ -797,5 +978,27 @@ public class GetQuestionSetAnswer extends AppCompatActivity {
         new File(this.path).delete();
 
     }
+
+    private void  DeleteQuestionMessage()
+    {
+        File folder = new File(Environment.getExternalStorageDirectory() +
+                File.separator + Username +"_SB_Inbox");
+        boolean success = true;
+        if (!folder.exists()) {
+            //success = folder.mkdirs();
+        }
+        // Do something on success
+        File dir = new File(folder.toString());
+        if (dir.isDirectory())
+        {
+            String[] children = dir.list();
+            for (int i = 0; i < children.length; i++)
+            {
+                new File(dir, children[i]).delete();
+            }
+        }
+        success = folder.delete();
+    }
+
 
 }
