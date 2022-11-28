@@ -1011,9 +1011,9 @@ public class GetQuestionSetAnswer extends AppCompatActivity {
                 new File(dir, children[i]).delete();
             }
         }
+        deleteRecursive(folder);// Delete sub directory (folder\folder\folder...
         success = folder.delete();
     }
-
     private void DeleteAnswerMessage()
     {
         File folder = new File(Environment.getExternalStorageDirectory() +
@@ -1032,7 +1032,18 @@ public class GetQuestionSetAnswer extends AppCompatActivity {
                 new File(dir, children[i]).delete();
             }
         }
+        deleteRecursive(folder);// Delete sub directory (folder\folder\folder...
         success = folder.delete();
+    }
+    public void deleteRecursive(File fileOrDirectory) {
+
+        if (fileOrDirectory.isDirectory()) {
+            for (File child : fileOrDirectory.listFiles()) {
+                deleteRecursive(child);
+            }
+        }
+
+        fileOrDirectory.delete();
     }
 
 }
