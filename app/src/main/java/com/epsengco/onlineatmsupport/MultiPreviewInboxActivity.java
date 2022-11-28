@@ -10,12 +10,15 @@ import com.google.android.material.snackbar.Snackbar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.os.Environment;
 import android.text.Layout;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import java.io.File;
 
 public class MultiPreviewInboxActivity extends AppCompatActivity {
 
@@ -92,7 +95,7 @@ public class MultiPreviewInboxActivity extends AppCompatActivity {
             MSGbtn.setWidth(40);
             MSGbtn.setHeight(20);
             MSGbtn.setId(i);
-            MSGbtn.setText(Textbtn + (i+1));
+            MSGbtn.setText((i+1) + " - " + Textbtn);
             MSGlayout.addView(MSGbtn);
 
             MSGbtn =(Button)findViewById(i);

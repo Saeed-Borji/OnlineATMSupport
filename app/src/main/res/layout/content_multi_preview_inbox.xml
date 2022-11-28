@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    android:background="@drawable/backgrounddark">
+    android:background="@drawable/backgroundgrrey">
 
     <fragment
         android:id="@+id/nav_host_fragment"
@@ -34,13 +34,13 @@
 
         <TextView
             android:id="@+id/textView1"
+            android:text="@string/app_p_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="18dp"
+            android:textSize="25dp"
             android:textStyle="bold"
             android:textAlignment="center"
-            android:textColor="@color/design_default_color_background"
-            android:text="@string/app_p_name" />
+            android:textColor="#7386EC" />
     </LinearLayout>
 
 
@@ -52,12 +52,12 @@
 
         <TextView
             android:id="@+id/textnavigate"
+            android:text="@string/product_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="12dp"
+            android:textSize="15dp"
             android:textAlignment="center"
-            android:textColor="@color/design_default_color_on_primary"
-            android:text="@string/product_name" />
+            android:textColor="#7386EC"/>
     </LinearLayout>
 
     <ScrollView

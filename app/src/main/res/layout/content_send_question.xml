@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    android:background="@drawable/backgrounddark">
+    android:background="@drawable/backgroundgrrey">
 
     <fragment
         android:id="@+id/nav_host_fragment"
@@ -42,13 +42,13 @@
 
             <TextView
                 android:id="@+id/textView1"
+                android:text="@string/app_p_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="18dp"
+                android:textSize="25dp"
                 android:textStyle="bold"
                 android:textAlignment="center"
-                android:textColor="@color/design_default_color_background"
-                android:text="@string/app_p_name" />
+                android:textColor="#7386EC" />
         </LinearLayout>
 
 
@@ -59,12 +59,12 @@
 
             <TextView
                 android:id="@+id/textnavigate"
+                android:text="@string/product_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="12dp"
+                android:textSize="15dp"
                 android:textAlignment="center"
-                android:textColor="@color/design_default_color_on_primary"
-                android:text="@string/product_name" />
+                android:textColor="#7386EC"/>
         </LinearLayout>
 
         <LinearLayout
@@ -175,6 +175,13 @@
 
         </LinearLayout>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_margin="25dp"
+        android:background="@drawable/framebevel3">
+
         <LinearLayout
             android:id="@+id/messageTexttxt"
             android:layout_width="match_parent"
@@ -184,10 +191,10 @@
 
             <TextView
                 android:id="@+id/messageText_view"
+                android:text="توضیحات کتبی مشکل"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="@color/design_default_color_secondary"
-                android:text="توضیحات کتبی مشکل"
+                android:textColor="#7386EC"
                 android:gravity="center|bottom"
                 android:visibility="visible"/>
 
@@ -204,24 +211,22 @@
 
             <EditText
                 android:id="@+id/questionbox"
+                android:hint="توضیحات:"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="5dp"
-                android:background="@drawable/buttonw"
+                android:layout_margin="3dp"
+                android:background="#BF4F5057"
                 android:ems="10"
                 android:inputType="textMultiLine"
                 android:lines="8"
                 android:singleLine="false"
-                android:hint="توضیحات:"
                 android:textColor="@color/design_default_color_on_secondary"
                 android:textColorHighlight="#009688"
                 android:textColorLink="#009688"
                 android:textCursorDrawable="@color/design_default_color_on_secondary"
-                android:textSize="14sp"/>
+                android:textSize="14sp"
+                android:textAlignment="center"/>
 
         </LinearLayout>
 
@@ -234,10 +239,10 @@
 
             <TextView
                 android:id="@+id/messageVoice_view"
+                android:text=" صدای توضیح مشکل کارشناس"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="@color/design_default_color_secondary"
-                android:text="توضیحات شفاهی مشکل"
+                android:textColor="#7386EC"
                 android:gravity="center|bottom"
                 android:visibility="visible"/>
 
@@ -287,10 +292,10 @@
 
             <TextView
                 android:id="@+id/messagePic_view"
+                android:text="تصویر ماژول خراب یا کد خطای کارشناس"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="@color/design_default_color_secondary"
-                android:text="تصویر ماژول خراب یا کد خطای نرم افزاری"
+                android:textColor="#7386EC"
                 android:gravity="center|bottom"
                 android:visibility="visible"/>
 
@@ -334,7 +339,7 @@
 
         </LinearLayout>
 
-
+    </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"

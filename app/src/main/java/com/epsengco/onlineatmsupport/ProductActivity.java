@@ -126,7 +126,7 @@ public class ProductActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (Check.equals("-1")){
-                    Toast.makeText(getApplicationContext(), "This User > "+Username+"< Not register", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "This User > "+Username+" < Not register", Toast.LENGTH_SHORT).show();
                 }else {
                     Toast.makeText(getApplicationContext(), "Go to Inbox", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(ProductActivity.this, PreviewInboxActivity.class);

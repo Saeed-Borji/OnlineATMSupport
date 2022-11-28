@@ -3,8 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    android:background="@drawable/backgrounddark">
+    android:background="@drawable/backgroundgrrey">
 
     <fragment
         android:id="@+id/nav_host_fragment"
@@ -31,13 +32,13 @@
 
             <TextView
                 android:id="@+id/textView1"
+                android:text="@string/app_p_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="18dp"
+                android:textSize="25dp"
                 android:textStyle="bold"
                 android:textAlignment="center"
-                android:textColor="@color/design_default_color_background"
-                android:text="@string/app_p_name" />
+                android:textColor="#7386EC"/>
         </LinearLayout>
 
 
@@ -48,12 +49,12 @@
 
             <TextView
                 android:id="@+id/textnavigate"
+                android:text="@string/product_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="12dp"
+                android:textSize="15dp"
                 android:textAlignment="center"
-                android:textColor="@color/design_default_color_on_primary"
-                android:text="@string/product_name" />
+                android:textColor="#7386EC" />
         </LinearLayout>
 
         <LinearLayout
@@ -240,7 +241,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:gravity="center_horizontal|bottom"
+                android:gravity="center_horizontal"
                 android:orientation="vertical"
                 android:layout_weight="1">
 
@@ -341,25 +342,26 @@
 
                     <Button
                         android:id="@+id/sendinboxButton"
+                        android:text="سوال ارسالی"
                         android:layout_width="match_parent"
-                        android:layout_height="45dp"
-                        android:layout_marginRight="10dp"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginBottom="5dp"
-                        android:textColor="@color/design_default_color_secondary_variant"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginBottom="15dp"
+                        android:textColor="@color/colorPrimaryDark"
                         android:textSize="20dp"
-                        android:text="سوال ارسالی" />
+                        tools:layout_editor_absoluteX="38dp"
+                        tools:layout_editor_absoluteY="190dp"/>
 
                     <Button
                         android:id="@+id/reciveinboxButton"
+                        android:text="جواب های دریافتی"
                         android:layout_width="match_parent"
-                        android:layout_height="45dp"
-                        android:layout_marginRight="10dp"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginBottom="5dp"
-                        android:textColor="@color/design_default_color_secondary_variant"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="15dp"
+                        android:textColor="@color/colorPrimaryDark"
                         android:textSize="20dp"
-                        android:text="جواب های دریافتی"/>
+                        tools:layout_editor_absoluteX="38dp"
+                        tools:layout_editor_absoluteY="190dp"/>
                 </LinearLayout>
 
 

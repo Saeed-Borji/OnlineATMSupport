@@ -5,12 +5,18 @@
       <map>
         <entry key="..\:/Saeed/Project/Android/OnlineATMSupport/app/src/main/res/drawable-v21/buttom.xml" value="0.262" />
         <entry key="..\:/Saeed/Project/Android/OnlineATMSupport/app/src/main/res/drawable-v21/buttonw.xml" value="0.262" />
+        <entry key="..\:/Saeed/Project/Android/OnlineATMSupport/app/src/main/res/drawable-v21/ic_menu_camera.xml" value="0.352" />
+        <entry key="..\:/Saeed/Project/Android/OnlineATMSupport/app/src/main/res/drawable-v21/ic_menu_gallery.xml" value="0.352" />
+        <entry key="..\:/Saeed/Project/Android/OnlineATMSupport/app/src/main/res/drawable-v21/ic_menu_slideshow.xml" value="0.352" />
+        <entry key="..\:/Saeed/Project/Android/OnlineATMSupport/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.352" />
         <entry key="..\:/Saeed/Project/Android/OnlineATMSupport/app/src/main/res/drawable/buttonnotif.xml" value="0.262" />
         <entry key="..\:/Saeed/Project/Android/OnlineATMSupport/app/src/main/res/drawable/buttonnotif2.xml" value="0.262" />
         <entry key="..\:/Saeed/Project/Android/OnlineATMSupport/app/src/main/res/drawable/framebevel.xml" value="0.262" />
         <entry key="..\:/Saeed/Project/Android/OnlineATMSupport/app/src/main/res/drawable/framebevel2.xml" value="0.262" />
         <entry key="..\:/Saeed/Project/Android/OnlineATMSupport/app/src/main/res/drawable/framebevel3.xml" value="0.2725" />
+        <entry key="..\:/Saeed/Project/Android/OnlineATMSupport/app/src/main/res/drawable/ic_launcher_background.xml" value="0.352" />
         <entry key="..\:/Saeed/Project/Android/OnlineATMSupport/app/src/main/res/drawable/side_nav_bar.xml" value="0.356" />
+        <entry key="..\:/Saeed/Project/Android/OnlineATMSupport/app/src/main/res/drawable/side_nav_bar_blue.xml" value="0.352" />
         <entry key="..\:/Saeed/Project/Android/OnlineATMSupport/app/src/main/res/layout/activity_choose_situation.xml" value="0.33" />
         <entry key="..\:/Saeed/Project/Android/OnlineATMSupport/app/src/main/res/layout/activity_get_question_set_answer.xml" value="0.2677083333333333" />
         <entry key="..\:/Saeed/Project/Android/OnlineATMSupport/app/src/main/res/layout/activity_main.xml" value="0.29981884057971014" />
@@ -30,7 +36,7 @@
         <entry key="..\:/Saeed/Project/Android/OnlineATMSupport/app/src/main/res/layout/content_preview_inbox.xml" value="0.24739583333333334" />
         <entry key="..\:/Saeed/Project/Android/OnlineATMSupport/app/src/main/res/layout/content_product.xml" value="0.24739583333333334" />
         <entry key="..\:/Saeed/Project/Android/OnlineATMSupport/app/src/main/res/layout/content_receive_question_send_anser.xml" value="0.25" />
-        <entry key="..\:/Saeed/Project/Android/OnlineATMSupport/app/src/main/res/layout/content_register.xml" value="0.24739583333333334" />
+        <entry key="..\:/Saeed/Project/Android/OnlineATMSupport/app/src/main/res/layout/content_register.xml" value="0.25" />
         <entry key="..\:/Saeed/Project/Android/OnlineATMSupport/app/src/main/res/layout/content_send_question.xml" value="0.25" />
         <entry key="..\:/Saeed/Project/Android/OnlineATMSupport/app/src/main/res/layout/content_soft_hard.xml" value="0.2677083333333333" />
         <entry key="..\:/Saeed/Project/Android/OnlineATMSupport/app/src/main/res/layout/fragment_first.xml" value="0.26145833333333335" />
@@ -41,7 +47,14 @@
         <entry key="..\:/Saeed/Project/Android/OnlineATMSupport/app/src/main/res/layout/fragment_gallery.xml" value="0.26145833333333335" />
         <entry key="..\:/Saeed/Project/Android/OnlineATMSupport/app/src/main/res/layout/fragment_home.xml" value="0.26145833333333335" />
         <entry key="..\:/Saeed/Project/Android/OnlineATMSupport/app/src/main/res/layout/fragment_second.xml" value="0.26145833333333335" />
+        <entry key="..\:/Saeed/Project/Android/OnlineATMSupport/app/src/main/res/layout/fragment_second2.xml" value="0.2640625" />
+        <entry key="..\:/Saeed/Project/Android/OnlineATMSupport/app/src/main/res/layout/fragment_second3.xml" value="0.2640625" />
+        <entry key="..\:/Saeed/Project/Android/OnlineATMSupport/app/src/main/res/layout/fragment_second4.xml" value="0.2640625" />
+        <entry key="..\:/Saeed/Project/Android/OnlineATMSupport/app/src/main/res/layout/fragment_second5.xml" value="0.2640625" />
+        <entry key="..\:/Saeed/Project/Android/OnlineATMSupport/app/src/main/res/layout/fragment_second6.xml" value="0.2640625" />
         <entry key="..\:/Saeed/Project/Android/OnlineATMSupport/app/src/main/res/layout/fragment_second7.xml" value="0.26145833333333335" />
+        <entry key="..\:/Saeed/Project/Android/OnlineATMSupport/app/src/main/res/layout/fragment_second8.xml" value="0.2640625" />
+        <entry key="..\:/Saeed/Project/Android/OnlineATMSupport/app/src/main/res/layout/fragment_second9.xml" value="0.2640625" />
         <entry key="..\:/Saeed/Project/Android/OnlineATMSupport/app/src/main/res/layout/fragment_slideshow.xml" value="0.26145833333333335" />
         <entry key="..\:/Saeed/Project/Android/OnlineATMSupport/app/src/main/res/layout/nav_header_main.xml" value="0.26145833333333335" />
         <entry key="..\:/Saeed/Project/Android/OnlineATMSupport/app/src/main/res/menu/activity_main_drawer.xml" value="0.2677083333333333" />
@@ -84,5 +97,12 @@
   </component>
   <component name="ProjectType">
     <option name="id" value="Android" />
+  </component>
+  <component name="VisualizationToolProject">
+    <option name="state">
+      <ProjectState>
+        <option name="scale" value="0.29981884057971014" />
+      </ProjectState>
+    </option>
   </component>
 </project>

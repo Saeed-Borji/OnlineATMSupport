@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    android:background="@drawable/backgrounddark"
+    android:background="@drawable/backgroundgrrey"
     tools:showIn="@layout/app_bar_main">
 
     <fragment
@@ -35,13 +35,12 @@
                 android:id="@+id/textView1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="18dp"
+                android:textColor="#7386EC"
+                android:textSize="25dp"
                 android:textStyle="bold"
                 android:textAlignment="center"
-                android:textColor="@color/design_default_color_background"
                 android:text="@string/app_p_name" />
         </LinearLayout>
-
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -52,9 +51,9 @@
                 android:id="@+id/textView2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="12dp"
+                android:textColor="#7386EC"
+                android:textSize="15dp"
                 android:textAlignment="center"
-                android:textColor="@color/design_default_color_on_primary"
                 android:text="@string/product_name" />
         </LinearLayout>
 
@@ -101,7 +100,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center|top"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:layout_margin="5dp">
 
             <ImageView
                 android:layout_width="70dp"
@@ -117,7 +117,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center|top"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:layout_margin="5dp">
 
             <ImageView
                 android:layout_width="70dp"
@@ -148,7 +149,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center|top"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:layout_margin="5dp">
 
             <ImageView
                 android:layout_width="70dp"
@@ -192,7 +194,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center|top"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:layout_margin="5dp">
 
             <ImageView
                 android:layout_width="70dp"
@@ -223,7 +226,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center|top"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:layout_margin="5dp">
 
             <ImageView
                 android:layout_width="70dp"
@@ -234,6 +238,7 @@
 
         </LinearLayout>
 
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -242,7 +247,8 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:gravity="center_horizontal|bottom"
+                android:gravity="center_horizontal"
+                android:layout_marginTop="25dp"
                 android:orientation="vertical"
                 android:layout_weight="1">
 
@@ -263,21 +269,19 @@
 
                         <EditText
                             android:id="@+id/UsernameBox"
-                            android:hint="Username"
+                            android:hint="نام کاربری"
                             android:layout_width="wrap_content"
                             android:layout_height="30dp"
                             android:layout_gravity="center"
                             android:layout_marginLeft="5dp"
                             android:background="@drawable/framebevel"
-                            android:ems="10"
                             android:inputType="textPersonName"
-                            android:textColorHint="#32FFFFFF"
+                            android:textColorHint="#997386EC"
                             android:textAlignment="center"
-                            android:textColor="#FBF8F8"
-                            android:textColorHighlight="#009688"
-                            android:textColorLink="#009688"
                             android:gravity="center"
-                            android:textCursorDrawable="@color/cardview_light_background" />
+                            android:textColor="#7386EC"
+                            android:textCursorDrawable="@color/colorPrimaryDark"
+                            android:ems="10" />
 
                         <TextView
                             android:id="@+id/textView20"
@@ -285,10 +289,11 @@
                             android:layout_height="wrap_content"
                             android:text="نام کاربری:"
                             android:textAlignment="textStart"
-                            android:textColor="#047E72"
-                            android:textSize="15dp"
+                            android:layout_marginLeft="15dp"
+                            android:textColor="#7386EC"
+                            android:textSize="20dp"
                             android:textStyle="bold"
-                            android:visibility="visible"/>
+                            android:visibility="gone"/>
 
                     </LinearLayout>
                 </LinearLayout>
@@ -311,7 +316,7 @@
 
                         <EditText
                             android:id="@+id/PasswordBox"
-                            android:hint="Password"
+                            android:hint="کلمه عبور"
                             android:layout_width="wrap_content"
                             android:layout_height="30dp"
                             android:layout_gravity="center"
@@ -319,21 +324,22 @@
                             android:background="@drawable/framebevel"
                             android:ems="10"
                             android:inputType="textPassword"
-                            android:textColorHint="#32FFFFFF"
+                            android:textColorHint="#997386EC"
                             android:textAlignment="center"
                             android:gravity="center"
-                            android:textColor="#FAF7F7"/>
+                            android:textColor="#7386EC"/>
 
                         <TextView
                             android:id="@+id/textView21"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="کلمه عبور: "
+                            android:text="کلمه عبور:"
                             android:textAlignment="textStart"
-                            android:textColor="#047E72"
-                            android:textSize="15dp"
+                            android:layout_marginLeft="15dp"
+                            android:textColor="#7386EC"
+                            android:textSize="20dp"
                             android:textStyle="bold"
-                            android:visibility="visible"/>
+                            android:visibility="gone"/>
 
                     </LinearLayout>
                 </LinearLayout>
@@ -350,14 +356,13 @@
 
                     <Button
                         android:id="@+id/LoginButton"
-                        android:layout_width="match_parent"
-                        android:layout_height="45dp"
-                        android:layout_marginRight="10dp"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginBottom="5dp"
-                        android:textColor="@color/design_default_color_secondary_variant"
-                        android:textSize="20dp"
                         android:text="ورود"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginBottom="15dp"
+                        android:textColor="@color/colorPrimaryDark"
+                        android:textSize="20dp"
                         tools:layout_editor_absoluteX="38dp"
                         tools:layout_editor_absoluteY="190dp" />
 

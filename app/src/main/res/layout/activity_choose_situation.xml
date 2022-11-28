@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ChooseSituation"
-    android:background="@drawable/backgrounddark">
+    android:background="@drawable/backgroundgrrey">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -21,15 +21,14 @@
 
             <TextView
                 android:id="@+id/textView1"
+                android:text="@string/app_p_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="18dp"
+                android:textSize="25dp"
                 android:textStyle="bold"
                 android:textAlignment="center"
-                android:textColor="@color/design_default_color_background"
-                android:text="@string/app_p_name" />
+                android:textColor="#7386EC" />
         </LinearLayout>
-
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -38,12 +37,12 @@
 
             <TextView
                 android:id="@+id/textnavigate"
+                android:text="@string/product_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="12dp"
+                android:textSize="15dp"
                 android:textAlignment="center"
-                android:textColor="@color/design_default_color_on_primary"
-                android:text="@string/product_name" />
+                android:textColor="#7386EC"/>
         </LinearLayout>
 
         <LinearLayout
@@ -89,7 +88,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center|top"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:layout_margin="5dp">
 
             <ImageView
                 android:layout_width="70dp"
@@ -105,7 +105,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center|top"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:layout_margin="5dp">
 
             <ImageView
                 android:layout_width="70dp"
@@ -136,7 +137,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center|top"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:layout_margin="5dp">
 
             <ImageView
                 android:layout_width="70dp"
@@ -158,6 +160,7 @@
                 android:background="@drawable/epsw"
                 android:gravity="center|top"
                 android:visibility="visible"/>
+
             <ImageView
                 android:layout_width="70dp"
                 android:layout_height="50dp"
@@ -180,7 +183,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center|top"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:layout_margin="5dp">
 
             <ImageView
                 android:layout_width="70dp"
@@ -211,7 +215,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center|top"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:layout_margin="5dp">
 
             <ImageView
                 android:layout_width="70dp"
@@ -230,7 +235,8 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:gravity="center_horizontal|bottom"
+                android:gravity="center_horizontal"
+                android:layout_marginTop="25dp"
                 android:orientation="vertical"
                 android:layout_weight="1">
 
@@ -327,27 +333,24 @@
 
                     <Button
                         android:id="@+id/buttonfieldexpert"
-                        android:layout_width="match_parent"
-                        android:layout_height="45dp"
-                        android:layout_marginRight="10dp"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginBottom="5dp"
-                        android:textColor="@color/design_default_color_secondary_variant"
-                        android:textSize="20dp"
                         android:text="کارشناس فیلد"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginBottom="15dp"
+                        android:textColor="@color/colorPrimaryDark"
+                        android:textSize="20dp"
                         tools:layout_editor_absoluteX="38dp"
                         tools:layout_editor_absoluteY="190dp" />
 
                     <Button
                         android:id="@+id/buttontechnicalsupport"
-                        android:layout_width="match_parent"
-                        android:layout_height="45dp"
-                        android:layout_marginRight="10dp"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginBottom="5dp"
-                        android:textColor="@color/design_default_color_secondary_variant"
-                        android:textSize="20dp"
                         android:text="پشتیبان فنی"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="15dp"
+                        android:textColor="@color/colorPrimaryDark"
+                        android:textSize="20dp"
                         tools:layout_editor_absoluteX="38dp"
                         tools:layout_editor_absoluteY="190dp"/>
                 </LinearLayout>

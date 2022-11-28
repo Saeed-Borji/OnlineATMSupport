@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    android:background="@drawable/backgrounddark">
+    android:background="@drawable/backgroundgrrey">
 
     <fragment
         android:id="@+id/nav_host_fragment"
@@ -33,10 +33,10 @@
                 android:id="@+id/textView1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="18dp"
+                android:textColor="#7386EC"
+                android:textSize="25dp"
                 android:textStyle="bold"
                 android:textAlignment="center"
-                android:textColor="@color/design_default_color_background"
                 android:text="@string/app_p_name" />
         </LinearLayout>
 
@@ -50,10 +50,10 @@
                 android:id="@+id/textnavigate"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="12dp"
+                android:textColor="#7386EC"
+                android:textSize="15dp"
                 android:textAlignment="center"
-                android:textColor="@color/design_default_color_on_primary"
-                android:text="@string/product_name" />
+                android:text="@string/product_name"/>
         </LinearLayout>
 
         <LinearLayout
@@ -99,7 +99,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center|top"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:layout_margin="5dp">
 
             <ImageView
                 android:id="@+id/atm_view"
@@ -116,6 +117,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center|top"
+            android:layout_margin="5dp"
             android:orientation="horizontal">
 
             <ImageView
@@ -149,7 +151,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center|top"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:layout_margin="5dp">
 
             <ImageView
                 android:id="@+id/hard_view"
@@ -195,7 +198,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center|top"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:layout_margin="5dp">
 
             <ImageView
                 android:id="@+id/crs_view"
@@ -236,7 +240,8 @@
                 android:layout_height="50dp"
                 android:background="@drawable/free"
                 android:gravity="center|top"
-                android:visibility="visible"/>
+                android:visibility="visible"
+                android:layout_margin="5dp"/>
 
         </LinearLayout>
 
@@ -254,7 +259,7 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="5dp"
                 android:orientation="horizontal"
-                android:background="@drawable/buttom">
+                android:background="@drawable/framebevel">
 
                 <Spinner
                     android:id="@+id/spinnerModel"

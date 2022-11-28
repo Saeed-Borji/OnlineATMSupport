@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    android:background="@drawable/backgrounddark">
+    android:background="@drawable/backgroundgrrey">
 
     <fragment
         android:id="@+id/nav_host_fragment_content_get_question_set_answer"
@@ -19,15 +19,6 @@
         app:layout_constraintTop_toTopOf="parent"
         app:navGraph="@navigation/nav_graph9" />
 
-    <ImageView
-        android:id="@+id/picpreview"
-        android:layout_width="match_parent"
-        android:layout_height="300dp"
-        android:layout_margin="20dp"
-        android:gravity="center"
-        android:visibility="invisible"
-        tools:ignore="MissingConstraints" />
-
     <ScrollView
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
@@ -39,42 +30,52 @@
         android:layout_margin="5dp"
         android:orientation="vertical">
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textView1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="#7386EC"
+                android:textSize="25dp"
+                android:textStyle="bold"
+                android:textAlignment="center"
+                android:text="@string/app_p_name" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textnavigate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="#7386EC"
+                android:textSize="15dp"
+                android:textAlignment="center"
+                android:text="@string/product_name" />
+        </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:background="@drawable/framebevel2">
+            android:layout_margin="25dp"
+            android:background="@drawable/framebevel3">
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
+            <ImageView
+                android:id="@+id/picpreview"
+                android:layout_width="600dp"
+                android:layout_height="200dp"
+                android:layout_margin="20dp"
+                android:gravity="top|center"
+                android:visibility="gone"
+                tools:ignore="MissingConstraints" />
 
-                <TextView
-                    android:id="@+id/textView1"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textSize="18dp"
-                    android:textStyle="bold"
-                    android:textAlignment="center"
-                    android:textColor="@color/design_default_color_background"
-                    android:text="@string/app_p_name" />
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/textnavigate"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textSize="12dp"
-                    android:textAlignment="center"
-                    android:textColor="@color/design_default_color_on_primary"
-                    android:text="@string/product_name" />
-            </LinearLayout>
             <LinearLayout
                 android:id="@+id/messageTexttxt"
                 android:layout_width="match_parent"
@@ -84,10 +85,10 @@
 
                 <TextView
                     android:id="@+id/messageText_view"
+                    android:text="متن توضیحات مشکل کارشناس"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/colorAccent"
-                    android:text="متن توضیحات مشکل کارشناس"
+                    android:textColor="#7386EC"
                     android:gravity="center|bottom"
                     android:visibility="visible"/>
 
@@ -96,20 +97,20 @@
                 android:id="@+id/errortextviewerlayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="2dp"
+                android:layout_margin="10dp"
                 android:gravity="center|top"
                 android:orientation="horizontal"
                 android:background="@drawable/framebevel">
 
                 <EditText
                     android:id="@+id/questionbox"
+                    android:hint="متن توضیحات مشکل کارشناس"
                     android:layout_width="match_parent"
                     android:layout_height="80dp"
                     android:layout_gravity="center"
-                    android:layout_margin="2dp"
-                    android:background="@android:drawable/screen_background_light_transparent"
+                    android:layout_margin="3dp"
+                    android:background="#BF4F5057"
                     android:ems="10"
-                    android:hint="متن توضیحات مشکل کارشناس"
                     android:inputType="textMultiLine"
                     android:lines="8"
                     android:singleLine="false"
@@ -130,10 +131,10 @@
 
                 <TextView
                     android:id="@+id/messageVoice_view"
+                    android:text=" صدای توضیح مشکل کارشناس"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/colorAccent"
-                    android:text=" صدای توضیح مشکل کارشناس"
+                    android:textColor="#7386EC"
                     android:gravity="center|bottom"
                     android:visibility="visible"/>
 
@@ -183,10 +184,10 @@
 
                 <TextView
                     android:id="@+id/messagePic_view"
+                    android:text="تصویر ماژول خراب یا کد خطای کارشناس"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/colorAccent"
-                    android:text="تصویر ماژول خراب یا کد خطای کارشناس"
+                    android:textColor="#7386EC"
                     android:gravity="center|bottom"
                     android:visibility="visible"/>
 
@@ -195,7 +196,7 @@
                 android:id="@+id/messagePic"
                 android:layout_width="match_parent"
                 android:layout_height="79dp"
-                android:layout_margin="2dp"
+                android:layout_margin="10dp"
                 android:background="@drawable/framebevel"
                 android:gravity="right|center"
                 android:orientation="horizontal">
@@ -203,10 +204,10 @@
                 <ImageView
                     android:id="@+id/errorpic"
                     android:layout_width="150dp"
-                    android:layout_height="80dp"
+                    android:layout_height="70dp"
                     android:layout_marginLeft="50dp"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginBottom="5dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
                     android:gravity="left"
                     android:visibility="visible" />
 
@@ -238,7 +239,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:background="@drawable/framebevel2">
+            android:layout_margin="25dp"
+            android:background="@drawable/framebevel3">
 
             <LinearLayout
                 android:id="@+id/answerlayout"
@@ -259,8 +261,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="1dp"
-                        android:textColor="@color/design_default_color_secondary"
-                        android:text="توضیحات کتبی شما برای کمک به کارشناس:"
+                        android:textColor="#7386EC"
+                        android:text="توضیحات کتبی شما برای راهنمایی کارشناس:"
                         android:gravity="center|bottom"
                         android:visibility="visible"/>
 
@@ -284,7 +286,7 @@
                         android:layout_marginTop="5dp"
                         android:layout_marginRight="5dp"
                         android:layout_marginBottom="5dp"
-                        android:background="@drawable/buttonw"
+                        android:background="#BF4F5057"
                         android:ems="10"
                         android:hint="متن جواب:"
                         android:inputType="textMultiLine"
@@ -309,8 +311,8 @@
                         android:id="@+id/AnswerVoice_view"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/design_default_color_secondary"
-                        android:text="توضیحات شفاهی شما برای کمک به کارشناس"
+                        android:textColor="#7386EC"
+                        android:text="توضیحات شفاهی شما برای راهنمایی کارشناس"
                         android:gravity="center|bottom"
                         android:visibility="visible"/>
 
@@ -362,8 +364,8 @@
                         android:id="@+id/AnswerPic_view"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/design_default_color_secondary"
-                        android:text="تصویر ارسالی شما برای کمک به کارشناس"
+                        android:textColor="#7386EC"
+                        android:text="تصویر ارسالی شما برای راهنمایی کارشناس"
                         android:gravity="center|bottom"
                         android:visibility="visible"/>
 
@@ -381,10 +383,10 @@
                     <ImageView
                         android:id="@+id/Answerpic"
                         android:layout_width="150dp"
-                        android:layout_height="80dp"
+                        android:layout_height="70dp"
                         android:layout_marginLeft="50dp"
-                        android:layout_marginTop="5dp"
-                        android:layout_marginBottom="5dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"
                         android:gravity="left"
                         android:visibility="visible"/>
 
@@ -412,44 +414,45 @@
 
             </LinearLayout>
 
-            <LinearLayout
-                android:id="@+id/pnlButtons"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="40dp"
-                android:layout_marginLeft="40dp"
-                android:layout_marginBottom="20dp"
-                android:gravity="center"
-                android:orientation="vertical">
-
-                <Button
-                    android:id="@+id/buttonsendanswer"
-                    android:layout_width="match_parent"
-                    android:layout_height="48dp"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
-                    android:layout_marginBottom="5dp"
-                    android:text="ارسال پاسخ"
-                    android:textColor="@color/design_default_color_secondary_variant"
-                    android:textSize="12dp"
-                    android:visibility="visible" />
-
-                <Button
-                    android:id="@+id/buttonclear"
-                    android:layout_width="match_parent"
-                    android:layout_height="48dp"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
-                    android:layout_marginBottom="5dp"
-                    android:text="پاک کردن اطلاعات سوال"
-                    android:textColor="@color/design_default_color_secondary_variant"
-                    android:textSize="12dp"
-                    android:visibility="gone" />
-            </LinearLayout>
-
-
         </LinearLayout>
 
+        <LinearLayout
+            android:id="@+id/pnlButtons"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="40dp"
+            android:layout_marginLeft="40dp"
+            android:layout_marginBottom="20dp"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/buttonsendanswer"
+                android:text="ارسال پاسخ"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="15dp"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="20dp"
+                tools:layout_editor_absoluteX="38dp"
+                tools:layout_editor_absoluteY="190dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:visibility="visible" />
+
+            <Button
+                android:id="@+id/buttonclear"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="5dp"
+                android:text="پاک کردن اطلاعات سوال"
+                android:textColor="@color/design_default_color_secondary_variant"
+                android:textSize="12dp"
+                android:visibility="gone" />
+        </LinearLayout>
 
     </LinearLayout>
 

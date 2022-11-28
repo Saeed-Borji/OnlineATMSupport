@@ -18,6 +18,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Environment;
 import android.os.Handler;
 import android.util.Base64;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -57,6 +58,9 @@ public class GetQuestionSetAnswer extends AppCompatActivity {
     private Handler handler = new Handler();
 
     public EditText QuestionBox;
+    public TextView MessageText;
+    public TextView MessageVoice;
+    public TextView MessagePic;
 
     public EditText AnswerBox;
     String Answerstr = "";
@@ -132,10 +136,13 @@ public class GetQuestionSetAnswer extends AppCompatActivity {
         Navigate.setText(Username + " > " + Accounttypename + " > Server Inbox = " + QuestionNumber + "_from_" + MessageCount);
 
         QuestionBox = (EditText)findViewById(R.id.questionbox);
+        MessageText = (TextView)findViewById(R.id.messageText_view);
         VoicePlayer = (LinearLayout)findViewById(R.id.voiceplayerlayout);
         PlayVoice = (ImageButton)findViewById(R.id.Voiceplayerbtn);
+        MessageVoice = (TextView)findViewById(R.id.messageVoice_view);
         progressBar = (ProgressBar)findViewById(R.id.progressBar);
         PicViewer = (ImageButton)findViewById(R.id.Errorpicbtn);
+        MessagePic = (TextView)findViewById(R.id.messagePic_view);
 
         Errorpic = (ImageView)findViewById(R.id.errorpic);
         PicViewer = (ImageButton)findViewById(R.id.Errorpicbtn);
@@ -199,20 +206,26 @@ public class GetQuestionSetAnswer extends AppCompatActivity {
         PicViewer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 if (BigPreview == 1){
                     ErrorPicViewer.setVisibility(View.VISIBLE);//Big Pic
                     //Question.setText("");
-                    VoicePlayer.setVisibility(View.INVISIBLE);
-                    ErrorTextViewerLayout.setVisibility(View.INVISIBLE);
+                    VoicePlayer.setVisibility(View.GONE);
+                    ErrorTextViewerLayout.setVisibility(View.GONE);
+                    MessageText.setVisibility(View.GONE);
+                    MessageVoice.setVisibility(View.GONE);
+                    MessagePic.setVisibility(View.GONE);
                     BigPreview = 0;
                 }else if (BigPreview == 0){
-                    ErrorPicViewer.setVisibility(View.INVISIBLE);//Big Pic
+                    ErrorPicViewer.setVisibility(View.GONE);//Big Pic
                     //Question.setText(questionText);
                     VoicePlayer.setVisibility(View.VISIBLE);
                     ErrorTextViewerLayout.setVisibility(View.VISIBLE);
+                    MessageText.setVisibility(View.VISIBLE);
+                    MessageVoice.setVisibility(View.VISIBLE);
+                    MessagePic.setVisibility(View.VISIBLE);
                     BigPreview = 1;
                 }
-
             }
         });
 
@@ -789,6 +802,7 @@ public class GetQuestionSetAnswer extends AppCompatActivity {
                 //Go To Send Param Request to server
                 Disable();
                 PostAnswerData();
+                DeleteAnswerMessage();
 
             }else {
                 Toast.makeText(getApplicationContext(), "لطفا متن پاسخ خود به مشکل را وارد نمایید", Toast.LENGTH_SHORT).show();
@@ -910,7 +924,7 @@ public class GetQuestionSetAnswer extends AppCompatActivity {
     private void SaveQuestionMessage(String Message) throws IOException {//(String Message,byte[] Pic, byte[] Voice)
 
         File folder = new File(Environment.getExternalStorageDirectory() +
-                File.separator + Username +"_SB_Inbox");
+                File.separator + Username +"_SB_Inbox" + File.separator + QuestionNumber);
         boolean success = true;
         if (!folder.exists()) {
             success = folder.mkdirs();
@@ -1000,5 +1014,25 @@ public class GetQuestionSetAnswer extends AppCompatActivity {
         success = folder.delete();
     }
 
+    private void DeleteAnswerMessage()
+    {
+        File folder = new File(Environment.getExternalStorageDirectory() +
+                File.separator + Username +"_SB_Inbox");
+        boolean success = true;
+        if (!folder.exists()) {
+            //success = folder.mkdirs();
+        }
+        // Do something on success
+        File dir = new File(folder.toString());
+        if (dir.isDirectory())
+        {
+            String[] children = dir.list();
+            for (int i = 0; i < children.length; i++)
+            {
+                new File(dir, children[i]).delete();
+            }
+        }
+        success = folder.delete();
+    }
 
 }
