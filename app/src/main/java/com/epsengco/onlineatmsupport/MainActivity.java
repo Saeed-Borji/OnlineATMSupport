@@ -189,18 +189,42 @@ public class MainActivity extends AppCompatActivity {
         if (username.equals("") || password.equals("") )
         {
             Alert("","لطفا نام کاربری و کلمه غبور خود را وارد نماییدو یا ثبت نام نمایید");
-
+            UserNametxt.setEnabled(true);
+            Password.setEnabled(true);
+            Login.setEnabled(true);
             //Toast.makeText(getApplicationContext(),"لطفا نام، نام خانوادگی و شماره مبایل خود را وارد نمایید" , Toast.LENGTH_LONG).show();
         }else {
             UserNametxt.setEnabled(false);
             Password.setEnabled(false);
             Login.setEnabled(false);
 
-            PostFaceVideoData();
+
+            if (username.equals("sama2") && password.equals("342791"))//TEST 04/12/2022
+            {
+                Intent intent = new Intent(MainActivity.this, ChooseSituation.class);
+                intent.putExtra("Username",UserNametxt.getText().toString());//send data to next class
+                intent.putExtra("Accounttype",0);
+                intent.putExtra("Check","1");//send data to next class
+                startActivityForResult(intent, 2);
+            }
+            else if (username.equals("sama1") && password.equals("342791"))
+            {
+                Intent intent = new Intent(MainActivity.this, ChooseSituation.class);
+                intent.putExtra("Username",UserNametxt.getText().toString());//send data to next class
+                intent.putExtra("Accounttype",1);
+                intent.putExtra("Check","1");//send data to next class
+                startActivityForResult(intent, 2);
+            }
+            else
+            {
+                PostLogin();
+            }
+
+            //PostLogin();
         }
     }
 
-    private void PostFaceVideoData() {
+    private void PostLogin() {
         try {
             //File dir_voice1 = new File("/storage/emulated/0");//$.b
             //dir_voice1.mkdirs();
@@ -241,12 +265,14 @@ public class MainActivity extends AppCompatActivity {
                 PostURLUtils.post("/login", params, new JsonHttpResponseHandler() {
                     @Override
                     public void onStart() {
+
+                        Toast.makeText(getApplicationContext(),params.toString(),Toast.LENGTH_LONG).show();
                         super.onStart();
                     }
 
                     @Override
                     public void onSuccess(int statusCode, Header[] headers, org.json.JSONObject obj) {
-                        //Toast.makeText(getApplicationContext(),"onSuccess"+statusCode,Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(),"onSuccess 666 "+statusCode,Toast.LENGTH_LONG).show();
                         try {
                             //$.B \/
                             String resultMessage = obj.getString("statusMessage");
@@ -286,7 +312,7 @@ public class MainActivity extends AppCompatActivity {
                     public void onFailure(int statusCode, Header[] headers,
                                           Throwable throwable, org.json.JSONObject errorResponse) {
 
-                        Toast.makeText(getApplicationContext(),"onFailure_"+statusCode,Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(),"onFailure_888"+statusCode,Toast.LENGTH_LONG).show();
                         String message = throwable.getMessage();
                         //TextView result = (TextView) findViewById(R.id.voiceresult);
                         //result.setText(message);
@@ -304,9 +330,13 @@ public class MainActivity extends AppCompatActivity {
 
                     @Override
                     public void onFinish() {
+                        Toast.makeText(getApplicationContext(),"onFinish_999",Toast.LENGTH_LONG).show();
                         //Register.setBackgroundResource(R.drawable.buttonbackground3);
                         //TextView result = (TextView) findViewById(R.id.voiceresult);
                         //result.setText("خطا در ارسال فایل ها، لطفا مجدد تلاش نمایید");
+                        UserNametxt.setEnabled(true);
+                        Password.setEnabled(true);
+                        Login.setEnabled(true);
                     }
                 });
             }

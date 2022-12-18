@@ -327,7 +327,7 @@
                     android:background="@drawable/framebevel">
 
                     <ProgressBar
-                        android:id="@+id/AnswerprogressBar"
+                        android:id="@+id/Answerprogressbar"
                         style="?android:attr/progressBarStyleHorizontal"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -342,7 +342,7 @@
                         android:progress="1"/>
 
                     <ImageButton
-                        android:id="@+id/AnswerVoiceplayerbtn"
+                        android:id="@+id/Answervoiceplayerbtn"
                         android:layout_width="40dp"
                         android:layout_height="40dp"
                         android:layout_marginRight="50dp"
@@ -399,7 +399,7 @@
                         android:visibility="visible"/>
 
                     <ImageButton
-                        android:id="@+id/AnswerPicbtn"
+                        android:id="@+id/Answerpicbtn"
                         android:layout_width="40dp"
                         android:layout_height="40dp"
                         android:layout_marginLeft="10dp"

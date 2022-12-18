@@ -4,10 +4,12 @@ import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Matrix;
 import android.media.MediaPlayer;
+import android.net.Uri;
 import android.os.Bundle;
 
 import com.epsengco.onlineatmsupport.ui.AudioRecorder;
@@ -17,8 +19,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Environment;
 import android.os.Handler;
+import android.provider.MediaStore;
 import android.util.Base64;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -42,6 +44,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.BufferedInputStream;
+import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
@@ -56,15 +59,23 @@ public class GetQuestionSetAnswer extends AppCompatActivity {
 
     private int progressStatus = 0;
     private Handler handler = new Handler();
+    String Path1 = null;
 
     public EditText QuestionBox;
     public TextView MessageText;
     public TextView MessageVoice;
     public TextView MessagePic;
 
-    public EditText AnswerBox;
+    public EditText AnswerTextBox;
     String Answerstr = "";
+    public ImageButton AnswerPicBtn;
+    public ImageView AnswerPic;
+    public ImageButton AnswerVoicePlayerBtn;
+    private ProgressBar AnswerProgressBar;
+    private String VoiceFileName = "";
     private Button SendAnswer;
+    private byte[] ArrPic = null;
+    private byte[] ArrVoice = null;
     public LinearLayout AnswerLayout;
 
     private ImageButton PlayVoice;
@@ -78,6 +89,9 @@ public class GetQuestionSetAnswer extends AppCompatActivity {
     byte[] ErrPicByte;
     private ImageView ErrorPicViewer;
     int BigPreview = 1;
+    Bitmap pic1 = null;
+
+
 
     private TextView Navigate;
 
@@ -135,7 +149,7 @@ public class GetQuestionSetAnswer extends AppCompatActivity {
         Navigate = (TextView) findViewById(R.id.textnavigate);
         Navigate.setText(Username + " > " + Accounttypename + " > Server Inbox = " + QuestionNumber + "_from_" + MessageCount);
 
-        QuestionBox = (EditText)findViewById(R.id.questionbox);
+        QuestionBox = (EditText)findViewById(R.id.questionbox);//Recive
         MessageText = (TextView)findViewById(R.id.messageText_view);
         VoicePlayer = (LinearLayout)findViewById(R.id.voiceplayerlayout);
         PlayVoice = (ImageButton)findViewById(R.id.Voiceplayerbtn);
@@ -143,7 +157,6 @@ public class GetQuestionSetAnswer extends AppCompatActivity {
         progressBar = (ProgressBar)findViewById(R.id.progressBar);
         PicViewer = (ImageButton)findViewById(R.id.Errorpicbtn);
         MessagePic = (TextView)findViewById(R.id.messagePic_view);
-
         Errorpic = (ImageView)findViewById(R.id.errorpic);
         PicViewer = (ImageButton)findViewById(R.id.Errorpicbtn);
 
@@ -153,7 +166,11 @@ public class GetQuestionSetAnswer extends AppCompatActivity {
 
         AnswerLayout = (LinearLayout)findViewById(R.id.answerlayout);
         SendAnswer = (Button)findViewById(R.id.buttonsendanswer);
-        AnswerBox = (EditText)findViewById(R.id.Answerbox);
+        AnswerTextBox = (EditText)findViewById(R.id.Answerbox);
+        AnswerPicBtn = (ImageButton)findViewById(R.id.Answerpicbtn);
+        AnswerPic = (ImageView)findViewById(R.id.Answerpic);
+        AnswerVoicePlayerBtn = (ImageButton) findViewById(R.id.Answervoiceplayerbtn);
+        AnswerProgressBar = (ProgressBar)findViewById(R.id.Answerprogressbar);
 
         //$.B /\
 
@@ -169,7 +186,6 @@ public class GetQuestionSetAnswer extends AppCompatActivity {
         PlayVoice.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 progressStatus = 0;
 
                 new Thread(new Runnable() {
@@ -229,6 +245,61 @@ public class GetQuestionSetAnswer extends AppCompatActivity {
             }
         });
 
+        AnswerPicBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Boolean isSDPresent = android.os.Environment.getExternalStorageState().equals(android.os.Environment.MEDIA_MOUNTED);//SD Have or Havent
+
+                if (isSDPresent == true){//Have SD Cars
+                    File dir_image2 = new File(Environment.getExternalStorageDirectory()+
+                            File.separator+"S_B");
+
+                    Path1 = "1";
+
+                    performFileSearch();
+                }else if (isSDPresent == false){//Haven't CD Card
+                }
+            }
+        });
+
+        AnswerVoicePlayerBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                progressStatus = 0;
+
+                new Thread(new Runnable() {
+                    public void run() {
+
+                        while (progressStatus < 100) {
+                            progressStatus += 12;
+                            // Update the progress bar and display the
+                            //current value in the text view
+                            handler.post(new Runnable() {
+                                public void run() {
+                                    AnswerProgressBar.setProgress(progressStatus);
+                                    if (progressStatus >99){//Enable VoiceButton
+                                        Enable();
+                                    }
+                                }
+                            });
+                            try {
+                                // Sleep for 200 milliseconds.
+                                Thread.sleep(1500);
+                            } catch (InterruptedException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                    }
+                }).start();
+
+                Disable();//Disable All Button or ...
+
+                VoiceFileName = "sound";
+                VoiceRecord(VoiceFileName);
+
+            }
+        });
+
         SendAnswer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -255,6 +326,126 @@ public class GetQuestionSetAnswer extends AppCompatActivity {
                 || super.onSupportNavigateUp();
     }
 
+    public void performFileSearch() {
+        Intent pickPhoto = new Intent(Intent.ACTION_PICK,
+                android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+        startActivityForResult(pickPhoto , 1);
+    }
+
+    protected void onActivityResult(int requestCode, int resultCode, Intent imageReturnedIntent) {
+        /*
+        LinearLayout LinerDate1 =(LinearLayout)findViewById(R.id.date1);
+        LinerDate1.setVisibility(View.VISIBLE);
+        LinearLayout LinerDate2 =(LinearLayout)findViewById(R.id.date2);
+        LinerDate2.setVisibility(View.VISIBLE);
+        LinearLayout LinerDate3 =(LinearLayout)findViewById(R.id.date3);
+        LinerDate3.setVisibility(View.VISIBLE);
+
+         */
+
+        super.onActivityResult(requestCode, resultCode, imageReturnedIntent);
+        switch(requestCode) {
+            case 0:
+                if(resultCode == RESULT_OK){
+                    Uri selectedImage = imageReturnedIntent.getData();
+                    //ImageView photo1 = (ImageView) findViewById(R.id.Photo1);
+                    AnswerPic.setImageURI(selectedImage);
+                }
+                break;
+            case 1:
+                if(resultCode == RESULT_OK){
+                    Uri selectedImage = imageReturnedIntent.getData();
+
+                    if (Path1 == "1"){
+                        Path1 = selectedImage.toString();
+                        if (Path1.contains("file:///") == true ){
+                            Path1 = imageReturnedIntent.getData().toString();
+                            Path1 = Uri.parse(Path1).getEncodedPath();
+                        }else {
+                            File file = new File(getPath(selectedImage));
+                            Path1 = file.getAbsolutePath();
+                        }
+                    }
+
+                }
+                break;
+        }
+
+        setPic(0);
+
+    }
+    public String getPath(Uri uri)
+    {
+        String[] projection = { MediaStore.Images.Media.DATA };
+        Cursor cursor = getContentResolver().query(uri, projection, null, null, null);
+        if (cursor == null) return null;
+        int column_index =             cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
+        cursor.moveToFirst();
+        String s=cursor.getString(column_index);
+        cursor.close();
+        return s;
+    }
+    private void setPic(float angle1) {//Set Piic1 and Pic2 _ rotate 90 _ W=300 H=300 _ Make Circle
+
+        String fileUrl = null;//dir_image2+File.separator+"Image1.jpg";
+        float angle = 0;
+        if (Path1 == "selfie1" || Path1 == ""){
+            //fileUrl = dir_image2+File.separator+"Image1.jpg";
+            angle = -90;//90
+        }else {
+            fileUrl = Path1;
+            angle = angle1;
+        }
+        File f = new File(fileUrl);
+
+        if(f.exists()) {
+            Bitmap pic0 = BitmapFactory.decodeFile(f.getAbsolutePath());
+
+            if (pic0 == null){
+                //txtresult = (TextView)findViewById(R.id.txtresult);
+                //txtresult.setText("Access denied to memory");
+                Path1="2";//2 = Access denied to Path
+                //ImageView Rot1 = (ImageView) findViewById(R.id.RotatePhoto1);
+                //Rot1.setVisibility(View.INVISIBLE);
+
+            }else {
+                if (pic0.getHeight() < 120 || pic0.getWidth() < 120) {
+                    //txtresult.setText("The quality of the left side photo is low. It must be Height>120 _ Width>120");
+                    Path1 = "";
+                }else {
+                    Matrix matrix = new Matrix();
+                    matrix.preRotate(angle);
+                    pic1 = Bitmap.createBitmap(pic0,0,0, pic0.getWidth(),pic0.getHeight(),matrix, true);//Rotate 90
+                    pic1 = Bitmap.createScaledBitmap(pic1,800,600,true);//W=800 H=600
+                    pic0.recycle();
+
+                    /*
+                    Bitmap circleBitmap = Bitmap.createBitmap(pic1.getWidth(), pic1.getHeight(), Bitmap.Config.ARGB_8888);//Make Circle \/
+                    BitmapShader shader = new BitmapShader(pic1,  Shader.TileMode.CLAMP, Shader.TileMode.CLAMP);
+                    Paint paint = new Paint();
+                    paint.setShader(shader);
+                    paint.setAntiAlias(true);
+                    Canvas c = new Canvas(circleBitmap);
+                    c.drawCircle(pic1.getWidth()/2, pic1.getHeight()/2, pic1.getWidth()/2, paint);//Make Circle /\
+
+                     */
+
+                    //ImageView btn1 = (ImageView) findViewById(R.id.Photo1);//$.B
+                    AnswerPic.setImageBitmap(pic1);//(circleBitmap);//$.B for circle
+                    //btn1.setBackgroundResource(R.drawable.freebackground);
+                    AnswerPic.setEnabled(true);//$.B
+                    AnswerPic.setBackground(null);
+                }
+            }
+
+        }else {
+            //ImageView btn1 = (ImageView) findViewById(R.id.image2);//$.B
+            //btn1.setImageResource(R.drawable.ic_face_btn);
+            //btn1.setBackgroundResource(R.drawable.circlebackground);
+            //btn1.setEnabled(true);//$.B
+        }
+    }
+
     private String sanitizePath(String path) {
         if (!path.startsWith("/")) {
             path = "/" + path;
@@ -266,8 +457,6 @@ public class GetQuestionSetAnswer extends AppCompatActivity {
         return Environment.getExternalStorageDirectory().getAbsolutePath()
                 + path;
     }
-
-
     public void VoiceRecord(String filename){
         final AudioRecorder Record = new AudioRecorder(filename);
 
@@ -281,7 +470,7 @@ public class GetQuestionSetAnswer extends AppCompatActivity {
                 public void run() {
                     try {
                         Record.stop();
-                        // $B - VoiceRecButton.setEnabled(true);
+                        AnswerVoicePlayerBtn.setEnabled(true);
                         //AuthenticationButton.setClickable(true);
                         Toast.makeText(getApplicationContext(), "صدای شما با موفقیت ذخیره شد.", Toast.LENGTH_SHORT).show();
 
@@ -300,8 +489,6 @@ public class GetQuestionSetAnswer extends AppCompatActivity {
 
 
     }
-
-
     public void audioPlayer(String path, String fileName){
         //set up MediaPlayer
         MediaPlayer mp = new MediaPlayer();
@@ -460,7 +647,7 @@ public class GetQuestionSetAnswer extends AppCompatActivity {
             if (!Username.equals("") && !Accounttypename.equals("")){
 
                 Disable();//Disable All Button or ...
-/*
+
                 if (!Path1.equals("")){
                     GetPicByte(Path1);
                 }else{
@@ -468,8 +655,6 @@ public class GetQuestionSetAnswer extends AppCompatActivity {
                     ArrPic = new byte[1];
                     ArrPic[0] = 0;
                 }
-
-
 
                 //Get Voice Arrey
                 String Path = "sound";
@@ -483,9 +668,8 @@ public class GetQuestionSetAnswer extends AppCompatActivity {
                     ArrVoice = new byte[1];
                     ArrVoice[0] = 0;
                 }
-        */
 
-                //Alert("نتیجه","سوال شما ارسال شد. تا دقایقی دیگر جواب کارشناسان برای شما ارسال می شود.");
+
                 Long vt = System.currentTimeMillis() / 1000;
 
                 RequestParams params = new RequestParams();
@@ -494,14 +678,14 @@ public class GetQuestionSetAnswer extends AppCompatActivity {
                 params.put("accounttypename",Accounttypename);
                 params.put("message", Answerstr);
                 params.put("questionnumber",QuestionNumber);
-                //params.put("ErrorPic", new ByteArrayInputStream(ArrPic), "ErrorPic.jpg");
-                //params.put("ErrorVoice", new ByteArrayInputStream(ArrVoice), "ErrorVoice.mp3");
+                params.put("AnswerPic", new ByteArrayInputStream(ArrPic), "AnswerPic.jpg");
+                params.put("AnswerVoice", new ByteArrayInputStream(ArrVoice), "AnswerVoice.mp3");
 
                 //$.B _ Save Message in the cellphone \/
                 String message =
                         " ___________________  : متن پاسخ " + "\n"+
                         Answerstr;
-                SaveQuestionMessage(message);// , ArrPic,ArrVoice);
+                //SaveQuestionMessage(message,ArrPic,ArrVoice);// , ArrPic,ArrVoice);
                 //$.B _ Save Message in the cellphone /\
 
                 boolean NET = false;
@@ -792,17 +976,18 @@ public class GetQuestionSetAnswer extends AppCompatActivity {
                     }
                 })
                 .show();
+        //DeleteAnswerMessage();
     }
 
 
     public void GetَAnswerData(){
-            Answerstr = AnswerBox.getText().toString();//Text of Question Box
+            Answerstr = AnswerTextBox.getText().toString();//Text of Question Box
             if (!Answerstr.equals("")){
 
                 //Go To Send Param Request to server
                 Disable();
                 PostAnswerData();
-                DeleteAnswerMessage();
+                //DeleteAnswerMessage();
 
             }else {
                 Toast.makeText(getApplicationContext(), "لطفا متن پاسخ خود به مشکل را وارد نمایید", Toast.LENGTH_SHORT).show();
@@ -853,7 +1038,7 @@ public class GetQuestionSetAnswer extends AppCompatActivity {
                 })
                 .show();
     }
-    /*
+
     private void GetPicByte (String Path){
         //File dir_voice1 = new File("/storage/emulated/0");//$.b
         //dir_voice1.mkdirs();
@@ -900,7 +1085,7 @@ public class GetQuestionSetAnswer extends AppCompatActivity {
         // $.B = Resize /\
     }
 
-     */
+
     private byte[] GetByteArrayFromFile (String aFileName){
         File vFile = new File(aFileName);
         int size = (int) vFile.length();
@@ -921,7 +1106,7 @@ public class GetQuestionSetAnswer extends AppCompatActivity {
         return  null;
     }
 
-    private void SaveQuestionMessage(String Message) throws IOException {//(String Message,byte[] Pic, byte[] Voice)
+    private void SaveQuestionMessage(String Message,byte[] Pic, byte[] Voice) throws IOException {//(String Message,byte[] Pic, byte[] Voice)
 
         File folder = new File(Environment.getExternalStorageDirectory() +
                 File.separator + Username +"_SB_Inbox" + File.separator + QuestionNumber);
@@ -954,13 +1139,13 @@ public class GetQuestionSetAnswer extends AppCompatActivity {
             writer.flush();
             writer.close();
 
-            //FileOutputStream pic = new FileOutputStream(folder+"//pic.jpg");
-            //pic.write(Pic);
-            //pic.close();
+            FileOutputStream pic = new FileOutputStream(folder+"//pic.jpg");
+            pic.write(Pic);
+            pic.close();
 
-            //FileOutputStream voice = new FileOutputStream(folder+"//voice.mp3");
-            //voice.write(Voice);
-            //voice.close();
+            FileOutputStream voice = new FileOutputStream(folder+"//voice.mp3");
+            voice.write(Voice);
+            voice.close();
 
         } catch (Exception e) {
             //Log.e(TAG, e.getMessage());
@@ -977,7 +1162,7 @@ public class GetQuestionSetAnswer extends AppCompatActivity {
         //oldBanknameindx = -1;
 
         Answerstr = "";
-        AnswerBox.setText("");
+        AnswerTextBox.setText("");
 
         //Path1 = "";
         //ErrorPic.setImageBitmap(null);

@@ -6,11 +6,8 @@ import com.loopj.android.http.JsonHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
 
 public class PostURLUtils {
-    //    private static final String BASE_URL = "http://api.twitter.com/1/";
-//    private static final String BASE_URL = "http://plate.rohamai.com/";
     private static final String BASE_URL = "http://192.168.1.62:8585/api";
-    //private static final String BASE_URL = "http://192.168.1.61:3001/api";
-    //private static final String BASE_URL = "http://api.hibrainy.com/api/v1/Face/FaceVerification/";
+    //private static final String BASE_URL = "http://thefestivalofarts.com/api";
     private static final String API_Key = "SjGGeR4NxC4UXBquXn8KFsSyRFDc4IKABbWJbQT8V/Xbc6xl/9bCwVP1Qh3XnwoQUxPSRmus893SvDxsewxXDA==";
 
     private static AsyncHttpClient client = new AsyncHttpClient();

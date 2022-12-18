@@ -180,11 +180,9 @@ public class ModuleActivity extends AppCompatActivity implements AdapterView.OnI
 
  */
         //$.B _ Spineer for select Bank /\
-
         VoiceRecButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 progressStatus = 0;
 
                 new Thread(new Runnable() {
@@ -196,7 +194,7 @@ public class ModuleActivity extends AppCompatActivity implements AdapterView.OnI
                             //current value in the text view
                             handler.post(new Runnable() {
                                 public void run() {
-                                    progressBar.setProgress(progressStatus);
+                                        progressBar.setProgress(progressStatus);
                                 }
                             });
                             try {
@@ -403,9 +401,7 @@ public class ModuleActivity extends AppCompatActivity implements AdapterView.OnI
                 }
                 break;
         }
-
         setPic(0);
-
     }
 
     public String getPath(Uri uri)//$.B
@@ -419,12 +415,7 @@ public class ModuleActivity extends AppCompatActivity implements AdapterView.OnI
         cursor.close();
         return s;
     }
-
-
     private void setPic(float angle1) {//Set Piic1 and Pic2 _ rotate 90 _ W=300 H=300 _ Make Circle
-
-        //File dir_image2 = new  File(Environment.getExternalStorageDirectory()+
-                //File.separator+"");
 
         String fileUrl = null;//dir_image2+File.separator+"Image1.jpg";
         float angle = 0;
@@ -484,7 +475,6 @@ public class ModuleActivity extends AppCompatActivity implements AdapterView.OnI
             //btn1.setEnabled(true);//$.B
         }
     }
-
 
     ////// SEND QUESTION TO SERVER \/
     private String path;
@@ -772,6 +762,7 @@ public class ModuleActivity extends AppCompatActivity implements AdapterView.OnI
         }
         // $.B = Resize /\
     }
+
     private byte[] GetByteArrayFromFile (String aFileName){
         File vFile = new File(aFileName);
         int size = (int) vFile.length();

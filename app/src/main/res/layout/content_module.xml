@@ -246,7 +246,7 @@
                     android:layout_marginRight="50dp"
                     android:background="@drawable/transparent"
                     android:visibility="visible"
-                    app:srcCompat="@drawable/mic"
+                    app:srcCompat="@drawable/mic2"
                     tools:ignore="SpeakableTextPresentCheck" />
 
             </LinearLayout>
@@ -407,6 +407,10 @@
                     </LinearLayout>
                 </LinearLayout>
 
+                <ScrollView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    tools:ignore="MissingConstraints">
                 <LinearLayout
                     android:id="@+id/pnlButtons"
                     android:layout_width="match_parent"
@@ -446,7 +450,7 @@
                         android:layout_marginRight="10dp"
                         android:visibility="visible"/>
                 </LinearLayout>
-
+                </ScrollView>
 
             </LinearLayout>
 
