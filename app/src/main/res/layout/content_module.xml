@@ -18,6 +18,11 @@
         app:layout_constraintTop_toTopOf="parent"
         app:navGraph="@navigation/mobile_navigation" />
 
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        tools:ignore="MissingConstraints">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -407,10 +412,7 @@
                     </LinearLayout>
                 </LinearLayout>
 
-                <ScrollView
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    tools:ignore="MissingConstraints">
+
                 <LinearLayout
                     android:id="@+id/pnlButtons"
                     android:layout_width="match_parent"
@@ -450,7 +452,6 @@
                         android:layout_marginRight="10dp"
                         android:visibility="visible"/>
                 </LinearLayout>
-                </ScrollView>
 
             </LinearLayout>
 
@@ -459,5 +460,7 @@
 
 
     </LinearLayout>
+
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
