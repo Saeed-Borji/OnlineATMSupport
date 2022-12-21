@@ -6,6 +6,8 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.telephony.TelephonyManager;
 import android.view.MenuItem;
@@ -20,6 +22,7 @@ import com.google.android.material.navigation.NavigationView;
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
 
+import androidx.annotation.NonNull;
 import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
@@ -108,7 +111,7 @@ public class MainActivity extends AppCompatActivity {
                 || super.onSupportNavigateUp();
     }
 
-    public void selectDrawerItem(MenuItem menuItem) {
+    public void selectDrawerItem(@NonNull MenuItem menuItem) {
         // Create a new fragment and specify the fragment to show based on nav item clicked
         Fragment fragment = null;
         Class fragmentClass = null;
@@ -140,12 +143,10 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-
-
     public void Alert (String title, String message){
         AlertDialog alertDialog = new AlertDialog.Builder(this)
 //set icon
-                .setIcon(android.R.drawable.ic_dialog_alert)
+                .setIcon(R.drawable.alertyellow)
 //set title
                 .setTitle(title)
 //set message
@@ -188,7 +189,7 @@ public class MainActivity extends AppCompatActivity {
 
         if (username.equals("") || password.equals("") )
         {
-            Alert("","لطفا نام کاربری و کلمه غبور خود را وارد نماییدو یا ثبت نام نمایید");
+            Alert("",getResources().getString(R.string.login_register));
             UserNametxt.setEnabled(true);
             Password.setEnabled(true);
             Login.setEnabled(true);
@@ -226,14 +227,6 @@ public class MainActivity extends AppCompatActivity {
 
     private void PostLogin() {
         try {
-            //File dir_voice1 = new File("/storage/emulated/0");//$.b
-            //dir_voice1.mkdirs();
-            //File dir_voice2 = new File("/storage/emulated/0");//$.b
-            //dir_voice2.mkdirs();
-
-            //byte[] vArrVoice1 = GetByteArrayFromFile( dir_voice1+"/sound1.mp3");
-            //byte[] vArrVoice2 = GetByteArrayFromFile( dir_voice2+"/sound2.mp3");
-
             Long vt = System.currentTimeMillis() / 1000;
 
             RequestParams params = new RequestParams();
@@ -241,38 +234,31 @@ public class MainActivity extends AppCompatActivity {
             params.put("password",password);
             //params.put("photo2", new ByteArrayInputStream(vArrPhoto2), "photo2.jpg");
 
-            boolean NET = true;
-//            try {
-//                Process p1 = java.lang.Runtime.getRuntime().exec("ping -c 1 www.google.com");
-//                int returnVal = p1.waitFor();
-//                boolean reachable = (returnVal == 0);
-//                NET = reachable;
-//            } catch (Exception e) {
-//                // TODO Auto-generated catch block
-//                e.printStackTrace();
-//                NET = false;
-//            }
+            /// Check Internet Connection \/
+            boolean connected = false;
+            connected = CheckIntCon();
+            /// Check Internet Connection /\
 
-            if (NET == false) {
-                Toast.makeText(getApplicationContext(),"Plaese check your internet conection",Toast.LENGTH_LONG).show();
+            if (connected == false) {
+                Toast.makeText(getApplicationContext(),getResources().getString(R.string.check_internet),Toast.LENGTH_LONG).show();
 
                 UserNametxt.setEnabled(true);
                 Password.setEnabled(true);
                 Login.setEnabled(true);
 
-            } else if (NET == true) {
+            } else if (connected == true) {
 
                 PostURLUtils.post("/login", params, new JsonHttpResponseHandler() {
                     @Override
                     public void onStart() {
 
-                        Toast.makeText(getApplicationContext(),params.toString(),Toast.LENGTH_LONG).show();
+                        //Toast.makeText(getApplicationContext(),params.toString(),Toast.LENGTH_LONG).show();
                         super.onStart();
                     }
 
                     @Override
                     public void onSuccess(int statusCode, Header[] headers, org.json.JSONObject obj) {
-                        Toast.makeText(getApplicationContext(),"onSuccess 666 "+statusCode,Toast.LENGTH_LONG).show();
+                        //Toast.makeText(getApplicationContext(),"onSuccess 666 "+statusCode,Toast.LENGTH_LONG).show();
                         try {
                             //$.B \/
                             String resultMessage = obj.getString("statusMessage");
@@ -290,10 +276,10 @@ public class MainActivity extends AppCompatActivity {
                                 //Toast.makeText(getApplicationContext(), "Success Login _ "+resultID+resultMessage, Toast.LENGTH_SHORT).show();
 
                             } else if (resultID == 3) {//in the first photo, the FACE was Not Found
-                                Toast.makeText(getApplicationContext(), "Username or Password is incorrect", Toast.LENGTH_SHORT).show();
+                                //Toast.makeText(getApplicationContext(), "Username or Password is incorrect", Toast.LENGTH_SHORT).show();
                                 //txtresult.setText("The face was not Found in the first photo");
                             }else if (resultID == 4) {//in the first photo, the FACE was Not Found
-                                Toast.makeText(getApplicationContext(), "This Username is not register", Toast.LENGTH_SHORT).show();
+                                //Toast.makeText(getApplicationContext(), "This Username is not register", Toast.LENGTH_SHORT).show();
                                 //txtresult.setText("The face was not Found in the first photo");
                             }//else if (resultID == 3) {//in the first photo, the FACE was Not Found
 
@@ -312,7 +298,7 @@ public class MainActivity extends AppCompatActivity {
                     public void onFailure(int statusCode, Header[] headers,
                                           Throwable throwable, org.json.JSONObject errorResponse) {
 
-                        Toast.makeText(getApplicationContext(),"onFailure_888"+statusCode,Toast.LENGTH_LONG).show();
+                        //Toast.makeText(getApplicationContext(),"onFailure_888"+statusCode,Toast.LENGTH_LONG).show();
                         String message = throwable.getMessage();
                         //TextView result = (TextView) findViewById(R.id.voiceresult);
                         //result.setText(message);
@@ -330,7 +316,7 @@ public class MainActivity extends AppCompatActivity {
 
                     @Override
                     public void onFinish() {
-                        Toast.makeText(getApplicationContext(),"onFinish_999",Toast.LENGTH_LONG).show();
+                        //Toast.makeText(getApplicationContext(),"onFinish_999",Toast.LENGTH_LONG).show();
                         //Register.setBackgroundResource(R.drawable.buttonbackground3);
                         //TextView result = (TextView) findViewById(R.id.voiceresult);
                         //result.setText("خطا در ارسال فایل ها، لطفا مجدد تلاش نمایید");
@@ -350,4 +336,10 @@ public class MainActivity extends AppCompatActivity {
 
         }
     }
+
+    private boolean CheckIntCon() {
+        ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        return cm.getActiveNetworkInfo() != null && cm.getActiveNetworkInfo().isConnected();
+    }
+
 }

@@ -1,6 +1,7 @@
 package com.epsengco.onlineatmsupport;
 
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
@@ -9,6 +10,7 @@ import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.Matrix;
 import android.graphics.PathDashPathEffect;
+import android.net.ConnectivityManager;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -532,25 +534,16 @@ public class ModuleActivity extends AppCompatActivity implements AdapterView.OnI
                     SaveQuestionMessage(message , ArrPic,ArrVoice);
                     //$.B _ Save Message in the cellphone /\
 
-                    boolean NET = false;
-                    try {
-                        Process p1 = Runtime.getRuntime().exec("ping -c 1 www.google.com");
-                        int returnVal = p1.waitFor();
-                        boolean reachable = (returnVal == 0);
-                        NET = reachable;
-                    } catch (Exception e) {
-                        // TODO Auto-generated catch block
-                        e.printStackTrace();
-                        NET = false;
-                    }
-
-
-                    if (NET == false) {
-                        Toast.makeText(getApplicationContext(),"Plaese check your internet conection",Toast.LENGTH_LONG).show();
+                    /// Check Internet Connection \/
+                    boolean connected = false;
+                    connected = CheckIntCon();
+                    /// Check Internet Connection /\
+                    if (connected == false) {
+                        Toast.makeText(getApplicationContext(),getResources().getString(R.string.check_internet),Toast.LENGTH_LONG).show();
 
                         Enable();
 
-                    } else if (NET == true) {
+                    } else if (connected == true) {
 
                         PostURLUtils.post("/question", params, new JsonHttpResponseHandler() {
                             @Override
@@ -875,6 +868,11 @@ public class ModuleActivity extends AppCompatActivity implements AdapterView.OnI
         this.path = sanitizePath(Path);
         new File(this.path).delete();
 
+    }
+
+    private boolean CheckIntCon() {
+        ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        return cm.getActiveNetworkInfo() != null && cm.getActiveNetworkInfo().isConnected();
     }
 
 }

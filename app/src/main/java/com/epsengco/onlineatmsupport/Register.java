@@ -1,12 +1,15 @@
 package com.epsengco.onlineatmsupport;
 
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Matrix;
+import android.graphics.drawable.Drawable;
+import android.net.ConnectivityManager;
 import android.net.Uri;
 import android.os.Bundle;
 
@@ -17,9 +20,11 @@ import com.loopj.android.http.RequestParams;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.content.ContextCompat;
 
 import android.os.Environment;
 import android.provider.MediaStore;
+import android.text.Layout;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -43,6 +48,7 @@ import cz.msebera.android.httpclient.Header;
 
 public class Register extends AppCompatActivity {
 
+    private LinearLayout AllLayout;
     private CheckBox TechnicalSupportchck;
     private CheckBox FieldExpertchck;
 
@@ -86,8 +92,11 @@ public class Register extends AppCompatActivity {
 
         //$.B \/
 
+        AllLayout = (LinearLayout)findViewById(R.id.allLayout);
+
         TechnicalSupportchck = (CheckBox)findViewById(R.id.checkboxtechnicalsupport);
         FieldExpertchck = (CheckBox)findViewById(R.id.checkboxfieldexpert);
+        //FieldExpertchck.setChecked(true);//Defult
 
         UserNametxt = (EditText)findViewById(R.id.UsernameBox);
         Passwordtxt = (EditText)findViewById(R.id.PasswordBox1);
@@ -105,8 +114,8 @@ public class Register extends AppCompatActivity {
 
         Reciptbtn = (Button)findViewById(R.id.reciptbutton);
         Registerbtn = (Button)findViewById(R.id.registerbutton);
-        Reciptbtn.setEnabled(false);
-        Registerbtn.setEnabled(false);
+        Reciptbtn.setEnabled(true);
+        Registerbtn.setEnabled(true);
 
 
         TechnicalSupportchck.setOnClickListener(new View.OnClickListener() {
@@ -119,13 +128,22 @@ public class Register extends AppCompatActivity {
                     FieldExpertchck.setChecked(false);
                     AccountType = "technicalsupport";
                 }
+                else if (TechnicalSupportchck.isChecked() == false && FieldExpertchck.isChecked() == false)
+                {
+                    Clearcls();
+                    Enable();
+                }
+                /*
                 else{
                     layoutaccountname.setVisibility(View.INVISIBLE);
                     layoutbankname.setVisibility(View.INVISIBLE);
                     layoutaccountnumber.setVisibility(View.INVISIBLE);
                     TechnicalSupportchck.setChecked(false);
+                    FieldExpertchck.setChecked(true);
                     AccountType = "";
                 }
+
+                 */
                 Reciptbtn.setEnabled(true);
                 //Registerbtn.setEnabled(true);
             }
@@ -141,13 +159,22 @@ public class Register extends AppCompatActivity {
                     TechnicalSupportchck.setChecked(false);
                     AccountType = "fieldexpert";
                 }
+                else if (TechnicalSupportchck.isChecked() == false && FieldExpertchck.isChecked() == false)
+                {
+                    Clearcls();
+                    Enable();
+                }
+                /*
                 else{
                     layoutaccountname.setVisibility(View.VISIBLE);
                     layoutbankname.setVisibility(View.VISIBLE);
                     layoutaccountnumber.setVisibility(View.VISIBLE);
                     FieldExpertchck.setChecked(false);
+                    TechnicalSupportchck.setChecked(true);
                     AccountType = "";
                 }
+
+                 */
                 Reciptbtn.setEnabled(true);
                 //Registerbtn.setEnabled(true);
             }
@@ -193,19 +220,22 @@ public class Register extends AppCompatActivity {
                 }else{
 
                     if (Passwordtxt.getText().toString().equals(PasswordRepettxt.getText().toString())){
-                        Reciptbtn.setEnabled(false);
-                        Registerbtn.setEnabled(false);
+                        //Reciptbtn.setEnabled(false);
+                        //Registerbtn.setEnabled(false);
+                        Disable();
 
                         PostData();
                         Toast.makeText(getApplicationContext(),"Send Data",Toast.LENGTH_LONG).show();
+                        Disable();
                     }
                     else {
                         Toast.makeText(getApplicationContext(),"کلمه عبور ها یکسان نمی باشد",Toast.LENGTH_LONG).show();
                         Passwordtxt.setText("");
                         PasswordRepettxt.setText("");
 
-                        Reciptbtn.setEnabled(true);
-                        Registerbtn.setEnabled(true);
+                        Enable();
+                        //Reciptbtn.setEnabled(true);
+                        //Registerbtn.setEnabled(true);
                     }
 
 
@@ -223,15 +253,6 @@ public class Register extends AppCompatActivity {
     }
 
     protected void onActivityResult(int requestCode, int resultCode, Intent imageReturnedIntent) {
-        /*
-        LinearLayout LinerDate1 =(LinearLayout)findViewById(R.id.date1);
-        LinerDate1.setVisibility(View.VISIBLE);
-        LinearLayout LinerDate2 =(LinearLayout)findViewById(R.id.date2);
-        LinerDate2.setVisibility(View.VISIBLE);
-        LinearLayout LinerDate3 =(LinearLayout)findViewById(R.id.date3);
-        LinerDate3.setVisibility(View.VISIBLE);
-
-         */
 
         super.onActivityResult(requestCode, resultCode, imageReturnedIntent);
         switch(requestCode) {
@@ -265,8 +286,8 @@ public class Register extends AppCompatActivity {
         setPic(0);
 
     }
-    public String getPath(Uri uri)//$.B
-    {
+
+    public String getPath(Uri uri){
         String[] projection = { MediaStore.Images.Media.DATA };
         Cursor cursor = getContentResolver().query(uri, projection, null, null, null);
         if (cursor == null) return null;
@@ -277,11 +298,7 @@ public class Register extends AppCompatActivity {
         return s;
     }
 
-    private void setPic(float angle1) {//Set Piic1 and Pic2 _ rotate 90 _ W=300 H=300 _ Make Circle
-
-        //File dir_image2 = new  File(Environment.getExternalStorageDirectory()+
-                //File.separator+"S_B");
-
+    private void setPic(float angle1) {
         String fileUrl = null;//dir_image2+File.separator+"Image1.jpg";
         float angle = 0;
         if (Path1 == "selfie1" || Path1 == ""){
@@ -314,17 +331,6 @@ public class Register extends AppCompatActivity {
                     pic1 = Bitmap.createScaledBitmap(pic1,800,600,true);//W=800 H=600
                     pic0.recycle();
 
-                    /*
-                    Bitmap circleBitmap = Bitmap.createBitmap(pic1.getWidth(), pic1.getHeight(), Bitmap.Config.ARGB_8888);//Make Circle \/
-                    BitmapShader shader = new BitmapShader(pic1,  Shader.TileMode.CLAMP, Shader.TileMode.CLAMP);
-                    Paint paint = new Paint();
-                    paint.setShader(shader);
-                    paint.setAntiAlias(true);
-                    Canvas c = new Canvas(circleBitmap);
-                    c.drawCircle(pic1.getWidth()/2, pic1.getHeight()/2, pic1.getWidth()/2, paint);//Make Circle /\
-
-                     */
-
                     //ImageView btn1 = (ImageView) findViewById(R.id.Photo1);//$.B
                     ReciptPictureimg.setImageBitmap(pic1);//(circleBitmap);//$.B for circle
                     //btn1.setBackgroundResource(R.drawable.freebackground);
@@ -345,12 +351,6 @@ public class Register extends AppCompatActivity {
 
     private void PostData() {
         try {
-            //File dir_voice1 = new File("/storage/emulated/0");//$.b
-            //dir_voice1.mkdirs();
-            //File dir_Reciptpic = new File(Path1);//$.b
-            //dir_Reciptpic.mkdirs();
-
-            //byte[] vArrVoice1 = GetByteArrayFromFile( dir_voice1+"/sound.mp3");
             byte[] vArrReciptpic = GetByteArrayFromFile(Path1);
 
             // $.B = Resize \/
@@ -404,32 +404,22 @@ public class Register extends AppCompatActivity {
             params.put("photo1", new ByteArrayInputStream(vArrReciptpic), "photo1.jpg");
             //params.put("photo2", new ByteArrayInputStream(vArrPhoto2), "photo2.jpg");
 
-            boolean NET = true;
-//            try {
-//                Process p1 = java.lang.Runtime.getRuntime().exec("ping -c 1 www.google.com");
-//                int returnVal = p1.waitFor();
-//                boolean reachable = (returnVal == 0);
-//                NET = reachable;
-//            } catch (Exception e) {
-//                // TODO Auto-generated catch block
-//                e.printStackTrace();
-//                NET = false;
-//            }
+            /// Check Internet Connection \/
+            boolean connected = false;
+            connected = CheckIntCon();
+            /// Check Internet Connection /\
 
-            if (NET == false) {
-                Toast.makeText(getApplicationContext(),"Plaese check your internet conection",Toast.LENGTH_LONG).show();
+            if (connected == false) {
+                Toast.makeText(getApplicationContext(),getResources().getString(R.string.check_internet),Toast.LENGTH_LONG).show();
+                Enable();
 
-                Reciptbtn.setEnabled(true);
-                Registerbtn.setEnabled(true);
-
-            } else if (NET == true) {
+            } else if (connected == true) {
 
                 PostURLUtils.post("/register", params, new JsonHttpResponseHandler() {
                     @Override
                     public void onStart() {
                         super.onStart();
-                        Reciptbtn.setEnabled(false);
-                        Registerbtn.setEnabled(false);
+                        //Disable();
                     }
 
                     @Override
@@ -451,16 +441,16 @@ public class Register extends AppCompatActivity {
                                 //startActivityForResult(intent, 2);
 
 
-                                Alert("Server Message",resultMessage);
+                                Alert("پیام مرکز",resultMessage);
                                 //Toast.makeText(getApplicationContext(), resultMessage, Toast.LENGTH_SHORT).show();
 
-                            } else if (resultID == 1) {//in the first photo, the FACE was Not Found
-                                Toast.makeText(getApplicationContext(), "Change User Name"+resultMessage, Toast.LENGTH_SHORT).show();
+                            } //else if (resultID == 1) {//in the first photo, the FACE was Not Found
+                                //Toast.makeText(getApplicationContext(), "Change User Name"+resultMessage, Toast.LENGTH_SHORT).show();
                                 //txtresult.setText("The face was not Found in the first photo");
-                            }else if (resultID == 2) {//in the first photo, the FACE was Not Found
-                                Toast.makeText(getApplicationContext(), "This User Name is not register"+resultMessage, Toast.LENGTH_SHORT).show();
+                            //}else if (resultID == 2) {//in the first photo, the FACE was Not Found
+                                //Toast.makeText(getApplicationContext(), "This User Name is not register"+resultMessage, Toast.LENGTH_SHORT).show();
                                 //txtresult.setText("The face was not Found in the first photo");
-                            }//else if (resultID == 3) {//in the first photo, the FACE was Not Found
+                            //}//else if (resultID == 3) {//in the first photo, the FACE was Not Found
                             //Toast.makeText(getApplicationContext(), resultMessage, Toast.LENGTH_SHORT).show();
                             //txtresult.setText("The face was not Found in the first photo");
                             //}else if (resultID == 4) {//in the first photo, the FACE was Not Found
@@ -472,15 +462,6 @@ public class Register extends AppCompatActivity {
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
-
-                        Reciptbtn.setEnabled(true);
-                        Registerbtn.setEnabled(false);
-                        Path1 = "";
-                        ReciptPictureimg.setImageBitmap(null);//(circleBitmap);//$.B for circle
-                        ReciptPictureimg.setEnabled(true);//$.B
-                        ReciptPictureimg.setBackground(null);
-
-                        //finish();
 
                     }
 
@@ -498,9 +479,7 @@ public class Register extends AppCompatActivity {
                         }else {
                             //txtresult.setText("The image was not uploaded correctly. Check your connection please." );
                         }
-
-                        Reciptbtn.setEnabled(true);
-                        Registerbtn.setEnabled(false);
+                        Enable();
                     }
 
                     @Override
@@ -508,6 +487,7 @@ public class Register extends AppCompatActivity {
                         //Register.setBackgroundResource(R.drawable.buttonbackground3);
                         //TextView result = (TextView) findViewById(R.id.voiceresult);
                         //result.setText("خطا در ارسال فایل ها، لطفا مجدد تلاش نمایید");
+
                     }
                 });
             }
@@ -515,8 +495,7 @@ public class Register extends AppCompatActivity {
             e.printStackTrace();
             Toast.makeText(getApplicationContext(),"exeption"+e.toString(),Toast.LENGTH_LONG).show();
 
-            Reciptbtn.setEnabled(true);
-            Registerbtn.setEnabled(true);
+            Enable();
 
         }
     }
@@ -544,7 +523,7 @@ public class Register extends AppCompatActivity {
     public void Alert (String title, String message){
         AlertDialog alertDialog = new AlertDialog.Builder(this)
 //set icon
-                .setIcon(android.R.drawable.ic_dialog_alert)
+                .setIcon(R.drawable.alertgreen)
 //set title
                 .setTitle(title)
 //set message
@@ -555,11 +534,12 @@ public class Register extends AppCompatActivity {
                     public void onClick(DialogInterface dialogInterface, int i) {
                         //set what would happen when positive button is clicked
                         //finish();
-
+                        Clearcls();
+                        Enable();
                     }
                 })
 //set negative button
-                .setNegativeButton("تائید", new DialogInterface.OnClickListener() {
+                .setNegativeButton("تائید و خروج", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         //set what should happen when negative button is clicked
@@ -574,5 +554,44 @@ public class Register extends AppCompatActivity {
                 .show();
     }
 
+    private boolean CheckIntCon() {
+        ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        return cm.getActiveNetworkInfo() != null && cm.getActiveNetworkInfo().isConnected();
+    }
+
+    private void Disable(){
+        AllLayout.setEnabled(false);
+        Reciptbtn.setEnabled(false);
+        Registerbtn.setEnabled(false);
+        Registerbtn.setVisibility(View.INVISIBLE);
+    }
+
+    private void Enable(){
+        AllLayout.setEnabled(true);
+        Reciptbtn.setEnabled(true);
+        Registerbtn.setEnabled(true);
+        Registerbtn.setVisibility(View.VISIBLE);
+    }
+
+    private void Clearcls(){
+        TechnicalSupportchck.setChecked(false);
+        FieldExpertchck.setChecked(false);//Defult
+
+        UserNametxt.setText("");
+        Passwordtxt.setText("");
+        PasswordRepettxt.setText("");
+        AccountNumbertxt.setText("");
+        BankName.setText("");
+        AccountNametxt.setText("");
+
+        Reciptbtn.setEnabled(true);
+        Registerbtn.setEnabled(false);
+
+        Path1 = "";
+
+        ReciptPictureimg.setImageBitmap(null);//(circleBitmap);//$.B for circle
+        ReciptPictureimg.setEnabled(true);//$.B
+        ReciptPictureimg.setBackground(null);
+    }
 
 }

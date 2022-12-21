@@ -1,9 +1,11 @@
 package com.epsengco.onlineatmsupport;
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
+import android.net.ConnectivityManager;
 import android.os.Build;
 import android.os.Bundle;
 
@@ -49,7 +51,7 @@ public class ProductActivity extends AppCompatActivity {
     String Username = "";
     int Accounttype = -1;
     String Accounttypename = "";
-    String Check = "";
+    String Check = "-1";
     String ProductName = "";
     int MessageCount = 0;
 
@@ -82,19 +84,13 @@ public class ProductActivity extends AppCompatActivity {
             Accounttype = extras.getInt("Accounttype");
             Accounttypename = extras.getString("Accounttypename");
             Check = extras.getString("Check");
-
-            //$.B 14/04/2022
-            if (Accounttypename.equals("Technical"))
-            {
-                findViewById(R.id.atm_view).setEnabled(false);
-            }
-            //$.B 14/04/2022
         }
 
         Navigate = (TextView)findViewById(R.id.textnavigate);
         Navigate.setText(Username + " > " + Accounttypename+ " > ");
 
         ATM = (ImageView)findViewById(R.id.atm_view);
+        ATM.setBackgroundResource(R.drawable.atm);
         Online = (ImageView)findViewById(R.id.online_view);
         Kiosk = (ImageView)findViewById(R.id.kiosk_view);
         VSAT = (ImageView)findViewById(R.id.vsat_view);
@@ -104,6 +100,14 @@ public class ProductActivity extends AppCompatActivity {
         Earth = (ImageView)findViewById(R.id.earth_view);
 
         Inbox = (Button)findViewById(R.id.buttoninbox);
+
+        //$.B 14/04/2022
+        if (Accounttypename.equals("Technical"))
+        {
+            findViewById(R.id.atm_view).setEnabled(false);
+            ATM.setBackgroundResource(R.drawable.atmdisable);
+        }
+        //$.B 14/04/2022
 
         //$.B _ Check Have Any Message for View in Inbox \/
         File folder = new File(Environment.getExternalStorageDirectory() +
@@ -115,6 +119,8 @@ public class ProductActivity extends AppCompatActivity {
             QuestionNotRead = 1;
         }
 
+        Toast.makeText(getApplicationContext(), "سرویس های فعال = ATM", Toast.LENGTH_SHORT).show();
+
         PostInboxData();
 
         //$.B _ Check Have Any Message for View in Inbox /\
@@ -125,9 +131,9 @@ public class ProductActivity extends AppCompatActivity {
         Inbox.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (Check.equals("-1")){
-                    Toast.makeText(getApplicationContext(), "This User > "+Username+" < Not register", Toast.LENGTH_SHORT).show();
-                }else {
+                if (Check.equals("-1") || Check.equals("")){
+                    Toast.makeText(getApplicationContext(), " دسترسی  > "+Username+" <  محدود می باشد ", Toast.LENGTH_SHORT).show();
+                }else if(Check.equals("1")) {
                     Toast.makeText(getApplicationContext(), "Go to Inbox", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(ProductActivity.this, PreviewInboxActivity.class);
                     intent.putExtra("Username",Username.toString());//send Username to next class
@@ -146,32 +152,32 @@ public class ProductActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                ProductName = "ATM";
+                if (Check.equals("-1") || Check.equals("")){
+                    Toast.makeText(getApplicationContext(), " دسترسی  > "+Username+" <  محدود می باشد ", Toast.LENGTH_SHORT).show();
+                }else if(Check.equals("1")) {
+                    ProductName = "ATM";
+                    if (AnswerNotRead == 0 && QuestionNotRead == 0){
+                        Intent intent = new Intent(ProductActivity.this, SoftHardActivity.class);
+                        intent.putExtra("Username",Username.toString());//send Username to next class
+                        intent.putExtra("Accounttype",Accounttype);
+                        intent.putExtra("Accounttypename",Accounttypename);
+                        intent.putExtra("Check",Check);//send data to next class
+                        intent.putExtra("ProductName",ProductName.toString());//send ProductName to next class
+                        startActivityForResult(intent, 2);
 
-                if (AnswerNotRead == 0 && QuestionNotRead == 0){
-                    Intent intent = new Intent(ProductActivity.this, SoftHardActivity.class);
-                    intent.putExtra("Username",Username.toString());//send Username to next class
-                    intent.putExtra("Accounttype",Accounttype);
-                    intent.putExtra("Accounttypename",Accounttypename);
-                    intent.putExtra("Check",Check);//send data to next class
-                    intent.putExtra("ProductName",ProductName.toString());//send ProductName to next class
-                    startActivityForResult(intent, 2);
-
-                }else if (AnswerNotRead == 0 && QuestionNotRead != 0){
-                    Toast.makeText(getApplicationContext(), "لطفا تا زمان دریافت راهنمایی کارشناسان پشتیبانی شکیبا باشید", Toast.LENGTH_SHORT).show();
-                }else if (AnswerNotRead != 0 && QuestionNotRead != 0){
-                    Toast.makeText(getApplicationContext(), "لطفا جواب درست را مشخص نمایید", Toast.LENGTH_SHORT).show();
-                }else if (AnswerNotRead != 0 && QuestionNotRead == 0){
-                    Toast.makeText(getApplicationContext(), "لطفا منتظر ثبت جواب خود توسط سیستم باشید", Toast.LENGTH_SHORT).show();
-                }else {
-                    //AnswerNotRead=0;
-                    //QuestionNotRead=0;
+                    }else if (AnswerNotRead == 0 && QuestionNotRead != 0){
+                        Toast.makeText(getApplicationContext(), "لطفا تا زمان دریافت راهنمایی کارشناسان پشتیبانی شکیبا باشید", Toast.LENGTH_SHORT).show();
+                    }else if (AnswerNotRead != 0 && QuestionNotRead != 0){
+                        Toast.makeText(getApplicationContext(), "لطفا جواب درست را مشخص نمایید", Toast.LENGTH_SHORT).show();
+                    }else if (AnswerNotRead != 0 && QuestionNotRead == 0){
+                        Toast.makeText(getApplicationContext(), "لطفا منتظر ثبت جواب خود توسط سیستم باشید", Toast.LENGTH_SHORT).show();
+                    }else {
+                        //AnswerNotRead=0;
+                        //QuestionNotRead=0;
+                    }
                 }
-
             }
         });
-
-
     }
 
     private void PostInboxData() {
@@ -185,22 +191,15 @@ public class ProductActivity extends AppCompatActivity {
             //params.put("password",password);
             //params.put("photo2", new ByteArrayInputStream(vArrPhoto2), "photo2.jpg");
 
-            boolean NET = false;
-            try {
-                Process p1 = java.lang.Runtime.getRuntime().exec("ping -c 1 www.google.com");
-                int returnVal = p1.waitFor();
-                boolean reachable = (returnVal == 0);
-                NET = reachable;
-            } catch (Exception e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
-                NET = false;
-            }
+            /// Check Internet Connection \/
+            boolean connected = false;
+            connected = CheckIntCon();
+            /// Check Internet Connection /\
 
-            if (NET == false) {
-                Toast.makeText(getApplicationContext(),"لطفا اتصال به اینترنت را بررسی نمایید - Plaese check your internet conection",Toast.LENGTH_LONG).show();
+            if (connected == false) {
+                Toast.makeText(getApplicationContext(),getResources().getString(R.string.check_internet),Toast.LENGTH_LONG).show();
 
-            } else if (NET == true) {
+            } else if (connected == true) {
 
                 PostURLUtils.post("/NotificationMessage", params, new JsonHttpResponseHandler() {
                     @Override
@@ -248,7 +247,7 @@ public class ProductActivity extends AppCompatActivity {
                     public void onFailure(int statusCode, Header[] headers,
                                           Throwable throwable, org.json.JSONObject errorResponse) {
 
-                        Toast.makeText(getApplicationContext(),"onFailure_"+statusCode,Toast.LENGTH_LONG).show();
+                        //Toast.makeText(getApplicationContext(),"onFailure_"+statusCode,Toast.LENGTH_LONG).show();
                         String message = throwable.getMessage();
                         AnswerNotRead = 0;
                         //TextView result = (TextView) findViewById(R.id.voiceresult);
@@ -271,8 +270,13 @@ public class ProductActivity extends AppCompatActivity {
             }
         } catch (Exception e) {
             e.printStackTrace();
-            Toast.makeText(getApplicationContext(),"exeption"+e.toString(),Toast.LENGTH_LONG).show();
+            //Toast.makeText(getApplicationContext(),"exeption"+e.toString(),Toast.LENGTH_LONG).show();
         }
+    }
+
+    private boolean CheckIntCon() {
+        ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        return cm.getActiveNetworkInfo() != null && cm.getActiveNetworkInfo().isConnected();
     }
 
 }

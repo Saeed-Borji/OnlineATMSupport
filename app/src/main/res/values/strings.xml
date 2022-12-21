@@ -11,9 +11,11 @@
     <string name="select_module">ماژول مورد نظر را انتخاب کنید</string>
     <string name="select_model">مدل مورد نظر را انتخاب کنید</string>
     <string name="select_bank">بانک مورد نظر را انتخاب کنید</string>
+    <string name="check_internet">لطفا ارتباط دستگاه خود به اینترنت را بررسی نمایید</string>
+    <string name="login_register">لطفا نام کاربری و کلمه عبور خود را وارد نمایید، و یا از منوی تنطیمات > ثبت نام نمایید</string>
 
 
-    <string name="menu_home">Home</string>
+    <string name="menu_home">تنظیمات</string>
     <string name="menu_gallery">Gallery</string>
     <string name="menu_slideshow">Slideshow</string>
 

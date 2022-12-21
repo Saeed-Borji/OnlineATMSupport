@@ -113,7 +113,7 @@
                 android:id="@+id/atm_view"
                 android:layout_width="70dp"
                 android:layout_height="50dp"
-                android:background="@drawable/atm"
+                android:background="@drawable/atmdisable"
                 android:gravity="center|top"
                 android:visibility="visible"/>
 
@@ -131,7 +131,7 @@
                 android:id="@+id/online_view"
                 android:layout_width="70dp"
                 android:layout_height="50dp"
-                android:background="@drawable/online"
+                android:background="@drawable/onlinedisable"
                 android:gravity="center|top"
                 android:visibility="visible"/>
 
@@ -147,7 +147,7 @@
                 android:id="@+id/kiosk_view"
                 android:layout_width="70dp"
                 android:layout_height="50dp"
-                android:background="@drawable/kiosk"
+                android:background="@drawable/kioskdisable"
                 android:gravity="center|top"
                 android:visibility="visible"/>
 
@@ -165,7 +165,7 @@
                 android:id="@+id/vsat_view"
                 android:layout_width="70dp"
                 android:layout_height="50dp"
-                android:background="@drawable/vsat"
+                android:background="@drawable/vsatdisable"
                 android:gravity="center|top"
                 android:visibility="visible"/>
 
@@ -194,7 +194,7 @@
                 android:id="@+id/vnb_view"
                 android:layout_width="70dp"
                 android:layout_height="50dp"
-                android:background="@drawable/vnb"
+                android:background="@drawable/vnbdisable"
                 android:gravity="center|top"
                 android:visibility="visible"/>
 
@@ -212,7 +212,7 @@
                 android:id="@+id/crs_view"
                 android:layout_width="70dp"
                 android:layout_height="50dp"
-                android:background="@drawable/crs"
+                android:background="@drawable/crsdisable"
                 android:gravity="center|top"
                 android:visibility="visible"/>
 
@@ -228,7 +228,7 @@
                 android:id="@+id/vtm_view"
                 android:layout_width="70dp"
                 android:layout_height="50dp"
-                android:background="@drawable/vtm"
+                android:background="@drawable/vtmdisable"
                 android:gravity="center|top"
                 android:visibility="visible"/>
 
@@ -246,7 +246,7 @@
                 android:id="@+id/earth_view"
                 android:layout_width="70dp"
                 android:layout_height="50dp"
-                android:background="@drawable/earth"
+                android:background="@drawable/earthdisable"
                 android:gravity="center|top"
                 android:visibility="visible"/>
 
