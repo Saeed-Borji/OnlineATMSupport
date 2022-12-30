@@ -8,7 +8,6 @@ import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Matrix;
-import android.graphics.drawable.Drawable;
 import android.net.ConnectivityManager;
 import android.net.Uri;
 import android.os.Bundle;
@@ -20,25 +19,20 @@ import com.loopj.android.http.RequestParams;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.core.content.ContextCompat;
 
 import android.os.Environment;
 import android.provider.MediaStore;
-import android.text.Layout;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import org.json.JSONException;
 
 import java.io.BufferedInputStream;
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -52,6 +46,7 @@ public class Register extends AppCompatActivity {
     private CheckBox TechnicalSupportchck;
     private CheckBox FieldExpertchck;
 
+    private EditText Emailtxt;
     private EditText UserNametxt;
     private EditText Passwordtxt;
     private EditText PasswordRepettxt;
@@ -69,7 +64,8 @@ public class Register extends AppCompatActivity {
     private Button Reciptbtn;
     private Button Registerbtn;
 
-
+    private byte[] vArrReciptpic;
+    private boolean ReciptPictureEnamle;
 
     String Path1 = null;
     String AccountType = null;
@@ -98,6 +94,7 @@ public class Register extends AppCompatActivity {
         FieldExpertchck = (CheckBox)findViewById(R.id.checkboxfieldexpert);
         //FieldExpertchck.setChecked(true);//Defult
 
+        Emailtxt = (EditText)findViewById(R.id.ImaileBox);
         UserNametxt = (EditText)findViewById(R.id.UsernameBox);
         Passwordtxt = (EditText)findViewById(R.id.PasswordBox1);
         PasswordRepettxt = (EditText)findViewById(R.id.PasswordBox2);
@@ -144,7 +141,7 @@ public class Register extends AppCompatActivity {
                 }
 
                  */
-                Reciptbtn.setEnabled(true);
+                //Reciptbtn.setEnabled(true);
                 //Registerbtn.setEnabled(true);
             }
         });
@@ -175,7 +172,7 @@ public class Register extends AppCompatActivity {
                 }
 
                  */
-                Reciptbtn.setEnabled(true);
+                //Reciptbtn.setEnabled(true);
                 //Registerbtn.setEnabled(true);
             }
         });
@@ -209,11 +206,18 @@ public class Register extends AppCompatActivity {
                     AccountNumbertxt.setText("---");
                 }
 
-                ReciptPictureimg.getDrawable();
+                //ReciptPictureimg.getDrawable();
 
-                if (UserNametxt.getText().toString().equals("")||Passwordtxt.getText().toString().equals("")
-                        || PasswordRepettxt.getText().toString().equals("") || AccountNametxt.getText().toString().equals("") || BankName.getText().equals("")
-                        || AccountNumbertxt.getText().toString().equals("") || ReciptPictureimg.getDrawable()== null){
+                if (Emailtxt.getText().toString().equals("")
+                        ||UserNametxt.getText().toString().equals("")
+                        ||Passwordtxt.getText().toString().equals("")
+                        || PasswordRepettxt.getText().toString().equals("")
+                        || AccountNametxt.getText().toString().equals("")
+                        || BankName.getText().equals("")
+                        || AccountNumbertxt.getText().toString().equals("")
+                        //|| ReciptPictureimg.getDrawable()== null || ReciptPictureEnamle == false
+                )
+                {
 
                     Toast.makeText(getApplicationContext(),"لطفا تمام فیلدها را تکمیل نمایید و تصویر رسید پرداخت شده را بارگذاری نمایید",Toast.LENGTH_LONG).show();
 
@@ -225,7 +229,7 @@ public class Register extends AppCompatActivity {
                         Disable();
 
                         PostData();
-                        Toast.makeText(getApplicationContext(),"Send Data",Toast.LENGTH_LONG).show();
+
                         Disable();
                     }
                     else {
@@ -338,12 +342,13 @@ public class Register extends AppCompatActivity {
                     ReciptPictureimg.setBackground(null);
                 }
             }
-
+            ReciptPictureEnamle = true;
         }else {
             //ImageView btn1 = (ImageView) findViewById(R.id.image2);//$.B
             //btn1.setImageResource(R.drawable.ic_face_btn);
             //btn1.setBackgroundResource(R.drawable.circlebackground);
             //btn1.setEnabled(true);//$.B
+            ReciptPictureEnamle = false;
         }
 
 
@@ -351,8 +356,9 @@ public class Register extends AppCompatActivity {
 
     private void PostData() {
         try {
-            byte[] vArrReciptpic = GetByteArrayFromFile(Path1);
 
+            /*
+            vArrReciptpic = GetByteArrayFromFile(Path1);
             // $.B = Resize \/
             Bitmap bm = BitmapFactory.decodeByteArray(vArrReciptpic, 0, vArrReciptpic.length);
             int maxWidth = 800;
@@ -388,10 +394,13 @@ public class Register extends AppCompatActivity {
             }
             // $.B = Resize /\
 
+             */
+
             Long vt = System.currentTimeMillis() / 1000;
 
             RequestParams params = new RequestParams();
-            params.put("accounttype",AccountType.toString());
+            params.put("accounttype",AccountType);
+            params.put("email",Emailtxt.getText().toString());
             params.put("username",UserNametxt.getText().toString());
             params.put("password",Passwordtxt.getText().toString());
             params.put("repetpassword",PasswordRepettxt.getText().toString());
@@ -399,10 +408,7 @@ public class Register extends AppCompatActivity {
             params.put("bankname",BankName.getText().toString());
             params.put("accountname",AccountNametxt.getText().toString());
             params.put("checked","-1");
-            //params.put("sound", new ByteArrayInputStream(vArrVoice1), "sound.mp3");
-            //params.put("reciptpic", new ByteArrayInputStream(vArrReciptpic), "reciptpic.jpg");
-            params.put("photo1", new ByteArrayInputStream(vArrReciptpic), "photo1.jpg");
-            //params.put("photo2", new ByteArrayInputStream(vArrPhoto2), "photo2.jpg");
+            //params.put("photo1", new ByteArrayInputStream(vArrReciptpic), "photo1.jpg");
 
             /// Check Internet Connection \/
             boolean connected = false;
@@ -419,6 +425,7 @@ public class Register extends AppCompatActivity {
                     @Override
                     public void onStart() {
                         super.onStart();
+                        Toast.makeText(getApplicationContext(),"Send Data",Toast.LENGTH_LONG).show();
                         //Disable();
                     }
 
@@ -487,7 +494,6 @@ public class Register extends AppCompatActivity {
                         //Register.setBackgroundResource(R.drawable.buttonbackground3);
                         //TextView result = (TextView) findViewById(R.id.voiceresult);
                         //result.setText("خطا در ارسال فایل ها، لطفا مجدد تلاش نمایید");
-
                     }
                 });
             }
@@ -561,14 +567,14 @@ public class Register extends AppCompatActivity {
 
     private void Disable(){
         AllLayout.setEnabled(false);
-        Reciptbtn.setEnabled(false);
+        //Reciptbtn.setEnabled(false);
         Registerbtn.setEnabled(false);
         Registerbtn.setVisibility(View.INVISIBLE);
     }
 
     private void Enable(){
         AllLayout.setEnabled(true);
-        Reciptbtn.setEnabled(true);
+        //Reciptbtn.setEnabled(true);
         Registerbtn.setEnabled(true);
         Registerbtn.setVisibility(View.VISIBLE);
     }
@@ -577,6 +583,7 @@ public class Register extends AppCompatActivity {
         TechnicalSupportchck.setChecked(false);
         FieldExpertchck.setChecked(false);//Defult
 
+        Emailtxt.setText("");
         UserNametxt.setText("");
         Passwordtxt.setText("");
         PasswordRepettxt.setText("");
@@ -584,14 +591,17 @@ public class Register extends AppCompatActivity {
         BankName.setText("");
         AccountNametxt.setText("");
 
-        Reciptbtn.setEnabled(true);
-        Registerbtn.setEnabled(false);
+        //Reciptbtn.setEnabled(true);
+        //Registerbtn.setEnabled(false);
 
+        AccountType = "";
         Path1 = "";
 
-        ReciptPictureimg.setImageBitmap(null);//(circleBitmap);//$.B for circle
-        ReciptPictureimg.setEnabled(true);//$.B
-        ReciptPictureimg.setBackground(null);
+        //ReciptPictureimg.setImageBitmap(null);//(circleBitmap);//$.B for circle
+        //ReciptPictureimg.setEnabled(true);//$.B
+        //ReciptPictureimg.setBackground(null);
+        //ReciptPictureEnamle = false;
+        //vArrReciptpic= null;
     }
 
 }

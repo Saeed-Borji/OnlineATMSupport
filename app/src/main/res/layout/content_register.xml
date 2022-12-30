@@ -110,361 +110,366 @@
             <LinearLayout
                 android:id="@+id/allLayout"
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
                 android:gravity="center_horizontal"
-                android:orientation="vertical"
-                android:layout_weight="1">
+                android:orientation="vertical">
 
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
                     android:layout_margin="25dp"
-                    android:background="@drawable/framebevel3">
+                    android:background="@drawable/framebevel3"
+                    android:orientation="vertical">
 
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center|right"
-                    android:layout_marginRight="5dp"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:id="@+id/textView33"
-                        android:layout_width="wrap_content"
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textAlignment="center"
-                        android:textSize="18dp"
-                        android:textColor="#7386EC"
-                        android:text="کارشناس فیلد" />
+                        android:layout_marginRight="5dp"
+                        android:gravity="center|right"
+                        android:orientation="horizontal">
 
-                    <CheckBox
-                        android:id="@+id/checkboxfieldexpert"
-                        android:layout_width="wrap_content"
+                        <TextView
+                            android:id="@+id/textView33"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="کارشناس فیلد"
+                            android:textAlignment="center"
+                            android:textColor="#7386EC"
+                            android:textSize="18dp" />
+
+                        <CheckBox
+                            android:id="@+id/checkboxfieldexpert"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:buttonTint="@color/cardview_light_background"
+                            android:text="" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text=""
-                        android:buttonTint="@color/cardview_light_background"/>
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center|right"
-                    android:layout_marginRight="5dp"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:id="@+id/textView34"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textAlignment="center"
-                        android:textSize="18dp"
-                        android:textColor="#7386EC"
-                        android:text="پشتیبان فنی" />
-
-                    <CheckBox
-                        android:id="@+id/checkboxtechnicalsupport"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text=""
-                        android:buttonTint="@color/cardview_light_background"/>/>
-
-
-                </LinearLayout>
-
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:orientation="horizontal">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="40dp"
-                        android:layout_marginRight="10dp"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginTop="5dp"
+                        android:layout_marginRight="5dp"
                         android:gravity="center|right"
                         android:orientation="horizontal">
 
-                        <EditText
-                            android:id="@+id/UsernameBox"
-                            android:layout_width="wrap_content"
-                            android:layout_height="30dp"
-                            android:layout_gravity="center"
-                            android:layout_margin="1dp"
-                            android:background="@drawable/framebevel"
-                            android:ems="10"
-                            android:inputType="textPersonName"
-                            android:textAlignment="center"
-                            android:textColor="#FBF8F8"
-                            android:textColorHighlight="#009688"
-                            android:textColorLink="#009688"
-                            android:textCursorDrawable="@color/cardview_light_background" />
-
                         <TextView
-                            android:id="@+id/textView20"
+                            android:id="@+id/textView34"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="نام کاربری:            "
-                            android:textAlignment="textStart"
-                            android:textSize="18dp"
-                            android:textColor="#7386EC"
-                            android:textStyle="bold" />
-
-                    </LinearLayout>
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:orientation="horizontal"
-                    android:visibility="visible">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="40dp"
-                        android:layout_marginRight="10dp"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginTop="5dp"
-                        android:gravity="center|right"
-                        android:orientation="horizontal">
-
-                        <EditText
-                            android:id="@+id/PasswordBox1"
-                            android:layout_width="wrap_content"
-                            android:layout_height="30dp"
-                            android:layout_gravity="center"
-                            android:layout_margin="1dp"
-                            android:background="@drawable/framebevel"
-                            android:ems="10"
-                            android:inputType="textPassword"
+                            android:text="پشتیبان فنی"
                             android:textAlignment="center"
-                            android:textColor="#FAF7F7"/>
+                            android:textColor="#7386EC"
+                            android:textSize="18dp" />
 
-                        <TextView
-                            android:id="@+id/textView211"
+                        <CheckBox
+                            android:id="@+id/checkboxtechnicalsupport"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="کلمه عبور:             "
-                            android:textAlignment="textStart"
-                            android:textSize="18dp"
-                            android:textColor="#7386EC"
-                            android:textStyle="bold" />
+                            android:buttonTint="@color/cardview_light_background"
+                            android:text="" />/>
+
 
                     </LinearLayout>
+
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="40dp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginTop="5dp"
+                            android:layout_marginRight="10dp"
+                            android:gravity="center|right"
+                            android:orientation="horizontal">
+
+                            <EditText
+                                android:id="@+id/ImaileBox"
+                                android:inputType="textEmailAddress"
+                                android:layout_width="wrap_content"
+                                android:layout_height="30dp"
+                                android:layout_margin="1dp"
+                                android:background="@drawable/framebevel"
+                                android:ems="10"
+                                android:textColor="#FBF8F8"
+                                android:textColorHighlight="#009688"
+                                android:textColorLink="#009688"
+                                android:textCursorDrawable="@color/cardview_light_background"
+                                android:gravity="left|center"/>
+
+                            <TextView
+                                android:id="@+id/Imailetxtv"
+                                android:text="ایمیل:"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:textColor="#7386EC"
+                                android:textSize="18dp"
+                                android:textStyle="bold"
+                                android:gravity="right|center"/>
+
+                        </LinearLayout>
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="40dp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginTop="5dp"
+                            android:layout_marginRight="10dp"
+                            android:gravity="center|right"
+                            android:orientation="horizontal">
+
+                            <EditText
+                                android:id="@+id/UsernameBox"
+                                android:inputType="textPersonName"
+                                android:layout_width="wrap_content"
+                                android:layout_height="30dp"
+                                android:layout_margin="1dp"
+                                android:background="@drawable/framebevel"
+                                android:ems="10"
+                                android:textColor="#FBF8F8"
+                                android:textColorHighlight="#009688"
+                                android:textColorLink="#009688"
+                                android:textCursorDrawable="@color/cardview_light_background"
+                                android:gravity="left|center"/>
+
+                            <TextView
+                                android:id="@+id/textView20"
+                                android:text="نام کاربری:"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:textColor="#7386EC"
+                                android:textSize="18dp"
+                                android:textStyle="bold"
+                                android:gravity="right|center"/>
+
+                        </LinearLayout>
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="40dp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginTop="5dp"
+                            android:layout_marginRight="10dp"
+                            android:gravity="center|right"
+                            android:orientation="horizontal">
+
+                            <EditText
+                                android:id="@+id/PasswordBox1"
+                                android:inputType="textPassword"
+                                android:layout_width="wrap_content"
+                                android:layout_height="30dp"
+                                android:layout_margin="1dp"
+                                android:background="@drawable/framebevel"
+                                android:ems="10"
+                                android:textColor="#FBF8F8"
+                                android:textColorHighlight="#009688"
+                                android:textColorLink="#009688"
+                                android:textCursorDrawable="@color/cardview_light_background"
+                                android:gravity="left|center"/>
+
+                            <TextView
+                                android:id="@+id/textView211"
+                                android:text="کلمه عبور:"
+
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:textColor="#7386EC"
+                                android:textSize="18dp"
+                                android:textStyle="bold"
+                                android:gravity="right|center"/>
+
+                        </LinearLayout>
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="40dp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginTop="5dp"
+                            android:layout_marginRight="10dp"
+                            android:gravity="center|right"
+                            android:orientation="horizontal">
+
+                            <EditText
+                                android:id="@+id/PasswordBox2"
+                                android:inputType="textPassword"
+                                android:layout_width="wrap_content"
+                                android:layout_height="30dp"
+                                android:layout_margin="1dp"
+                                android:background="@drawable/framebevel"
+                                android:ems="10"
+                                android:textColor="#FBF8F8"
+                                android:textColorHighlight="#009688"
+                                android:textColorLink="#009688"
+                                android:textCursorDrawable="@color/cardview_light_background"
+                                android:gravity="left|center"/>
+
+                            <TextView
+                                android:id="@+id/textView212"
+                                android:text="تکرار کلمه عبور:"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:textColor="#7386EC"
+                                android:textSize="18dp"
+                                android:textStyle="bold"
+                                android:gravity="right|center"/>
+
+                        </LinearLayout>
+
+
+                        <LinearLayout
+                            android:id="@+id/layoutaccountnumber"
+                            android:layout_width="match_parent"
+                            android:layout_height="40dp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginTop="5dp"
+                            android:layout_marginRight="10dp"
+                            android:gravity="center|right"
+                            android:orientation="horizontal">
+
+                            <EditText
+                                android:id="@+id/accountnumber"
+                                android:layout_width="wrap_content"
+                                android:layout_height="30dp"
+                                android:layout_gravity="center"
+                                android:layout_margin="1dp"
+                                android:background="@drawable/framebevel"
+                                android:ems="10"
+                                android:inputType="number"
+                                android:textAlignment="center"
+                                android:textColor="#FAF7F7" />
+
+                            <TextView
+                                android:id="@+id/textView213"
+                                android:text="شماره حساب:"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:textColor="#7386EC"
+                                android:textSize="18dp"
+                                android:textStyle="bold"
+                                android:gravity="right|center"/>
+
+                        </LinearLayout>
+
+
+                        <LinearLayout
+                            android:id="@+id/layoutbankname"
+                            android:layout_width="match_parent"
+                            android:layout_height="40dp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginTop="5dp"
+                            android:layout_marginRight="10dp"
+                            android:gravity="center|right"
+                            android:orientation="horizontal">
+
+                            <EditText
+                                android:id="@+id/bankname"
+                                android:layout_width="wrap_content"
+                                android:layout_height="30dp"
+                                android:layout_gravity="center"
+                                android:layout_margin="1dp"
+                                android:background="@drawable/framebevel"
+                                android:ems="10"
+                                android:inputType="textAutoComplete"
+                                android:textAlignment="center"
+                                android:textColor="#FAF7F7" />
+
+                            <TextView
+                                android:id="@+id/textView76"
+                                android:text="نام بانک:"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:textColor="#7386EC"
+                                android:textSize="18dp"
+                                android:textStyle="bold"
+                                android:gravity="right|center"/>
+
+                        </LinearLayout>
+
+
+
+                        <LinearLayout
+                            android:id="@+id/layoutaccountname"
+                            android:layout_width="match_parent"
+                            android:layout_height="40dp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginTop="5dp"
+                            android:layout_marginRight="10dp"
+                            android:gravity="center|right"
+                            android:orientation="horizontal">
+
+                            <EditText
+                                android:id="@+id/accountname"
+                                android:layout_width="wrap_content"
+                                android:layout_height="30dp"
+                                android:layout_gravity="center"
+                                android:layout_margin="1dp"
+                                android:background="@drawable/framebevel"
+                                android:ems="10"
+                                android:inputType="textAutoComplete"
+                                android:textAlignment="center"
+                                android:textColor="#FAF7F7" />
+
+                            <TextView
+                                android:id="@+id/textView214"
+                                android:text="نام صاحب حساب:"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:textColor="#7386EC"
+                                android:textSize="18dp"
+                                android:textStyle="bold"
+                                android:gravity="right|center"/>
+
+                        </LinearLayout>
+
                 </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:orientation="horizontal"
-                    android:visibility="visible">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="40dp"
-                        android:layout_marginRight="10dp"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginTop="5dp"
-                        android:gravity="center|right"
-                        android:orientation="horizontal">
-
-                        <EditText
-                            android:id="@+id/PasswordBox2"
-                            android:layout_width="wrap_content"
-                            android:layout_height="30dp"
-                            android:layout_gravity="center"
-                            android:layout_margin="1dp"
-                            android:background="@drawable/framebevel"
-                            android:ems="10"
-                            android:inputType="textPassword"
-                            android:textAlignment="center"
-                            android:textColor="#FAF7F7"/>
-
-                        <TextView
-                            android:id="@+id/textView212"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="تکرار کلمه عبور:    "
-                            android:textAlignment="textStart"
-                            android:textSize="18dp"
-                            android:textColor="#7386EC"
-                            android:textStyle="bold" />
-
-                    </LinearLayout>
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/layoutaccountnumber"
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:orientation="horizontal"
-                    android:visibility="invisible">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="40dp"
-                        android:layout_marginRight="10dp"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginTop="5dp"
-                        android:gravity="center|right"
-                        android:orientation="horizontal">
-
-                        <EditText
-                            android:id="@+id/accountnumber"
-                            android:layout_width="wrap_content"
-                            android:layout_height="30dp"
-                            android:layout_gravity="center"
-                            android:layout_margin="1dp"
-                            android:background="@drawable/framebevel"
-                            android:ems="10"
-                            android:inputType="number"
-                            android:textAlignment="center"
-                            android:textColor="#FAF7F7"/>
-
-                        <TextView
-                            android:id="@+id/textView213"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="شماره حساب:       "
-                            android:textAlignment="textStart"
-                            android:textSize="18dp"
-                            android:textColor="#7386EC"
-                            android:textStyle="bold" />
-
-                    </LinearLayout>
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/layoutbankname"
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:orientation="horizontal"
-                    android:visibility="invisible">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="40dp"
-                        android:layout_marginRight="10dp"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginTop="5dp"
-                        android:gravity="center|right"
-                        android:orientation="horizontal">
-
-                        <EditText
-                            android:id="@+id/bankname"
-                            android:layout_width="wrap_content"
-                            android:layout_height="30dp"
-                            android:layout_gravity="center"
-                            android:layout_margin="1dp"
-                            android:background="@drawable/framebevel"
-                            android:ems="10"
-                            android:inputType="textAutoComplete"
-                            android:textAlignment="center"
-                            android:textColor="#FAF7F7"/>
-
-                        <TextView
-                            android:id="@+id/textView76"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="نام بانک:               "
-                            android:textAlignment="textStart"
-                            android:textSize="18dp"
-                            android:textColor="#7386EC"
-                            android:textStyle="bold" />
-
-                    </LinearLayout>
-                </LinearLayout>
-
-
-                <LinearLayout
-                    android:id="@+id/layoutaccountname"
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:orientation="horizontal"
-                    android:visibility="invisible">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="40dp"
-                        android:layout_marginRight="10dp"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginTop="5dp"
-                        android:gravity="center|right"
-                        android:orientation="horizontal">
-
-                        <EditText
-                            android:id="@+id/accountname"
-                            android:layout_width="wrap_content"
-                            android:layout_height="30dp"
-                            android:layout_gravity="center"
-                            android:layout_margin="1dp"
-                            android:background="@drawable/framebevel"
-                            android:ems="10"
-                            android:inputType="textAutoComplete"
-                            android:textAlignment="center"
-                            android:textColor="#FAF7F7"/>
-
-                        <TextView
-                            android:id="@+id/textView214"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="نام صاحب حساب:"
-                            android:textAlignment="textStart"
-                            android:textSize="18dp"
-                            android:textColor="#7386EC"
-                            android:textStyle="bold" />
-
-                    </LinearLayout>
-                </LinearLayout>
-
-                </LinearLayout>
-
 
 
                 <LinearLayout
                     android:id="@+id/pnlButtons"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="40dp"
                     android:layout_marginLeft="40dp"
+                    android:layout_marginRight="40dp"
                     android:layout_marginBottom="30dp"
                     android:gravity="center"
                     android:orientation="vertical">
 
                     <Button
                         android:id="@+id/reciptbutton"
-                        android:text="بارگذاری تصویر رسید پرداخت"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="15dp"
                         android:layout_marginBottom="15dp"
+                        android:text="بارگذاری تصویر رسید پرداخت"
                         android:textColor="@color/colorPrimaryDark"
                         android:textSize="20dp"
+                        android:visibility="gone"
                         tools:layout_editor_absoluteX="38dp"
                         tools:layout_editor_absoluteY="190dp" />
 
                     <Button
                         android:id="@+id/registerbutton"
-                        android:text="ثبت نام"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="15dp"
+                        android:text="ثبت نام"
                         android:textColor="@color/colorPrimaryDark"
                         android:textSize="20dp"
                         tools:layout_editor_absoluteX="38dp"
-                        tools:layout_editor_absoluteY="190dp"/>
+                        tools:layout_editor_absoluteY="190dp" />
                 </LinearLayout>
 
 
                 <LinearLayout
                     android:id="@+id/logo1"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="44dp"
                     android:gravity="center|top"
                     android:orientation="horizontal"
                     android:visibility="visible">
@@ -476,7 +481,7 @@
                         android:layout_margin="5dp"
                         android:background="@drawable/fish"
                         android:gravity="center"
-                        android:visibility="visible"/>
+                        android:visibility="gone" />
 
                 </LinearLayout>
             </LinearLayout>

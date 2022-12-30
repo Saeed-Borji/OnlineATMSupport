@@ -274,19 +274,20 @@
 
                         <EditText
                             android:id="@+id/UsernameBox"
-                            android:hint="نام کاربری"
                             android:layout_width="wrap_content"
                             android:layout_height="30dp"
                             android:layout_gravity="center"
                             android:layout_marginLeft="5dp"
                             android:background="@drawable/framebevel"
-                            android:inputType="textPersonName"
-                            android:textColorHint="#997386EC"
-                            android:textAlignment="center"
+                            android:ems="10"
                             android:gravity="center"
+                            android:hint="نام کاربری"
+                            android:inputType="textPersonName"
+                            android:textAlignment="center"
                             android:textColor="#7386EC"
+                            android:textColorHint="#997386EC"
                             android:textCursorDrawable="@color/colorPrimaryDark"
-                            android:ems="10" />
+                            tools:ignore="TouchTargetSizeCheck" />
 
                         <TextView
                             android:id="@+id/textView20"
@@ -321,18 +322,19 @@
 
                         <EditText
                             android:id="@+id/PasswordBox"
-                            android:hint="کلمه عبور"
                             android:layout_width="wrap_content"
                             android:layout_height="30dp"
                             android:layout_gravity="center"
                             android:layout_marginLeft="5dp"
                             android:background="@drawable/framebevel"
                             android:ems="10"
-                            android:inputType="textPassword"
-                            android:textColorHint="#997386EC"
-                            android:textAlignment="center"
                             android:gravity="center"
-                            android:textColor="#7386EC"/>
+                            android:hint="کلمه عبور"
+                            android:inputType="textPassword"
+                            android:textAlignment="center"
+                            android:textColor="#7386EC"
+                            android:textColorHint="#997386EC"
+                            tools:ignore="TouchTargetSizeCheck" />
 
                         <TextView
                             android:id="@+id/textView21"
