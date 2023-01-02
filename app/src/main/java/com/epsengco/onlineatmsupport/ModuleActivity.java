@@ -222,6 +222,9 @@ public class ModuleActivity extends AppCompatActivity implements AdapterView.OnI
             public void onClick(View v) {
                 Boolean isSDPresent = android.os.Environment.getExternalStorageState().equals(android.os.Environment.MEDIA_MOUNTED);//SD Have or Havent
 
+                pic1 = null;
+                ErrorPic.setImageBitmap(pic1);
+
                 if (isSDPresent == true){//Have SD Cars
                     File dir_image2 = new File(Environment.getExternalStorageDirectory()+
                             File.separator+"S_B");
@@ -241,6 +244,7 @@ public class ModuleActivity extends AppCompatActivity implements AdapterView.OnI
                     Toast.makeText(getApplicationContext(), "دسترسی این کاربر > "+Username+"< تایید نشده است", Toast.LENGTH_SHORT).show();
                 }else {
                     //Toast.makeText(getApplicationContext(), "Go to Send data to server", Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(getApplicationContext(), "SendQuestion - 247", Toast.LENGTH_SHORT).show();
                     GetQuestionData();
                 }
             }
@@ -436,7 +440,8 @@ public class ModuleActivity extends AppCompatActivity implements AdapterView.OnI
             if (pic0 == null){
                 //txtresult = (TextView)findViewById(R.id.txtresult);
                 //txtresult.setText("Access denied to memory");
-                Path1="2";//2 = Access denied to Path
+                Path1="2";//2 = Access denied to Pat
+                Toast.makeText(getApplicationContext(),"Access denied to memory" , Toast.LENGTH_LONG).show();
                 //ImageView Rot1 = (ImageView) findViewById(R.id.RotatePhoto1);
                 //Rot1.setVisibility(View.INVISIBLE);
 
@@ -488,13 +493,22 @@ public class ModuleActivity extends AppCompatActivity implements AdapterView.OnI
 
                     Disable();//Disable All Button or ...
 
-                    if (!Path1.equals("")){
-                        GetPicByte(Path1);
-                    }else{
-                        ArrPic = null;
-                        ArrPic = new byte[1];
-                        ArrPic[0] = 0;
-                    }
+                    //if(pic1 != null)
+                    //{
+                        Toast.makeText(getApplicationContext(),"498",Toast.LENGTH_LONG).show();
+
+                        if (!Path1.equals("")){
+                            GetPicByte(Path1);
+                        }else{
+                            ArrPic = null;
+                            ArrPic = new byte[1];
+                            ArrPic[0] = 0;
+                        }
+                    //}else{
+                        //ArrPic = null;
+                        //ArrPic = new byte[1];
+                        //ArrPic[0] = 0;
+                    //}
 
                     //Get Voice Arrey
                     String Path = "sound";
@@ -508,7 +522,7 @@ public class ModuleActivity extends AppCompatActivity implements AdapterView.OnI
                         ArrVoice = new byte[1];
                         ArrVoice[0] = 0;
                     }
-                    //Alert("نتیجه","سوال شما ارسال شد. تا دقایقی دیگر جواب کارشناسان برای شما ارسال می شود.");
+
                     Long vt = System.currentTimeMillis() / 1000;
 
                     RequestParams params = new RequestParams();
@@ -524,6 +538,7 @@ public class ModuleActivity extends AppCompatActivity implements AdapterView.OnI
                     params.put("ErrorPic", new ByteArrayInputStream(ArrPic), "ErrorPic.jpg");
                     params.put("ErrorVoice", new ByteArrayInputStream(ArrVoice), "ErrorVoice.mp3");
 
+
                     //$.B _ Save Message in the cellphone \/
                     String message ="نام محصول :" + ProductName + HardSoft +"\n"+
                             "مدل محصول :" + ProductModel + "\n"+
@@ -531,6 +546,7 @@ public class ModuleActivity extends AppCompatActivity implements AdapterView.OnI
                             "نام بانک :" + SelectBanknamestr +"\n"+
                             " ___________________  : متن سوال " + "\n"+
                             Questionstr;
+
                     SaveQuestionMessage(message , ArrPic,ArrVoice);
                     //$.B _ Save Message in the cellphone /\
 
@@ -697,7 +713,7 @@ public class ModuleActivity extends AppCompatActivity implements AdapterView.OnI
             if (!Questionstr.equals("")){
 
                 //Go To Send Param Request to server
-                Disable();
+                //Disable();
                 PostData();
 
             }else {
@@ -778,6 +794,7 @@ public class ModuleActivity extends AppCompatActivity implements AdapterView.OnI
 
     private void SaveQuestionMessage(String Message,byte[] Pic, byte[] Voice) throws IOException {
 
+        Toast.makeText(getApplicationContext(),"805",Toast.LENGTH_LONG).show();
         File folder = new File(Environment.getExternalStorageDirectory() +
                 File.separator + Username +"_SB_Inbox");
         boolean success = true;
@@ -809,13 +826,19 @@ public class ModuleActivity extends AppCompatActivity implements AdapterView.OnI
             writer.flush();
             writer.close();
 
-            FileOutputStream pic = new FileOutputStream(folder+"//pic.jpg");
-            pic.write(Pic);
-            pic.close();
+            //if (!Pic.equals(null) || Pic[0] != 0)
+            //{
+                FileOutputStream pic = new FileOutputStream(folder+"//pic.jpg");
+                pic.write(Pic);
+                pic.close();
+            //}
 
-            FileOutputStream voice = new FileOutputStream(folder+"//voice.mp3");
-            voice.write(Voice);
-            voice.close();
+            //if (!Voice.equals(null) || Voice[0] != 0)
+            //{
+                FileOutputStream voice = new FileOutputStream(folder+"//voice.mp3");
+                voice.write(Voice);
+                voice.close();
+            //}
 
         } catch (Exception e) {
             //Log.e(TAG, e.getMessage());
@@ -832,6 +855,7 @@ public class ModuleActivity extends AppCompatActivity implements AdapterView.OnI
         ErrorPic.setEnabled(false);
         SendQuestion.setEnabled(false);
         Clear.setEnabled(false);
+        //pic1=null;
     }
 
     private void Enable(){

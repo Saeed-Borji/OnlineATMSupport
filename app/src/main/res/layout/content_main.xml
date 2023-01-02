@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    android:background="@drawable/backgroundgrrey"
+    android:background="@drawable/backgroundwhite"
     tools:showIn="@layout/app_bar_main">
 
     <fragment
@@ -40,7 +40,7 @@
                 android:id="@+id/textView1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="#7386EC"
+                android:textColor="#0A0B0B"
                 android:textSize="25dp"
                 android:textStyle="bold"
                 android:textAlignment="center"
@@ -56,7 +56,7 @@
                 android:id="@+id/textView2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="#7386EC"
+                android:textColor="#1B1C1C"
                 android:textSize="15dp"
                 android:textAlignment="center"
                 android:text="@string/product_name" />
@@ -264,27 +264,27 @@
                     android:orientation="horizontal">
 
                     <LinearLayout
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="40dp"
-                        android:layout_marginRight="10dp"
                         android:layout_marginLeft="10dp"
                         android:layout_marginTop="5dp"
+                        android:layout_marginRight="10dp"
                         android:gravity="center"
                         android:orientation="horizontal">
 
                         <EditText
                             android:id="@+id/UsernameBox"
-                            android:layout_width="wrap_content"
-                            android:layout_height="30dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
                             android:layout_gravity="center"
                             android:layout_marginLeft="5dp"
-                            android:background="@drawable/framebevel"
+                            android:background="@drawable/framebevel3"
                             android:ems="10"
                             android:gravity="center"
                             android:hint="نام کاربری"
                             android:inputType="textPersonName"
                             android:textAlignment="center"
-                            android:textColor="#7386EC"
+                            android:textColor="#020A37"
                             android:textColorHint="#997386EC"
                             android:textCursorDrawable="@color/colorPrimaryDark"
                             tools:ignore="TouchTargetSizeCheck" />
@@ -293,13 +293,13 @@
                             android:id="@+id/textView20"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_marginLeft="15dp"
                             android:text="نام کاربری:"
                             android:textAlignment="textStart"
-                            android:layout_marginLeft="15dp"
                             android:textColor="#7386EC"
                             android:textSize="20dp"
                             android:textStyle="bold"
-                            android:visibility="gone"/>
+                            android:visibility="gone" />
 
                     </LinearLayout>
                 </LinearLayout>
@@ -312,27 +312,27 @@
                     android:visibility="visible">
 
                     <LinearLayout
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="40dp"
-                        android:layout_marginRight="10dp"
                         android:layout_marginLeft="10dp"
                         android:layout_marginTop="5dp"
+                        android:layout_marginRight="10dp"
                         android:gravity="center"
                         android:orientation="horizontal">
 
                         <EditText
                             android:id="@+id/PasswordBox"
-                            android:layout_width="wrap_content"
-                            android:layout_height="30dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
                             android:layout_gravity="center"
                             android:layout_marginLeft="5dp"
-                            android:background="@drawable/framebevel"
+                            android:background="@drawable/framebevel3"
                             android:ems="10"
                             android:gravity="center"
                             android:hint="کلمه عبور"
                             android:inputType="textPassword"
                             android:textAlignment="center"
-                            android:textColor="#7386EC"
+                            android:textColor="#020A37"
                             android:textColorHint="#997386EC"
                             tools:ignore="TouchTargetSizeCheck" />
 
@@ -340,35 +340,35 @@
                             android:id="@+id/textView21"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_marginLeft="15dp"
                             android:text="کلمه عبور:"
                             android:textAlignment="textStart"
-                            android:layout_marginLeft="15dp"
                             android:textColor="#7386EC"
                             android:textSize="20dp"
                             android:textStyle="bold"
-                            android:visibility="gone"/>
+                            android:visibility="gone" />
 
                     </LinearLayout>
                 </LinearLayout>
 
                 <LinearLayout
                     android:id="@+id/pnlButtons"
-                    android:layout_width="match_parent"
+                    android:layout_width="216dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="40dp"
                     android:layout_marginLeft="40dp"
+                    android:layout_marginRight="40dp"
                     android:layout_marginBottom="30dp"
                     android:gravity="center"
                     android:orientation="vertical">
 
                     <Button
                         android:id="@+id/LoginButton"
-                        android:text="ورود / ثبت نام"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
                         android:layout_marginTop="15dp"
                         android:layout_marginBottom="15dp"
-                        android:textColor="@color/colorPrimaryDark"
+                        android:text="ورود"
+                        android:textColor="#1d3ac2"
                         android:textSize="20dp"
                         tools:layout_editor_absoluteX="38dp"
                         tools:layout_editor_absoluteY="190dp" />
@@ -377,15 +377,15 @@
                         android:id="@+id/registerButton"
                         android:layout_width="match_parent"
                         android:layout_height="45dp"
-                        android:layout_marginRight="10dp"
                         android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
                         android:layout_marginBottom="5dp"
+                        android:text="ثبت نام:"
                         android:textColor="@color/design_default_color_secondary_variant"
                         android:textSize="20dp"
-                        android:text="ثبت نام:"
+                        android:visibility="gone"
                         tools:layout_editor_absoluteX="38dp"
-                        tools:layout_editor_absoluteY="190dp"
-                        android:visibility="gone"/>
+                        tools:layout_editor_absoluteY="190dp" />
                 </LinearLayout>
 
 

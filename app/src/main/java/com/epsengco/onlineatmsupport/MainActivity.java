@@ -36,10 +36,12 @@ import android.view.View.OnClickListener;
 import android.widget.TextView;
 import android.widget.Toast;
 
+
 import org.json.JSONException;
 
 import java.io.ByteArrayInputStream;
 import java.io.File;
+import java.io.IOException;
 
 import cz.msebera.android.httpclient.Header;
 
@@ -53,6 +55,10 @@ public class MainActivity extends AppCompatActivity {
     String IMEI = null;
     String username = null;
     String password = null;
+
+    //private static final int REQUEST_RECORD_AUDIO_PERMISSION = 200;
+    //private boolean permissionToRecordAccepted = false;
+    //private String [] permissions = {Manifest.permission.RECORD_AUDIO};
 
 
     @Override
@@ -84,8 +90,6 @@ public class MainActivity extends AppCompatActivity {
         //$.B \/
 
         Login = (Button) findViewById(R.id.LoginButton);
-
-
         Login.setOnClickListener(new OnClickListener() {
 
             @Override
@@ -95,7 +99,24 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
+
     }
+
+    /*
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        switch (requestCode){
+            case REQUEST_RECORD_AUDIO_PERMISSION:
+                permissionToRecordAccepted  = grantResults[0] == PackageManager.PERMISSION_GRANTED;
+                break;
+        }
+        if (!permissionToRecordAccepted ) finish();
+
+    }
+
+     */
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -232,7 +253,6 @@ public class MainActivity extends AppCompatActivity {
             RequestParams params = new RequestParams();
             params.put("username",username);
             params.put("password",password);
-            //params.put("photo2", new ByteArrayInputStream(vArrPhoto2), "photo2.jpg");
 
             /// Check Internet Connection \/
             boolean connected = false;
@@ -273,13 +293,13 @@ public class MainActivity extends AppCompatActivity {
                                 intent.putExtra("Check",CheckID);//send data to next class
                                 startActivityForResult(intent, 2);
 
-                                //Toast.makeText(getApplicationContext(), "Success Login _ "+resultID+resultMessage, Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getApplicationContext(), "Login Success _ "+resultID+ "_" +resultMessage, Toast.LENGTH_SHORT).show();
 
                             } else if (resultID == 3) {//in the first photo, the FACE was Not Found
-                                //Toast.makeText(getApplicationContext(), "Username or Password is incorrect", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getApplicationContext(), "Login Error _ "+resultID+ "_" +resultMessage, Toast.LENGTH_SHORT).show();
                                 //txtresult.setText("The face was not Found in the first photo");
                             }else if (resultID == 4) {//in the first photo, the FACE was Not Found
-                                //Toast.makeText(getApplicationContext(), "This Username is not register", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getApplicationContext(), "Login Error _ "+resultID+ "_" +resultMessage, Toast.LENGTH_SHORT).show();
                                 //txtresult.setText("The face was not Found in the first photo");
                             }//else if (resultID == 3) {//in the first photo, the FACE was Not Found
 
@@ -298,8 +318,10 @@ public class MainActivity extends AppCompatActivity {
                     public void onFailure(int statusCode, Header[] headers,
                                           Throwable throwable, org.json.JSONObject errorResponse) {
 
-                        //Toast.makeText(getApplicationContext(),"onFailure_888"+statusCode,Toast.LENGTH_LONG).show();
                         String message = throwable.getMessage();
+
+                        Toast.makeText(getApplicationContext(),"onFailure _ " + statusCode + "_" + message,Toast.LENGTH_LONG).show();
+
                         //TextView result = (TextView) findViewById(R.id.voiceresult);
                         //result.setText(message);
                         //TextView txtresult = (TextView) findViewById(R.id.txtresult);

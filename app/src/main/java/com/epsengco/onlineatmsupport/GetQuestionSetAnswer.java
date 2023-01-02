@@ -160,7 +160,7 @@ public class GetQuestionSetAnswer extends AppCompatActivity {
         PicViewer = (ImageButton)findViewById(R.id.Errorpicbtn);
         MessagePic = (TextView)findViewById(R.id.messagePic_view);
         Errorpic = (ImageView)findViewById(R.id.errorpic);
-        PicViewer = (ImageButton)findViewById(R.id.Errorpicbtn);
+        //PicViewer = (ImageButton)findViewById(R.id.Errorpicbtn);
 
         ErrorPicViewer = (ImageView)findViewById(R.id.picpreview);
         @SuppressLint("WrongViewCast") final View ErrorTextViewerLayout = (View) findViewById(R.id.errortextviewerlayout);
@@ -251,6 +251,9 @@ public class GetQuestionSetAnswer extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Boolean isSDPresent = android.os.Environment.getExternalStorageState().equals(android.os.Environment.MEDIA_MOUNTED);//SD Have or Havent
+
+                pic1 = null;
+                AnswerPic.setImageBitmap(pic1);
 
                 if (isSDPresent == true){//Have SD Cars
                     File dir_image2 = new File(Environment.getExternalStorageDirectory()+
@@ -368,7 +371,6 @@ public class GetQuestionSetAnswer extends AppCompatActivity {
                             Path1 = file.getAbsolutePath();
                         }
                     }
-
                 }
                 break;
         }
@@ -376,6 +378,7 @@ public class GetQuestionSetAnswer extends AppCompatActivity {
         setPic(0);
 
     }
+
     public String getPath(Uri uri)
     {
         String[] projection = { MediaStore.Images.Media.DATA };
@@ -387,6 +390,7 @@ public class GetQuestionSetAnswer extends AppCompatActivity {
         cursor.close();
         return s;
     }
+
     private void setPic(float angle1) {//Set Piic1 and Pic2 _ rotate 90 _ W=300 H=300 _ Make Circle
 
         String fileUrl = null;//dir_image2+File.separator+"Image1.jpg";
@@ -491,6 +495,7 @@ public class GetQuestionSetAnswer extends AppCompatActivity {
 
 
     }
+
     public void audioPlayer(String path, String fileName){
         //set up MediaPlayer
         MediaPlayer mp = new MediaPlayer();
@@ -642,15 +647,25 @@ public class GetQuestionSetAnswer extends AppCompatActivity {
             if (!Username.equals("") && !Accounttypename.equals("")){
 
                 Disable();//Disable All Button or ...
+                Toast.makeText(getApplicationContext(),"650",Toast.LENGTH_LONG).show();
 
-                if (!Path1.equals("")){
-                    GetPicByte(Path1);
-                }else{
-                    ArrPic = null;
-                    ArrPic = new byte[1];
-                    ArrPic[0] = 0;
-                }
+                //Get Pic Arrey
+                //if(pic1 != null)
+                //{
+                    if (!Path1.equals("")){
+                        GetPicByte(Path1);
+                    }else{
+                        ArrPic = null;
+                        ArrPic = new byte[1];
+                        ArrPic[0] = 0;
+                    }
+                //}else{
+                    //ArrPic = null;
+                    //ArrPic = new byte[1];
+                    //ArrPic[0] = 0;
+                //}
 
+                Toast.makeText(getApplicationContext(),"668",Toast.LENGTH_LONG).show();
                 //Get Voice Arrey
                 String Path = "sound";
                 this.path = sanitizePath(Path);
@@ -664,7 +679,6 @@ public class GetQuestionSetAnswer extends AppCompatActivity {
                     ArrVoice[0] = 0;
                 }
 
-
                 Long vt = System.currentTimeMillis() / 1000;
 
                 RequestParams params = new RequestParams();
@@ -673,8 +687,9 @@ public class GetQuestionSetAnswer extends AppCompatActivity {
                 params.put("accounttypename",Accounttypename);
                 params.put("message", Answerstr);
                 params.put("questionnumber",QuestionNumber);
-                params.put("AnswerPic", new ByteArrayInputStream(ArrPic), "AnswerPic.jpg");
-                params.put("AnswerVoice", new ByteArrayInputStream(ArrVoice), "AnswerVoice.mp3");
+                params.put("ErrorPic", new ByteArrayInputStream(ArrPic), "ErrorPic.jpg");
+                params.put("ErrorVoice", new ByteArrayInputStream(ArrVoice), "ErrorVoice.mp3");
+                
 
                 //$.B _ Save Message in the cellphone \/
                 String message =
@@ -964,7 +979,7 @@ public class GetQuestionSetAnswer extends AppCompatActivity {
             if (!Answerstr.equals("")){
 
                 //Go To Send Param Request to server
-                Disable();
+                //Disable();
                 PostAnswerData();
                 //DeleteAnswerMessage();
 
@@ -1118,13 +1133,19 @@ public class GetQuestionSetAnswer extends AppCompatActivity {
             writer.flush();
             writer.close();
 
-            FileOutputStream pic = new FileOutputStream(folder+"//pic.jpg");
-            pic.write(Pic);
-            pic.close();
+            if (!Pic.equals(null) || Pic[0] != 0)
+            {
+                FileOutputStream pic = new FileOutputStream(folder+"//pic.jpg");
+                pic.write(Pic);
+                pic.close();
+            }
 
-            FileOutputStream voice = new FileOutputStream(folder+"//voice.mp3");
-            voice.write(Voice);
-            voice.close();
+            if (!Voice.equals(null) || Voice[0] != 0)
+            {
+                FileOutputStream voice = new FileOutputStream(folder+"//voice.mp3");
+                voice.write(Voice);
+                voice.close();
+            }
 
         } catch (Exception e) {
             //Log.e(TAG, e.getMessage());
