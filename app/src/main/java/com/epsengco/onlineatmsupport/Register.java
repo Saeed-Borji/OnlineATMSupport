@@ -54,6 +54,7 @@ public class Register extends AppCompatActivity {
     private EditText BankName;
     private EditText AccountNametxt;
 
+    private LinearLayout listlayout;
     private LinearLayout layoutaccountnumber;
     private LinearLayout layoutbankname;
     private LinearLayout layoutaccountname;
@@ -94,6 +95,8 @@ public class Register extends AppCompatActivity {
         FieldExpertchck = (CheckBox)findViewById(R.id.checkboxfieldexpert);
         //FieldExpertchck.setChecked(true);//Defult
 
+        listlayout = (LinearLayout)findViewById(R.id.ListLayout);
+
         Emailtxt = (EditText)findViewById(R.id.ImaileBox);
         UserNametxt = (EditText)findViewById(R.id.UsernameBox);
         Passwordtxt = (EditText)findViewById(R.id.PasswordBox1);
@@ -119,6 +122,7 @@ public class Register extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (TechnicalSupportchck.isChecked()){
+                    listlayout.setVisibility(View.VISIBLE);
                     layoutaccountname.setVisibility(View.VISIBLE);
                     layoutbankname.setVisibility(View.VISIBLE);
                     layoutaccountnumber.setVisibility(View.VISIBLE);
@@ -150,6 +154,7 @@ public class Register extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (FieldExpertchck.isChecked()){
+                    listlayout.setVisibility(View.VISIBLE);
                     layoutaccountname.setVisibility(View.INVISIBLE);
                     layoutbankname.setVisibility(View.INVISIBLE);
                     layoutaccountnumber.setVisibility(View.INVISIBLE);
@@ -219,7 +224,7 @@ public class Register extends AppCompatActivity {
                 )
                 {
 
-                    Toast.makeText(getApplicationContext(),"لطفا تمام فیلدها را تکمیل نمایید و تصویر رسید پرداخت شده را بارگذاری نمایید",Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(),"لطفا تمام فیلدها را تکمیل نمایید ",Toast.LENGTH_LONG).show();
 
                 }else{
 
@@ -566,6 +571,7 @@ public class Register extends AppCompatActivity {
     }
 
     private void Disable(){
+        listlayout.setVisibility(View.INVISIBLE);
         AllLayout.setEnabled(false);
         //Reciptbtn.setEnabled(false);
         Registerbtn.setEnabled(false);
@@ -573,6 +579,7 @@ public class Register extends AppCompatActivity {
     }
 
     private void Enable(){
+        //listlayout.setVisibility(View.VISIBLE);
         AllLayout.setEnabled(true);
         //Reciptbtn.setEnabled(true);
         Registerbtn.setEnabled(true);
@@ -580,6 +587,7 @@ public class Register extends AppCompatActivity {
     }
 
     private void Clearcls(){
+        listlayout.setVisibility(View.INVISIBLE);
         TechnicalSupportchck.setChecked(false);
         FieldExpertchck.setChecked(false);//Defult
 

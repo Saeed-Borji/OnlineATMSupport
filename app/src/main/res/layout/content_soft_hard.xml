@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    android:background="@drawable/backgroundgrrey">
+    android:background="@drawable/backgroundwhite">
 
     <fragment
         android:id="@+id/nav_host_fragment"
@@ -39,7 +39,7 @@
                 android:id="@+id/textView1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="#7386EC"
+                android:textColor="@color/colorTitre"
                 android:textSize="25dp"
                 android:textStyle="bold"
                 android:textAlignment="center"
@@ -56,7 +56,7 @@
                 android:id="@+id/textnavigate"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="#7386EC"
+                android:textColor="@color/colorTitre"
                 android:textSize="15dp"
                 android:textAlignment="center"
                 android:text="@string/product_name"/>
@@ -265,7 +265,7 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="5dp"
                 android:orientation="horizontal"
-                android:background="@drawable/framebevel">
+                android:background="@drawable/framebevel3">
 
                 <Spinner
                     android:id="@+id/spinnerModel"

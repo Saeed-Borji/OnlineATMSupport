@@ -518,12 +518,12 @@ public class GetQuestionSetAnswer extends AppCompatActivity {
 
     public void Disable(){//Disable All Button or ...
         PlayVoice.setEnabled(false);
-        PlayVoice.setImageResource(R.drawable.playepauseblack);
+        PlayVoice.setImageResource(R.drawable.puse);
     }
 
     public void Enable(){//Enable All Button or ...
         PlayVoice.setEnabled(true);
-        PlayVoice.setImageResource(R.drawable.playeblack);
+        PlayVoice.setImageResource(R.drawable.play);
     }
 
     ////// GET QUESTION FROM SERVER by SendQuestion api \/
@@ -650,22 +650,14 @@ public class GetQuestionSetAnswer extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(),"650",Toast.LENGTH_LONG).show();
 
                 //Get Pic Arrey
-                //if(pic1 != null)
-                //{
-                    if (!Path1.equals("")){
-                        GetPicByte(Path1);
-                    }else{
-                        ArrPic = null;
-                        ArrPic = new byte[1];
-                        ArrPic[0] = 0;
-                    }
-                //}else{
-                    //ArrPic = null;
-                    //ArrPic = new byte[1];
-                    //ArrPic[0] = 0;
-                //}
+                if (!Path1.equals("")){
+                    GetPicByte(Path1);
+                }else{
+                    ArrPic = null;
+                    ArrPic = new byte[1];
+                    ArrPic[0] = 0;
+                }
 
-                Toast.makeText(getApplicationContext(),"668",Toast.LENGTH_LONG).show();
                 //Get Voice Arrey
                 String Path = "sound";
                 this.path = sanitizePath(Path);
@@ -689,13 +681,16 @@ public class GetQuestionSetAnswer extends AppCompatActivity {
                 params.put("questionnumber",QuestionNumber);
                 params.put("ErrorPic", new ByteArrayInputStream(ArrPic), "ErrorPic.jpg");
                 params.put("ErrorVoice", new ByteArrayInputStream(ArrVoice), "ErrorVoice.mp3");
-                
 
+
+                Toast.makeText(getApplicationContext(),"694"+ArrPic.toString() + ArrVoice.toString(),Toast.LENGTH_LONG).show();
                 //$.B _ Save Message in the cellphone \/
                 String message =
                         " ___________________  : متن پاسخ " + "\n"+
                         Answerstr;
                 //SaveQuestionMessage(message,ArrPic,ArrVoice);// , ArrPic,ArrVoice);
+                Toast.makeText(getApplicationContext(),"701"+Answerstr,Toast.LENGTH_LONG).show();
+
                 //$.B _ Save Message in the cellphone /\
 
                 /// Check Internet Connection \/
@@ -772,7 +767,7 @@ public class GetQuestionSetAnswer extends AppCompatActivity {
                                               Throwable throwable, JSONObject errorResponse) {
 
                             String message = throwable.getMessage();
-                            Toast.makeText(getApplicationContext(),"onFailure_"+message,Toast.LENGTH_LONG).show();
+                            Toast.makeText(getApplicationContext(),"onFailure_"+message + statusCode,Toast.LENGTH_LONG).show();
                             //TextView result = (TextView) findViewById(R.id.voiceresult);
                             //result.setText(message);
                             //TextView txtresult = (TextView) findViewById(R.id.txtresult);

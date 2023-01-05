@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    android:background="@drawable/backgroundgrrey">
+    android:background="@drawable/backgroundwhite">
 
     <fragment
         android:id="@+id/nav_host_fragment"
@@ -53,7 +53,7 @@
                 android:textSize="25dp"
                 android:textStyle="bold"
                 android:textAlignment="center"
-                android:textColor="#7386EC" />
+                android:textColor="@color/colorTitre" />
         </LinearLayout>
 
 
@@ -69,7 +69,7 @@
                 android:layout_height="wrap_content"
                 android:textSize="15dp"
                 android:textAlignment="center"
-                android:textColor="#7386EC"/>
+                android:textColor="@color/colorTitre"/>
         </LinearLayout>
 
         <LinearLayout
@@ -199,7 +199,7 @@
                 android:text="توضیحات کتبی مشکل"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="#7386EC"
+                android:textColor="@color/colorTitre"
                 android:gravity="center|bottom"
                 android:visibility="visible"/>
 
@@ -211,27 +211,30 @@
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:gravity="center|top"
-            android:orientation="horizontal"
-            android:background="@drawable/framebevel">
+            android:orientation="horizontal">
 
             <EditText
                 android:id="@+id/questionbox"
                 android:hint="توضیحات:"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_gravity="center"
                 android:layout_margin="3dp"
-                android:background="#BF4F5057"
-                android:ems="10"
                 android:inputType="textMultiLine"
                 android:lines="8"
                 android:singleLine="false"
-                android:textColor="@color/design_default_color_on_secondary"
                 android:textColorHighlight="#009688"
                 android:textColorLink="#009688"
-                android:textCursorDrawable="@color/design_default_color_on_secondary"
                 android:textSize="14sp"
-                android:textAlignment="center"/>
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_marginLeft="5dp"
+                android:background="@drawable/framebevel3"
+                android:ems="10"
+                android:gravity="center"
+                android:textAlignment="center"
+                android:textColor="#0728DF"
+                android:textColorHint="#CC556DF4"
+                android:textCursorDrawable="@color/colorPrimaryDark"
+                tools:ignore="TouchTargetSizeCheck"/>
 
         </LinearLayout>
 
@@ -247,7 +250,7 @@
                 android:text=" صدای توضیح مشکل کارشناس"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="#7386EC"
+                android:textColor="@color/colorTitre"
                 android:gravity="center|bottom"
                 android:visibility="visible"/>
 
@@ -259,7 +262,7 @@
             android:layout_margin="10dp"
             android:gravity="center|bottom"
             android:orientation="horizontal"
-            android:background="@drawable/framebevel">
+            android:background="@drawable/framebevel3">
 
             <ProgressBar
                 android:id="@+id/progressBar"
@@ -283,7 +286,7 @@
                 android:layout_height="40dp"
                 android:layout_marginRight="50dp"
                 android:visibility="visible"
-                app:srcCompat="@drawable/playeblack"
+                app:srcCompat="@drawable/play"
                 android:layout_gravity="center"/>
 
         </LinearLayout>
@@ -300,7 +303,7 @@
                 android:text="تصویر ماژول خراب یا کد خطای کارشناس"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="#7386EC"
+                android:textColor="@color/colorTitre"
                 android:gravity="center|bottom"
                 android:visibility="visible"/>
 
@@ -313,7 +316,7 @@
             android:layout_margin="10dp"
             android:gravity="right|center"
             android:orientation="horizontal"
-            android:background="@drawable/framebevel">
+            android:background="@drawable/framebevel3">
 
             <ImageView
                 android:id="@+id/Errorpic"
@@ -337,7 +340,7 @@
                 android:id="@+id/Errorpicbtn"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:background="@drawable/camtrswhite2"
+                android:background="@drawable/maxmin"
                 android:layout_marginRight="10dp"
                 android:layout_marginLeft="10dp"
                 android:visibility="visible"/>

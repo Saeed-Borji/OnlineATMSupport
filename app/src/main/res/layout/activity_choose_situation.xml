@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ChooseSituation"
-    android:background="@drawable/backgroundgrrey">
+    android:background="@drawable/backgroundwhite">
 
     <ScrollView
         android:layout_width="fill_parent"
@@ -32,7 +32,7 @@
                 android:textSize="25dp"
                 android:textStyle="bold"
                 android:textAlignment="center"
-                android:textColor="#7386EC" />
+                android:textColor="@color/colorTitre" />
         </LinearLayout>
 
         <LinearLayout
@@ -47,7 +47,7 @@
                 android:layout_height="wrap_content"
                 android:textSize="15dp"
                 android:textAlignment="center"
-                android:textColor="#7386EC"/>
+                android:textColor="@color/colorTitre"/>
         </LinearLayout>
 
         <LinearLayout
@@ -328,11 +328,11 @@
 
                 <LinearLayout
                     android:id="@+id/pnlButtons"
-                    android:layout_width="match_parent"
+                    android:layout_width="260dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="40dp"
                     android:layout_marginLeft="40dp"
-                    android:layout_marginBottom="30dp"
+                    android:layout_marginRight="40dp"
+                    android:layout_marginBottom="20dp"
                     android:gravity="center"
                     android:orientation="vertical">
 
@@ -340,11 +340,15 @@
                         android:id="@+id/buttonfieldexpert"
                         android:text="کارشناس فیلد"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="10dp"
                         android:layout_marginTop="15dp"
+                        android:layout_marginRight="10dp"
                         android:layout_marginBottom="15dp"
-                        android:textColor="@color/colorPrimaryDark"
+                        android:background="@drawable/side_nav_bar"
+                        android:textColor="#E0E0E3"
                         android:textSize="20dp"
+                        android:visibility="visible"
                         tools:layout_editor_absoluteX="38dp"
                         tools:layout_editor_absoluteY="190dp" />
 
@@ -352,12 +356,17 @@
                         android:id="@+id/buttontechnicalsupport"
                         android:text="پشتیبان فنی"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginRight="10dp"
                         android:layout_marginBottom="15dp"
-                        android:textColor="@color/colorPrimaryDark"
+                        android:background="@drawable/side_nav_bar"
+                        android:textColor="#E0E0E3"
                         android:textSize="20dp"
+                        android:visibility="visible"
                         tools:layout_editor_absoluteX="38dp"
-                        tools:layout_editor_absoluteY="190dp"/>
+                        tools:layout_editor_absoluteY="190dp" />
                 </LinearLayout>
 
 

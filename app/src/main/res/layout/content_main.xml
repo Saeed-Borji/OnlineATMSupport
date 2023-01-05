@@ -40,7 +40,7 @@
                 android:id="@+id/textView1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="#0A0B0B"
+                android:textColor="@color/colorTitre"
                 android:textSize="25dp"
                 android:textStyle="bold"
                 android:textAlignment="center"
@@ -56,7 +56,7 @@
                 android:id="@+id/textView2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="#1B1C1C"
+                android:textColor="@color/colorTitre"
                 android:textSize="15dp"
                 android:textAlignment="center"
                 android:text="@string/product_name" />
@@ -99,6 +99,7 @@
                 android:layout_height="wrap_content"
                 android:text="" />
         </LinearLayout>
+
 
         <LinearLayout
             android:id="@+id/logo1"
@@ -177,10 +178,11 @@
                 android:background="@drawable/epsw"
                 android:gravity="center|top"
                 android:visibility="visible"/>
+
             <ImageView
                 android:layout_width="70dp"
                 android:layout_height="50dp"
-                android:background="@drawable/wincore"
+                android:background="@drawable/nixdorf"
                 android:gravity="center|top"
                 android:visibility="invisible"/>
 
@@ -274,6 +276,8 @@
 
                         <EditText
                             android:id="@+id/UsernameBox"
+                            android:hint="نام کاربری"
+                            android:inputType="textPersonName"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:layout_gravity="center"
@@ -281,13 +285,11 @@
                             android:background="@drawable/framebevel3"
                             android:ems="10"
                             android:gravity="center"
-                            android:hint="نام کاربری"
-                            android:inputType="textPersonName"
                             android:textAlignment="center"
-                            android:textColor="#020A37"
-                            android:textColorHint="#997386EC"
+                            android:textColor="#0728DF"
+                            android:textColorHint="#CC556DF4"
                             android:textCursorDrawable="@color/colorPrimaryDark"
-                            tools:ignore="TouchTargetSizeCheck" />
+                            tools:ignore="TouchTargetSizeCheck"/>
 
                         <TextView
                             android:id="@+id/textView20"
@@ -322,6 +324,8 @@
 
                         <EditText
                             android:id="@+id/PasswordBox"
+                            android:hint="کلمه عبور"
+                            android:inputType="textPassword"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:layout_gravity="center"
@@ -329,12 +333,11 @@
                             android:background="@drawable/framebevel3"
                             android:ems="10"
                             android:gravity="center"
-                            android:hint="کلمه عبور"
-                            android:inputType="textPassword"
                             android:textAlignment="center"
-                            android:textColor="#020A37"
-                            android:textColorHint="#997386EC"
-                            tools:ignore="TouchTargetSizeCheck" />
+                            android:textColor="#0728DF"
+                            android:textColorHint="#CC556DF4"
+                            android:textCursorDrawable="@color/colorPrimaryDark"
+                            tools:ignore="TouchTargetSizeCheck"/>
 
                         <TextView
                             android:id="@+id/textView21"
@@ -363,13 +366,14 @@
 
                     <Button
                         android:id="@+id/LoginButton"
+                        android:text="ورود"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_marginTop="15dp"
                         android:layout_marginBottom="15dp"
-                        android:text="ورود"
-                        android:textColor="#1d3ac2"
+                        android:textColor="#E0E0E3"
                         android:textSize="20dp"
+                        android:background="@drawable/side_nav_bar"
                         tools:layout_editor_absoluteX="38dp"
                         tools:layout_editor_absoluteY="190dp" />
 

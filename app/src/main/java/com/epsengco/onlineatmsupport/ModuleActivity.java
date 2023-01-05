@@ -493,22 +493,16 @@ public class ModuleActivity extends AppCompatActivity implements AdapterView.OnI
 
                     Disable();//Disable All Button or ...
 
-                    //if(pic1 != null)
-                    //{
-                        Toast.makeText(getApplicationContext(),"498",Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(),"498",Toast.LENGTH_LONG).show();
 
-                        if (!Path1.equals("")){
-                            GetPicByte(Path1);
-                        }else{
-                            ArrPic = null;
-                            ArrPic = new byte[1];
-                            ArrPic[0] = 0;
-                        }
-                    //}else{
-                        //ArrPic = null;
-                        //ArrPic = new byte[1];
-                        //ArrPic[0] = 0;
-                    //}
+                    //Get Pic Arrey
+                    if (!Path1.equals("")){
+                        GetPicByte(Path1);
+                    }else{
+                        ArrPic = null;
+                        ArrPic = new byte[1];
+                        ArrPic[0] = 0;
+                    }
 
                     //Get Voice Arrey
                     String Path = "sound";

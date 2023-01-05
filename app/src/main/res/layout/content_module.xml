@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    android:background="@drawable/backgroundgrrey">
+    android:background="@drawable/backgroundwhite">
 
     <fragment
         android:id="@+id/nav_host_fragment"
@@ -39,7 +39,7 @@
                 android:id="@+id/textView1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="#7386EC"
+                android:textColor="@color/colorTitre"
                 android:textSize="25dp"
                 android:textStyle="bold"
                 android:textAlignment="center"
@@ -56,7 +56,7 @@
                 android:id="@+id/textnavigate"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="#7386EC"
+                android:textColor="@color/colorTitre"
                 android:textSize="15dp"
                 android:textAlignment="center"
                 android:text="@string/product_name" />
@@ -84,7 +84,7 @@
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="5dp"
                     android:orientation="horizontal"
-                    android:background="@drawable/framebevel">
+                    android:background="@drawable/framebevel3">
 
                     <ImageView
                         android:id="@+id/countryflag"
@@ -124,7 +124,7 @@
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="5dp"
                     android:orientation="horizontal"
-                    android:background="@drawable/framebevel">
+                    android:background="@drawable/framebevel3">
 
                     <ImageView
                         android:id="@+id/countryflagg"
@@ -164,7 +164,7 @@
                     android:text="توضیحات کتبی مشکل"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textColor="#7386EC"
+                    android:textColor="@color/colorTitre"
                     android:gravity="center|bottom"
                     android:visibility="visible"/>
 
@@ -176,29 +176,30 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 android:gravity="center|top"
-                android:orientation="horizontal"
-                android:background="@drawable/framebevel">
+                android:orientation="horizontal">
 
                 <EditText
                     android:id="@+id/questionbox"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_gravity="center"
-                    android:layout_marginLeft="5dp"
                     android:layout_marginRight="5dp"
                     android:layout_marginTop="5dp"
                     android:layout_marginBottom="5dp"
-                    android:background="@drawable/buttonw"
-                    android:ems="10"
                     android:inputType="textMultiLine"
                     android:lines="3"
                     android:singleLine="false"
                     android:hint="توضیحات:"
-                    android:textColor="@color/design_default_color_on_secondary"
-                    android:textColorHighlight="#009688"
-                    android:textColorLink="#009688"
-                    android:textCursorDrawable="@color/design_default_color_on_secondary"
-                    android:textSize="14sp" />
+                    android:textSize="14sp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="5dp"
+                    android:background="@drawable/framebevel3"
+                    android:ems="10"
+                    android:gravity="center"
+                    android:textAlignment="center"
+                    android:textColor="#0728DF"
+                    android:textColorHint="#CC556DF4"
+                    android:textCursorDrawable="@color/colorPrimaryDark"
+                    tools:ignore="TouchTargetSizeCheck"/>
 
             </LinearLayout>
 
@@ -214,7 +215,7 @@
                     android:text="توضیحات شفاهی مشکل"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textColor="#7386EC"
+                    android:textColor="@color/colorTitre"
                     android:gravity="center|bottom"
                     android:visibility="visible"/>
 
@@ -226,7 +227,7 @@
                 android:layout_margin="10dp"
                 android:gravity="center|bottom"
                 android:orientation="horizontal"
-                android:background="@drawable/framebevel">
+                android:background="@drawable/framebevel3">
 
                 <ProgressBar
                     android:id="@+id/progressBar"
@@ -251,7 +252,7 @@
                     android:layout_marginRight="50dp"
                     android:background="@drawable/transparent"
                     android:visibility="visible"
-                    app:srcCompat="@drawable/mic2"
+                    app:srcCompat="@drawable/record"
                     tools:ignore="SpeakableTextPresentCheck" />
 
             </LinearLayout>
@@ -268,7 +269,7 @@
                     android:text="تصویر ماژول خراب یا کد خطای نرم افزاری"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textColor="#7386EC"
+                    android:textColor="@color/colorTitre"
                     android:gravity="center|bottom"
                     android:visibility="visible"/>
 
@@ -281,7 +282,7 @@
                 android:layout_margin="10dp"
                 android:gravity="right|center"
                 android:orientation="horizontal"
-                android:background="@drawable/framebevel">
+                android:background="@drawable/framebevel3">
 
                 <ImageView
                     android:id="@+id/Errorpicimg"
@@ -307,7 +308,7 @@
                     android:layout_height="48dp"
                     android:layout_marginLeft="10dp"
                     android:layout_marginRight="10dp"
-                    android:background="@drawable/camtrswhite2"
+                    android:background="@drawable/galery"
                     android:visibility="visible"
                     tools:ignore="SpeakableTextPresentCheck" />
 
@@ -328,6 +329,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:gravity="center_horizontal"
+                android:layout_marginTop="25dp"
                 android:orientation="vertical"
                 android:layout_weight="1">
 
@@ -415,42 +417,45 @@
 
                 <LinearLayout
                     android:id="@+id/pnlButtons"
-                    android:layout_width="match_parent"
+                    android:layout_width="260dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="40dp"
                     android:layout_marginLeft="40dp"
+                    android:layout_marginRight="40dp"
                     android:layout_marginBottom="20dp"
                     android:gravity="center"
                     android:orientation="vertical">
 
                     <Button
                         android:id="@+id/buttonsendquestion"
-                        android:text="ارسال سوال"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="15dp"
-                        android:layout_marginBottom="15dp"
-                        android:textColor="@color/colorPrimaryDark"
-                        android:textSize="20dp"
-                        tools:layout_editor_absoluteX="38dp"
-                        tools:layout_editor_absoluteY="190dp"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginRight="10dp"
-                        android:visibility="visible" />
+                            android:text="ارسال سوال"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginTop="15dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_marginBottom="15dp"
+                            android:background="@drawable/side_nav_bar"
+                            android:textColor="#E0E0E3"
+                            android:textSize="20dp"
+                            android:visibility="visible"
+                            tools:layout_editor_absoluteX="38dp"
+                            tools:layout_editor_absoluteY="190dp" />
 
                     <Button
                         android:id="@+id/buttonclear"
                         android:text="پاک کردن اطلاعات سوال"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="15dp"
-                        android:textColor="@color/colorPrimaryDark"
-                        android:textSize="20dp"
-                        tools:layout_editor_absoluteX="38dp"
-                        tools:layout_editor_absoluteY="190dp"
+                        android:layout_height="match_parent"
                         android:layout_marginLeft="10dp"
+                        android:layout_marginTop="15dp"
                         android:layout_marginRight="10dp"
-                        android:visibility="visible"/>
+                        android:layout_marginBottom="15dp"
+                        android:background="@drawable/side_nav_bar"
+                        android:textColor="#E0E0E3"
+                        android:textSize="20dp"
+                        android:visibility="visible"
+                        tools:layout_editor_absoluteX="38dp"
+                        tools:layout_editor_absoluteY="190dp" />
                 </LinearLayout>
 
             </LinearLayout>

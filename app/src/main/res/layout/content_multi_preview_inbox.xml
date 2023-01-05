@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    android:background="@drawable/backgroundgrrey">
+    android:background="@drawable/backgroundwhite">
 
     <fragment
         android:id="@+id/nav_host_fragment"
@@ -40,7 +40,7 @@
             android:textSize="25dp"
             android:textStyle="bold"
             android:textAlignment="center"
-            android:textColor="#7386EC" />
+            android:textColor="@color/colorTitre" />
     </LinearLayout>
 
 
@@ -57,7 +57,7 @@
             android:layout_height="wrap_content"
             android:textSize="15dp"
             android:textAlignment="center"
-            android:textColor="#7386EC"/>
+            android:textColor="@color/colorTitre"/>
     </LinearLayout>
 
     <ScrollView
@@ -81,7 +81,7 @@
                 android:layout_margin="10dp"
                 android:gravity="center|right"
                 android:orientation="vertical"
-                android:background="@drawable/framebevel"
+                android:background="@drawable/framebevel3"
                 android:visibility="visible">
 
                 <ImageButton
@@ -120,6 +120,7 @@
                     android:visibility="gone"/>
 
             </LinearLayout>
+
             <LinearLayout
                 android:id="@+id/msg1layoutview"
                 android:layout_width="match_parent"
@@ -127,7 +128,7 @@
                 android:layout_margin="10dp"
                 android:gravity="center|top"
                 android:orientation="horizontal"
-                android:background="@drawable/framebevel"
+                android:background="@drawable/framebevel3"
                 android:visibility="gone">
 
                 <EditText
@@ -161,7 +162,7 @@
                 android:layout_margin="10dp"
                 android:gravity="center|right"
                 android:orientation="horizontal"
-                android:background="@drawable/framebevel"
+                android:background="@drawable/framebevel3"
                 android:visibility="gone">
 
                 <ImageButton
@@ -200,6 +201,7 @@
                     android:visibility="visible"/>
 
             </LinearLayout>
+
             <LinearLayout
                 android:id="@+id/msg2layoutview"
                 android:layout_width="match_parent"
@@ -207,7 +209,7 @@
                 android:layout_margin="10dp"
                 android:gravity="center|top"
                 android:orientation="horizontal"
-                android:background="@drawable/framebevel"
+                android:background="@drawable/framebevel3"
                 android:visibility="gone">
 
                 <EditText
@@ -241,7 +243,7 @@
                 android:layout_margin="10dp"
                 android:gravity="center|right"
                 android:orientation="horizontal"
-                android:background="@drawable/framebevel"
+                android:background="@drawable/framebevel3"
                 android:visibility="gone">
 
                 <ImageButton
@@ -280,6 +282,7 @@
                     android:visibility="visible"/>
 
             </LinearLayout>
+
             <LinearLayout
                 android:id="@+id/msg3layoutview"
                 android:layout_width="match_parent"
@@ -287,7 +290,7 @@
                 android:layout_margin="10dp"
                 android:gravity="center|top"
                 android:orientation="horizontal"
-                android:background="@drawable/framebevel"
+                android:background="@drawable/framebevel3"
                 android:visibility="gone">
 
                 <EditText
@@ -321,7 +324,7 @@
                 android:layout_margin="10dp"
                 android:gravity="center|right"
                 android:orientation="horizontal"
-                android:background="@drawable/framebevel"
+                android:background="@drawable/framebevel3"
                 android:visibility="gone">
 
                 <ImageButton
@@ -360,6 +363,7 @@
                     android:visibility="visible"/>
 
             </LinearLayout>
+
             <LinearLayout
                 android:id="@+id/msg4layoutview"
                 android:layout_width="match_parent"
@@ -367,7 +371,7 @@
                 android:layout_margin="10dp"
                 android:gravity="center|top"
                 android:orientation="horizontal"
-                android:background="@drawable/framebevel"
+                android:background="@drawable/framebevel3"
                 android:visibility="gone">
 
                 <EditText
@@ -401,7 +405,7 @@
                 android:layout_margin="10dp"
                 android:gravity="center|right"
                 android:orientation="horizontal"
-                android:background="@drawable/framebevel"
+                android:background="@drawable/framebevel3"
                 android:visibility="gone">
 
                 <ImageButton
@@ -440,6 +444,7 @@
                     android:visibility="visible"/>
 
             </LinearLayout>
+
             <LinearLayout
                 android:id="@+id/msg5layoutview"
                 android:layout_width="match_parent"
@@ -447,7 +452,7 @@
                 android:layout_margin="10dp"
                 android:gravity="center|top"
                 android:orientation="horizontal"
-                android:background="@drawable/framebevel"
+                android:background="@drawable/framebevel3"
                 android:visibility="gone">
 
                 <EditText
@@ -481,7 +486,7 @@
                 android:layout_margin="10dp"
                 android:gravity="center|right"
                 android:orientation="horizontal"
-                android:background="@drawable/framebevel"
+                android:background="@drawable/framebevel3"
                 android:visibility="gone">
 
                 <ImageButton
@@ -520,6 +525,7 @@
                     android:visibility="visible"/>
 
             </LinearLayout>
+
             <LinearLayout
                 android:id="@+id/msg6layoutview"
                 android:layout_width="match_parent"
@@ -527,7 +533,7 @@
                 android:layout_margin="10dp"
                 android:gravity="center|top"
                 android:orientation="horizontal"
-                android:background="@drawable/framebevel"
+                android:background="@drawable/framebevel3"
                 android:visibility="gone">
 
                 <EditText
@@ -561,7 +567,7 @@
                 android:layout_margin="10dp"
                 android:gravity="center|right"
                 android:orientation="horizontal"
-                android:background="@drawable/framebevel"
+                android:background="@drawable/framebevel3"
                 android:visibility="gone">
 
                 <ImageButton
@@ -600,6 +606,7 @@
                     android:visibility="visible"/>
 
             </LinearLayout>
+
             <LinearLayout
                 android:id="@+id/msg7layoutview"
                 android:layout_width="match_parent"
@@ -607,7 +614,7 @@
                 android:layout_margin="10dp"
                 android:gravity="center|top"
                 android:orientation="horizontal"
-                android:background="@drawable/framebevel"
+                android:background="@drawable/framebevel3"
                 android:visibility="gone">
 
                 <EditText
@@ -641,7 +648,7 @@
                 android:layout_margin="10dp"
                 android:gravity="center|right"
                 android:orientation="horizontal"
-                android:background="@drawable/framebevel"
+                android:background="@drawable/framebevel3"
                 android:visibility="gone">
 
                 <ImageButton
@@ -680,6 +687,7 @@
                     android:visibility="visible"/>
 
             </LinearLayout>
+
             <LinearLayout
                 android:id="@+id/msg8layoutview"
                 android:layout_width="match_parent"
@@ -687,7 +695,7 @@
                 android:layout_margin="10dp"
                 android:gravity="center|top"
                 android:orientation="horizontal"
-                android:background="@drawable/framebevel"
+                android:background="@drawable/framebevel3"
                 android:visibility="gone">
 
                 <EditText
@@ -721,7 +729,7 @@
                 android:layout_margin="10dp"
                 android:gravity="center|right"
                 android:orientation="horizontal"
-                android:background="@drawable/framebevel"
+                android:background="@drawable/framebevel3"
                 android:visibility="gone">
 
                 <ImageButton
@@ -767,7 +775,7 @@
                 android:layout_margin="10dp"
                 android:gravity="center|top"
                 android:orientation="horizontal"
-                android:background="@drawable/framebevel"
+                android:background="@drawable/framebevel3"
                 android:visibility="gone">
 
                 <EditText
@@ -801,7 +809,7 @@
                 android:layout_margin="10dp"
                 android:gravity="center|right"
                 android:orientation="horizontal"
-                android:background="@drawable/framebevel"
+                android:background="@drawable/framebevel3"
                 android:visibility="gone">
 
                 <ImageButton
@@ -847,7 +855,7 @@
                 android:layout_margin="10dp"
                 android:gravity="center|top"
                 android:orientation="horizontal"
-                android:background="@drawable/framebevel"
+                android:background="@drawable/framebevel3"
                 android:visibility="gone">
 
                 <EditText
@@ -881,7 +889,7 @@
                 android:layout_margin="10dp"
                 android:gravity="center|right"
                 android:orientation="horizontal"
-                android:background="@drawable/framebevel"
+                android:background="@drawable/framebevel3"
                 android:visibility="gone">
 
                 <ImageButton
@@ -927,7 +935,7 @@
                 android:layout_margin="10dp"
                 android:gravity="center|top"
                 android:orientation="horizontal"
-                android:background="@drawable/framebevel"
+                android:background="@drawable/framebevel3"
                 android:visibility="gone">
 
                 <EditText
@@ -961,7 +969,7 @@
                 android:layout_margin="10dp"
                 android:gravity="center|right"
                 android:orientation="horizontal"
-                android:background="@drawable/framebevel"
+                android:background="@drawable/framebevel3"
                 android:visibility="gone">
 
                 <ImageButton
@@ -1007,7 +1015,7 @@
                 android:layout_margin="10dp"
                 android:gravity="center|top"
                 android:orientation="horizontal"
-                android:background="@drawable/framebevel"
+                android:background="@drawable/framebevel3"
                 android:visibility="gone">
 
                 <EditText
@@ -1041,7 +1049,7 @@
                 android:layout_margin="10dp"
                 android:gravity="center|right"
                 android:orientation="horizontal"
-                android:background="@drawable/framebevel"
+                android:background="@drawable/framebevel3"
                 android:visibility="gone">
 
                 <ImageButton
@@ -1087,7 +1095,7 @@
                 android:layout_margin="10dp"
                 android:gravity="center|top"
                 android:orientation="horizontal"
-                android:background="@drawable/framebevel"
+                android:background="@drawable/framebevel3"
                 android:visibility="gone">
 
                 <EditText
@@ -1116,25 +1124,29 @@
 
             <LinearLayout
                 android:id="@+id/pnlButtons"
-                android:layout_width="match_parent"
+                android:layout_width="260dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="30dp"
-                android:layout_marginRight="40dp"
                 android:layout_marginLeft="40dp"
-                android:layout_marginBottom="30dp"
+                android:layout_marginRight="40dp"
+                android:layout_marginBottom="20dp"
                 android:gravity="center"
                 android:orientation="vertical">
 
                 <Button
                     android:id="@+id/buttonSelectTrueAnser"
+                    android:text="ثبت جواب درست"
                     android:layout_width="match_parent"
-                    android:layout_height="45dp"
-                    android:layout_marginRight="10dp"
+                    android:layout_height="match_parent"
                     android:layout_marginLeft="10dp"
-                    android:layout_marginBottom="5dp"
-                    android:textColor="@color/design_default_color_secondary_variant"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginBottom="15dp"
+                    android:background="@drawable/side_nav_bar"
+                    android:textColor="#E0E0E3"
                     android:textSize="20dp"
-                    android:text="ثبت جواب درست"/>
+                    android:visibility="visible"
+                    tools:layout_editor_absoluteX="38dp"
+                    tools:layout_editor_absoluteY="190dp" />
 
                 <Button
                     android:id="@+id/buttonCreateAnser"
