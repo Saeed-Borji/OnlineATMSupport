@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Matrix;
+import android.graphics.drawable.Drawable;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 
@@ -23,6 +24,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -48,7 +50,8 @@ public class SendQuestionActivity extends AppCompatActivity {
     int BigPreview = 1;
 
     private TextView Navigate;
-    //private Layout ErrorTextViewerLayout;
+    private LinearLayout ErrorTextViewerLayout;
+    private LinearLayout AllLier;
 
 
     Bitmap pic1 = null;
@@ -91,6 +94,9 @@ public class SendQuestionActivity extends AppCompatActivity {
             ProductName = extras.getString("ProductName");
             //ProductModel = extras.getString("ProductModel");
         }
+
+        AllLier = (LinearLayout)findViewById(R.id.allLier);
+
         Navigate = (TextView)findViewById(R.id.textnavigate);
         //Navigate.setText(Username + " > " + Accounttypename+ " > " + ProductName + " > ");
         Navigate.setText(Username + " > " + Accounttypename+ " > Local Inbox");
@@ -99,11 +105,12 @@ public class SendQuestionActivity extends AppCompatActivity {
         Question = (EditText)findViewById(R.id.questionbox);
         PlayVoice = (ImageButton)findViewById(R.id.Voiceplayerbtn);
         progressBar = (ProgressBar)findViewById(R.id.progressBar);
-        ErrorPic = (ImageView)findViewById(R.id.Erro);
+        ErrorPic = (ImageView)findViewById(R.id.Error);
         PicViewer = (ImageButton)findViewById(R.id.Errorpicbtn);
 
         ErrorPicViewer = (ImageView)findViewById(R.id.picpreview);
-        @SuppressLint("WrongViewCast") final View ErrorTextViewerLayout = (View) findViewById(R.id.errortextviewerlayout);
+        //@SuppressLint("WrongViewCast") final View
+        ErrorTextViewerLayout = (LinearLayout) findViewById(R.id.errortextviewerlayout);
 
         //$.B _ Read Message.txt \/
         final File folder = new File(Environment.getExternalStorageDirectory() +
@@ -163,6 +170,14 @@ public class SendQuestionActivity extends AppCompatActivity {
         PicViewer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                FullScreen();
+            }
+        });
+
+        ErrorPic.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                /*
                 if (BigPreview == 1){
                     ErrorPicViewer.setVisibility(View.VISIBLE);
                     //Question.setText("");
@@ -175,9 +190,33 @@ public class SendQuestionActivity extends AppCompatActivity {
                     BigPreview = 1;
                 }
 
+                 */
+                FullScreen();
             }
         });
 
+        ErrorPicViewer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                FullScreen();
+            }
+        });
+
+    }
+
+    private void FullScreen()
+    {
+        if (BigPreview == 1){
+            ErrorPicViewer.setVisibility(View.VISIBLE);
+            //Question.setText("");
+            AllLier.setVisibility(View.INVISIBLE);
+            BigPreview = 0;
+        }else if (BigPreview == 0){
+            ErrorPicViewer.setVisibility(View.INVISIBLE);
+            //ReadtxtMessage(folder.toString());
+            AllLier.setVisibility(View.VISIBLE);
+            BigPreview = 1;
+        }
     }
 
     private void ReadtxtMessage(String Path){
@@ -230,12 +269,12 @@ public class SendQuestionActivity extends AppCompatActivity {
 
     public void Disable(){//Disable All Button or ...
         PlayVoice.setEnabled(false);
-        PlayVoice.setImageResource(R.drawable.playepauseblack);
+        PlayVoice.setImageResource(R.drawable.puse);
     }
 
     public void Enable(){//Enable All Button or ...
         PlayVoice.setEnabled(true);
-        PlayVoice.setImageResource(R.drawable.playeblack);
+        PlayVoice.setImageResource(R.drawable.play);
     }
 
 

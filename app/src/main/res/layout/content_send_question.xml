@@ -22,11 +22,12 @@
     <ImageView
         android:id="@+id/picpreview"
         android:layout_width="match_parent"
-        android:layout_height="300dp"
+        android:layout_height="match_parent"
         android:layout_margin="20dp"
-        android:gravity="center"
+        android:gravity="top|center"
         android:visibility="invisible"
-        tools:ignore="MissingConstraints" />
+        tools:ignore="MissingConstraints"
+        android:adjustViewBounds="true" />
 
     <ScrollView
         android:layout_width="fill_parent"
@@ -34,6 +35,7 @@
         tools:ignore="MissingConstraints">
 
     <LinearLayout
+        android:id="@+id/allLier"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_margin="5dp"
@@ -183,9 +185,9 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
         android:layout_margin="25dp"
-        android:background="@drawable/framebevel3">
+        android:background="@drawable/framebevel3"
+        android:orientation="vertical">
 
         <LinearLayout
             android:id="@+id/messageTexttxt"
@@ -282,12 +284,13 @@
 
             <ImageButton
                 android:id="@+id/Voiceplayerbtn"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_gravity="center"
                 android:layout_marginRight="50dp"
                 android:visibility="visible"
                 app:srcCompat="@drawable/play"
-                android:layout_gravity="center"/>
+                tools:ignore="SpeakableTextPresentCheck" />
 
         </LinearLayout>
 
@@ -320,7 +323,7 @@
 
             <ImageView
                 android:id="@+id/Errorpic"
-                android:layout_width="150dp"
+                android:layout_width="100dp"
                 android:layout_height="80dp"
                 android:layout_marginLeft="50dp"
                 android:layout_marginTop="5dp"
@@ -329,10 +332,10 @@
                 android:visibility="visible"/>
 
             <ImageView
-                android:id="@+id/Erro"
+                android:id="@+id/Error"
                 android:layout_width="match_parent"
-                android:layout_height="70dp"
-                android:layout_margin="0dp"
+                android:layout_height="match_parent"
+                android:layout_margin="5dp"
                 android:gravity="center"
                 android:visibility="visible"/>
 
@@ -343,7 +346,7 @@
                 android:background="@drawable/maxmin"
                 android:layout_marginRight="10dp"
                 android:layout_marginLeft="10dp"
-                android:visibility="visible"/>
+                android:visibility="invisible"/>
 
         </LinearLayout>
 

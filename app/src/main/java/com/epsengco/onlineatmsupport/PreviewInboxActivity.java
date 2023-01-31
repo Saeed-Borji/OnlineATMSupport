@@ -12,6 +12,7 @@ import androidx.appcompat.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class PreviewInboxActivity extends AppCompatActivity {
 
@@ -90,31 +91,45 @@ public class PreviewInboxActivity extends AppCompatActivity {
         SendInbox.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(PreviewInboxActivity.this, SendQuestionActivity.class);//سوال ارسالی
-                intent.putExtra("Username",Username.toString());//send Username to next class
-                intent.putExtra("Accounttype",Accounttype);
-                intent.putExtra("Accounttypename",Accounttypename);
-                intent.putExtra("Check",Check);//send data to next class
-                intent.putExtra("ProductName",ProductName.toString());//send ProductName to next class
-                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP |  Intent.FLAG_ACTIVITY_SINGLE_TOP);
-                startActivityForResult(intent, 2);
+                if (QuestionNotRead == 0)
+                {
+                    Toast.makeText(getApplicationContext(), "هیچ اطلاعاتی برای نمایش وجود ندارد", Toast.LENGTH_SHORT).show();
+                }
+                else
+                {
+                    Intent intent = new Intent(PreviewInboxActivity.this, SendQuestionActivity.class);//سوال ارسالی
+                    intent.putExtra("Username",Username.toString());//send Username to next class
+                    intent.putExtra("Accounttype",Accounttype);
+                    intent.putExtra("Accounttypename",Accounttypename);
+                    intent.putExtra("Check",Check);//send data to next class
+                    intent.putExtra("ProductName",ProductName.toString());//send ProductName to next class
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP |  Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                    startActivityForResult(intent, 2);
+                }
+
             }
         });
 
         ReciveInbox.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(PreviewInboxActivity.this, MultiPreviewInboxActivity.class);// جواب های دریافتی
-                intent.putExtra("Username",Username.toString());//send Username to next class
-                intent.putExtra("Accounttype",Accounttype);
-                intent.putExtra("Accounttypename",Accounttypename);
-                intent.putExtra("Check",Check);//send data to next class
-                intent.putExtra("ProductName",ProductName.toString());//send ProductName to next class
-                intent.putExtra("QuestionNotRead",QuestionNotRead);
-                intent.putExtra("AnswerNotRead",AnswerNotRead);
-                intent.putExtra("MessageCount",MessageCount);//Tedad message ha dar markaz
-                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP |  Intent.FLAG_ACTIVITY_SINGLE_TOP);
-                startActivityForResult(intent, 2);
+                if (AnswerNotRead == 0)
+                {
+                    Toast.makeText(getApplicationContext(), "هیچ اطلاعاتی برای نمایش وجود ندارد", Toast.LENGTH_SHORT).show();
+                }
+                else {
+                    Intent intent = new Intent(PreviewInboxActivity.this, MultiPreviewInboxActivity.class);// جواب های دریافتی
+                    intent.putExtra("Username", Username.toString());//send Username to next class
+                    intent.putExtra("Accounttype", Accounttype);
+                    intent.putExtra("Accounttypename", Accounttypename);
+                    intent.putExtra("Check", Check);//send data to next class
+                    intent.putExtra("ProductName", ProductName.toString());//send ProductName to next class
+                    intent.putExtra("QuestionNotRead", QuestionNotRead);
+                    intent.putExtra("AnswerNotRead", AnswerNotRead);
+                    intent.putExtra("MessageCount", MessageCount);//Tedad message ha dar markaz
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                    startActivityForResult(intent, 2);
+                }
             }
         });
 

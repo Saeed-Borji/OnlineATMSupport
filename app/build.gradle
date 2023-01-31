@@ -1,13 +1,13 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdk 32
+    compileSdk 33
     buildToolsVersion '32.0.0'
 
     defaultConfig {
         applicationId "com.epsengco.onlineatmsupport"
         minSdk 20
-        targetSdkVersion 30
+        targetSdkVersion 33
         versionCode 1
         versionName "1.0"
 
@@ -23,6 +23,7 @@ android {
     buildFeatures {
         viewBinding true
     }
+    namespace 'com.epsengco.onlineatmsupport'
 
 }
 

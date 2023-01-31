@@ -63,6 +63,8 @@ public class GetQuestionSetAnswer extends AppCompatActivity {
     private Handler handler = new Handler();
     String Path1 = null;
 
+    private LinearLayout AllLier;
+
     public EditText QuestionBox;
     public TextView MessageText;
     public TextView MessageVoice;
@@ -72,6 +74,7 @@ public class GetQuestionSetAnswer extends AppCompatActivity {
     String Answerstr = "";
     public ImageButton AnswerPicBtn;
     public ImageView AnswerPic;
+    public ImageView Gallery;
     public ImageButton AnswerVoicePlayerBtn;
     private ProgressBar AnswerProgressBar;
     private String VoiceFileName = "";
@@ -148,6 +151,8 @@ public class GetQuestionSetAnswer extends AppCompatActivity {
             QuestionNumber = extras.getInt("QuestionNumber");//Index of Question
         }
 
+        AllLier = (LinearLayout)findViewById(R.id.allLier);
+
         Navigate = (TextView) findViewById(R.id.textnavigate);
         Navigate.setText(Username + " > " + Accounttypename + " > Server Inbox = " + QuestionNumber + "_from_" + MessageCount);
 
@@ -159,7 +164,7 @@ public class GetQuestionSetAnswer extends AppCompatActivity {
         progressBar = (ProgressBar)findViewById(R.id.progressBar);
         PicViewer = (ImageButton)findViewById(R.id.Errorpicbtn);
         MessagePic = (TextView)findViewById(R.id.messagePic_view);
-        Errorpic = (ImageView)findViewById(R.id.errorpic);
+        Errorpic = (ImageView)findViewById(R.id.error);
         //PicViewer = (ImageButton)findViewById(R.id.Errorpicbtn);
 
         ErrorPicViewer = (ImageView)findViewById(R.id.picpreview);
@@ -169,8 +174,10 @@ public class GetQuestionSetAnswer extends AppCompatActivity {
         AnswerLayout = (LinearLayout)findViewById(R.id.answerlayout);
         SendAnswer = (Button)findViewById(R.id.buttonsendanswer);
         AnswerTextBox = (EditText)findViewById(R.id.Answerbox);
-        AnswerPicBtn = (ImageButton)findViewById(R.id.Answerpicbtn);
+        AnswerPicBtn = (ImageButton)findViewById(R.id.answerpicbtn);
         AnswerPic = (ImageView)findViewById(R.id.Answerpic);
+        Gallery = (ImageView)findViewById(R.id.gallery);
+        Gallery.setImageResource(R.drawable.galery);
         AnswerVoicePlayerBtn = (ImageButton) findViewById(R.id.Answervoiceplayerbtn);
         AnswerProgressBar = (ProgressBar)findViewById(R.id.Answerprogressbar);
 
@@ -185,6 +192,7 @@ public class GetQuestionSetAnswer extends AppCompatActivity {
             SendAnswer.setText("ارسال پاسخ");
         }
         //$.B /\ Set Visibility
+
         PlayVoice.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -201,6 +209,7 @@ public class GetQuestionSetAnswer extends AppCompatActivity {
                                 public void run() {
                                     progressBar.setProgress(progressStatus);
                                     if (progressStatus >99){//Enable VoiceButton
+                                        Stopplayvoice();
                                         Enable();
                                     }
                                 }
@@ -215,8 +224,8 @@ public class GetQuestionSetAnswer extends AppCompatActivity {
                     }
                 }).start();
 
-                Disable();//Disable All Button or ...
-
+                Startplayvoice();//Disable All Button or ...
+                Disable();
                 audioPlayer(VoicePath,"");
             }
         });
@@ -225,35 +234,55 @@ public class GetQuestionSetAnswer extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                if (BigPreview == 1){
-                    ErrorPicViewer.setVisibility(View.VISIBLE);//Big Pic
-                    //Question.setText("");
-                    VoicePlayer.setVisibility(View.GONE);
-                    ErrorTextViewerLayout.setVisibility(View.GONE);
-                    MessageText.setVisibility(View.GONE);
-                    MessageVoice.setVisibility(View.GONE);
-                    MessagePic.setVisibility(View.GONE);
-                    BigPreview = 0;
-                }else if (BigPreview == 0){
-                    ErrorPicViewer.setVisibility(View.GONE);//Big Pic
-                    //Question.setText(questionText);
-                    VoicePlayer.setVisibility(View.VISIBLE);
-                    ErrorTextViewerLayout.setVisibility(View.VISIBLE);
-                    MessageText.setVisibility(View.VISIBLE);
-                    MessageVoice.setVisibility(View.VISIBLE);
-                    MessagePic.setVisibility(View.VISIBLE);
-                    BigPreview = 1;
-                }
+                FullScreen();
+            }
+        });
+
+        Errorpic.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                FullScreen();
+            }
+        });
+
+        ErrorPicViewer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                FullScreen();
             }
         });
 
         AnswerPicBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                /*
                 Boolean isSDPresent = android.os.Environment.getExternalStorageState().equals(android.os.Environment.MEDIA_MOUNTED);//SD Have or Havent
 
                 pic1 = null;
                 AnswerPic.setImageBitmap(pic1);
+
+                if (isSDPresent == true){//Have SD Cars
+                    File dir_image2 = new File(Environment.getExternalStorageDirectory()+
+                            File.separator+"S_B");
+
+                    Path1 = "1";
+
+                    performFileSearch();
+                }else if (isSDPresent == false){//Haven't CD Card
+                }
+
+                 */
+            }
+        });
+
+        Gallery.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Boolean isSDPresent = android.os.Environment.getExternalStorageState().equals(android.os.Environment.MEDIA_MOUNTED);//SD Have or Havent
+
+                pic1 = null;
+                //AnswerPic.setImageBitmap(pic1);
+                Gallery.setImageBitmap(pic1);
 
                 if (isSDPresent == true){//Have SD Cars
                     File dir_image2 = new File(Environment.getExternalStorageDirectory()+
@@ -313,15 +342,79 @@ public class GetQuestionSetAnswer extends AppCompatActivity {
                 }
                 else if (Accounttypename.equals("Field"))
                 {
+                    SendAnswer.setVisibility(View.INVISIBLE);
+                    Disable();
                     SetTrueAnswer();
                 }
                 else if (Accounttypename.equals("Technical")){
                     //Toast.makeText(getApplicationContext(), "Go to Send data to server", Toast.LENGTH_SHORT).show();
+                    SendAnswer.setVisibility(View.INVISIBLE);
+                    Disable();
                     GetَAnswerData();
                 }
             }
         });
 
+    }
+
+    public void Startplayvoice(){//Disable All Button or ...
+        PlayVoice.setEnabled(false);
+        PlayVoice.setImageResource(R.drawable.puse);
+        //Disable();
+    }
+
+    public void Stopplayvoice(){//Enable All Button or ...
+        PlayVoice.setEnabled(true);
+        PlayVoice.setImageResource(R.drawable.play);
+        //Enable();
+    }
+
+    private void Disable(){
+        //SelectModule.setEnabled(false);
+        //SelectBankname.setEnabled(false);
+        QuestionBox.setEnabled(false);
+        //VoiceRecButton.setEnabled(false);
+        //ErrorBtn.setEnabled(false);
+        //ErrorPic.setEnabled(false);
+        Gallery.setEnabled(false);
+        //SendQuestion.setEnabled(false);
+        //Clear.setEnabled(false);
+        //pic1=null;
+        AnswerVoicePlayerBtn.setEnabled(false);
+        SendAnswer.setVisibility(View.INVISIBLE);
+        PlayVoice.setEnabled(false);
+        AnswerTextBox.setEnabled(false);
+    }
+
+    private void Enable(){
+        //SelectModule.setEnabled(true);
+        //SelectBankname.setEnabled(true);
+        QuestionBox.setEnabled(true);
+        //VoiceRecButton.setEnabled(true);
+        //ErrorBtn.setEnabled(true);
+        //ErrorPic.setEnabled(true);
+        Gallery.setEnabled(true);
+        //SendQuestion.setEnabled(true);
+        //SendQuestion.setVisibility(View.VISIBLE);
+        // Clear.setEnabled(true);
+        AnswerVoicePlayerBtn.setEnabled(true);
+        SendAnswer.setVisibility(View.VISIBLE);
+        PlayVoice.setEnabled(true);
+        AnswerTextBox.setEnabled(true);
+    }
+    private void FullScreen()
+    {
+        if (BigPreview == 1){
+            ErrorPicViewer.setVisibility(View.VISIBLE);
+            //Question.setText("");
+            AllLier.setVisibility(View.INVISIBLE);
+            BigPreview = 0;
+        }else if (BigPreview == 0){
+            ErrorPicViewer.setVisibility(View.INVISIBLE);
+            //ReadtxtMessage(folder.toString());
+            AllLier.setVisibility(View.VISIBLE);
+            BigPreview = 1;
+        }
     }
 
     @Override
@@ -354,7 +447,8 @@ public class GetQuestionSetAnswer extends AppCompatActivity {
                 if(resultCode == RESULT_OK){
                     Uri selectedImage = imageReturnedIntent.getData();
                     //ImageView photo1 = (ImageView) findViewById(R.id.Photo1);
-                    AnswerPic.setImageURI(selectedImage);
+                    //AnswerPic.setImageURI(selectedImage);
+                    Gallery.setImageURI(selectedImage);
                 }
                 break;
             case 1:
@@ -437,10 +531,14 @@ public class GetQuestionSetAnswer extends AppCompatActivity {
                      */
 
                     //ImageView btn1 = (ImageView) findViewById(R.id.Photo1);//$.B
-                    AnswerPic.setImageBitmap(pic1);//(circleBitmap);//$.B for circle
+                    //AnswerPic.setImageBitmap(pic1);//(circleBitmap);//$.B for circle
                     //btn1.setBackgroundResource(R.drawable.freebackground);
-                    AnswerPic.setEnabled(true);//$.B
-                    AnswerPic.setBackground(null);
+                    //AnswerPic.setEnabled(true);//$.B
+                    //AnswerPic.setBackground(null);
+
+                    Gallery.setImageBitmap(pic1);//(circleBitmap);//$.B for circle
+                    Gallery.setEnabled(true);//$.B
+                    Gallery.setBackground(null);
                 }
             }
 
@@ -463,6 +561,7 @@ public class GetQuestionSetAnswer extends AppCompatActivity {
         return Environment.getExternalStorageDirectory().getAbsolutePath()
                 + path;
     }
+
     public void VoiceRecord(String filename){
         final AudioRecorder Record = new AudioRecorder(filename);
 
@@ -476,7 +575,7 @@ public class GetQuestionSetAnswer extends AppCompatActivity {
                 public void run() {
                     try {
                         Record.stop();
-                        AnswerVoicePlayerBtn.setEnabled(true);
+                        //AnswerVoicePlayerBtn.setEnabled(true);
                         //AuthenticationButton.setClickable(true);
                         Toast.makeText(getApplicationContext(), "صدای شما با موفقیت ذخیره شد.", Toast.LENGTH_SHORT).show();
 
@@ -514,16 +613,6 @@ public class GetQuestionSetAnswer extends AppCompatActivity {
         } catch (Exception e) {
             e.printStackTrace();
         }
-    }
-
-    public void Disable(){//Disable All Button or ...
-        PlayVoice.setEnabled(false);
-        PlayVoice.setImageResource(R.drawable.puse);
-    }
-
-    public void Enable(){//Enable All Button or ...
-        PlayVoice.setEnabled(true);
-        PlayVoice.setImageResource(R.drawable.play);
     }
 
     ////// GET QUESTION FROM SERVER by SendQuestion api \/
@@ -646,7 +735,7 @@ public class GetQuestionSetAnswer extends AppCompatActivity {
 
             if (!Username.equals("") && !Accounttypename.equals("")){
 
-                Disable();//Disable All Button or ...
+                //Disable();//Disable All Button or ...
                 Toast.makeText(getApplicationContext(),"650",Toast.LENGTH_LONG).show();
 
                 //Get Pic Arrey
@@ -714,6 +803,7 @@ public class GetQuestionSetAnswer extends AppCompatActivity {
                         @Override
                         public void onSuccess(int statusCode, Header[] headers, JSONObject obj) {
                             //Toast.makeText(getApplicationContext(),"onSuccess"+statusCode,Toast.LENGTH_LONG).show();
+                            Enable();
                             try {
                                 //$.B \/
                                 String resultMessage = obj.getString("statusMessage");//
@@ -744,11 +834,11 @@ public class GetQuestionSetAnswer extends AppCompatActivity {
                                 // $.B /\
 
 
-                                Enable();//Enable All Button or ...
+                                //Enable();//Enable All Button or ...
 
                             } catch (JSONException e) {
                                 e.printStackTrace();
-                                Enable();//Enable All Button or ...
+                                //Enable();//Enable All Button or ...
                             }
 
                             //Reciptbtn.setEnabled(true);
@@ -765,7 +855,7 @@ public class GetQuestionSetAnswer extends AppCompatActivity {
                         @Override
                         public void onFailure(int statusCode, Header[] headers,
                                               Throwable throwable, JSONObject errorResponse) {
-
+                            Enable();
                             String message = throwable.getMessage();
                             Toast.makeText(getApplicationContext(),"onFailure_"+message + statusCode,Toast.LENGTH_LONG).show();
                             //TextView result = (TextView) findViewById(R.id.voiceresult);
@@ -777,13 +867,14 @@ public class GetQuestionSetAnswer extends AppCompatActivity {
                                 //txtresult.setText("The image was not uploaded correctly. Check your connection please." );
                             }
 
-                            Enable();//Enable All Button or ...
+                            //Enable();//Enable All Button or ...
                             //Reciptbtn.setEnabled(true);
                             //Registerbtn.setEnabled(false);
                         }
 
                         @Override
                         public void onFinish() {
+                            Enable();
                             //Register.setBackgroundResource(R.drawable.buttonbackground3);
                             //TextView result = (TextView) findViewById(R.id.voiceresult);
                             //result.setText("خطا در ارسال فایل ها، لطفا مجدد تلاش نمایید");
@@ -795,13 +886,13 @@ public class GetQuestionSetAnswer extends AppCompatActivity {
             }
             else {
                 Toast.makeText(getApplicationContext(),"We have a problem aboute your back select steps ",Toast.LENGTH_LONG).show();
-                Enable();//Enable All Button or ...
+                //Enable();//Enable All Button or ...
             }
 
         } catch (Exception e) {
             e.printStackTrace();
             Toast.makeText(getApplicationContext(),"exeption"+e.toString(),Toast.LENGTH_LONG).show();
-            Enable();//Enable All Button or ...
+            //Enable();//Enable All Button or ...
         }
     }
     ////// SEND ANSWER TO SERVER /\
@@ -811,7 +902,7 @@ public class GetQuestionSetAnswer extends AppCompatActivity {
 
         try {
 
-                Disable();//Disable All Button or ...
+                //Disable();//Disable All Button or ...
 
                 Long vt = System.currentTimeMillis() / 1000;
 
@@ -829,7 +920,7 @@ public class GetQuestionSetAnswer extends AppCompatActivity {
                 if (connected == false) {
                     Toast.makeText(getApplicationContext(),getResources().getString(R.string.check_internet),Toast.LENGTH_LONG).show();
 
-                    Enable();
+                    //Enable();
 
                 } else if (connected == true) {
 
@@ -872,11 +963,11 @@ public class GetQuestionSetAnswer extends AppCompatActivity {
                                 // $.B /\
 
 
-                                Enable();//Enable All Button or ...
+                                //Enable();//Enable All Button or ...
 
                             } catch (JSONException e) {
                                 e.printStackTrace();
-                                Enable();//Enable All Button or ...
+                                //Enable();//Enable All Button or ...
                             }
 
                             //Reciptbtn.setEnabled(true);
@@ -905,7 +996,7 @@ public class GetQuestionSetAnswer extends AppCompatActivity {
                                 //txtresult.setText("The image was not uploaded correctly. Check your connection please." );
                             }
 
-                            Enable();//Enable All Button or ...
+                            //Enable();//Enable All Button or ...
                             //Reciptbtn.setEnabled(true);
                             //Registerbtn.setEnabled(false);
                         }
@@ -925,7 +1016,7 @@ public class GetQuestionSetAnswer extends AppCompatActivity {
         } catch (Exception e) {
             e.printStackTrace();
             Toast.makeText(getApplicationContext(),"exeption"+e.toString(),Toast.LENGTH_LONG).show();
-            Enable();//Enable All Button or ...
+            //Enable();//Enable All Button or ...
         }
     }
     ////// SEND ANSWER TO SERVER /\
@@ -946,7 +1037,7 @@ public class GetQuestionSetAnswer extends AppCompatActivity {
                         //set what would happen when positive button is clicked
                         //finish();
                         Clearcls();
-                        Enable();
+                        //Enable();
                     }
                 })
 //set negative button
@@ -997,7 +1088,7 @@ public class GetQuestionSetAnswer extends AppCompatActivity {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
 
-                        Disable();
+                        //Disable();
 
                         PostTrueAnswer(QuestionNumber);
                         DeleteQuestionMessage();
@@ -1026,6 +1117,7 @@ public class GetQuestionSetAnswer extends AppCompatActivity {
                     }
                 })
                 .show();
+        Enable();
     }
 
     private void GetPicByte (String Path){
@@ -1194,6 +1286,7 @@ public class GetQuestionSetAnswer extends AppCompatActivity {
         deleteRecursive(folder);// Delete sub directory (folder\folder\folder...
         success = folder.delete();
     }
+
     private void DeleteAnswerMessage()
     {
         File folder = new File(Environment.getExternalStorageDirectory() +
@@ -1215,6 +1308,7 @@ public class GetQuestionSetAnswer extends AppCompatActivity {
         deleteRecursive(folder);// Delete sub directory (folder\folder\folder...
         success = folder.delete();
     }
+
     public void deleteRecursive(File fileOrDirectory) {
 
         if (fileOrDirectory.isDirectory()) {

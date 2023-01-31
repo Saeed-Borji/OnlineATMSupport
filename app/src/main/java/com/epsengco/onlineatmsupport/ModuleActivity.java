@@ -68,6 +68,7 @@ public class ModuleActivity extends AppCompatActivity implements AdapterView.OnI
 
     private ImageView ErrorPic;
     private ImageButton ErrorBtn;
+    private ImageView Gallery;
 
     private EditText QuestionBox;
 
@@ -120,6 +121,8 @@ public class ModuleActivity extends AppCompatActivity implements AdapterView.OnI
 
         ErrorBtn = (ImageButton)findViewById(R.id.Errorpicbtn);
         ErrorPic = (ImageView)findViewById(R.id.Errorpicimg);
+        Gallery = (ImageView)findViewById(R.id.gallery);
+        Gallery.setImageResource(R.drawable.galery);
 
         SendQuestion = (Button)findViewById(R.id.buttonsendquestion);
         Clear = (Button)findViewById(R.id.buttonclear);
@@ -220,10 +223,17 @@ public class ModuleActivity extends AppCompatActivity implements AdapterView.OnI
         ErrorBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+            }
+        });
+
+        Gallery.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
                 Boolean isSDPresent = android.os.Environment.getExternalStorageState().equals(android.os.Environment.MEDIA_MOUNTED);//SD Have or Havent
 
                 pic1 = null;
-                ErrorPic.setImageBitmap(pic1);
+                Gallery.setImageResource(R.drawable.galery);
 
                 if (isSDPresent == true){//Have SD Cars
                     File dir_image2 = new File(Environment.getExternalStorageDirectory()+
@@ -243,8 +253,7 @@ public class ModuleActivity extends AppCompatActivity implements AdapterView.OnI
                 if (Check.equals("-1")){
                     Toast.makeText(getApplicationContext(), "دسترسی این کاربر > "+Username+"< تایید نشده است", Toast.LENGTH_SHORT).show();
                 }else {
-                    //Toast.makeText(getApplicationContext(), "Go to Send data to server", Toast.LENGTH_SHORT).show();
-                    //Toast.makeText(getApplicationContext(), "SendQuestion - 247", Toast.LENGTH_SHORT).show();
+                    SendQuestion.setVisibility(View.INVISIBLE);
                     GetQuestionData();
                 }
             }
@@ -386,7 +395,8 @@ public class ModuleActivity extends AppCompatActivity implements AdapterView.OnI
                 if(resultCode == RESULT_OK){
                     Uri selectedImage = imageReturnedIntent.getData();
                     //ImageView photo1 = (ImageView) findViewById(R.id.Photo1);
-                    ErrorPic.setImageURI(selectedImage);
+                    //ErrorPic.setImageURI(selectedImage);
+                    Gallery.setImageURI(selectedImage);
                 }
                 break;
             case 1:
@@ -468,10 +478,13 @@ public class ModuleActivity extends AppCompatActivity implements AdapterView.OnI
                      */
 
                     //ImageView btn1 = (ImageView) findViewById(R.id.Photo1);//$.B
-                    ErrorPic.setImageBitmap(pic1);//(circleBitmap);//$.B for circle
+                    //ErrorPic.setImageBitmap(pic1);//(circleBitmap);//$.B for circle
                     //btn1.setBackgroundResource(R.drawable.freebackground);
-                    ErrorPic.setEnabled(true);//$.B
-                    ErrorPic.setBackground(null);
+                    //ErrorPic.setEnabled(true);//$.B
+                    //ErrorPic.setBackground(null);
+                    Gallery.setImageBitmap(pic1);//(circleBitmap);//$.B for circle
+                    Gallery.setEnabled(true);//$.B
+                    Gallery.setBackground(null);
                 }
             }
 
@@ -564,6 +577,7 @@ public class ModuleActivity extends AppCompatActivity implements AdapterView.OnI
                             @Override
                             public void onSuccess(int statusCode, Header[] headers, JSONObject obj) {
                                 //Toast.makeText(getApplicationContext(),"onSuccess"+statusCode,Toast.LENGTH_LONG).show();
+                                SendQuestion.setVisibility(View.VISIBLE);
                                 try {
                                     //$.B \/
                                     String resultMessage = obj.getString("statusMessage");//
@@ -620,7 +634,7 @@ public class ModuleActivity extends AppCompatActivity implements AdapterView.OnI
                             @Override
                             public void onFailure(int statusCode, Header[] headers,
                                                   Throwable throwable, JSONObject errorResponse) {
-
+                                SendQuestion.setVisibility(View.VISIBLE);
                                 String message = throwable.getMessage();
                                 Toast.makeText(getApplicationContext(),"onFailure_"+message,Toast.LENGTH_LONG).show();
                                 //TextView result = (TextView) findViewById(R.id.voiceresult);
@@ -639,6 +653,7 @@ public class ModuleActivity extends AppCompatActivity implements AdapterView.OnI
 
                             @Override
                             public void onFinish() {
+                                SendQuestion.setVisibility(View.VISIBLE);
                                 //Register.setBackgroundResource(R.drawable.buttonbackground3);
                                 //TextView result = (TextView) findViewById(R.id.voiceresult);
                                 //result.setText("خطا در ارسال فایل ها، لطفا مجدد تلاش نمایید");
@@ -846,7 +861,8 @@ public class ModuleActivity extends AppCompatActivity implements AdapterView.OnI
         QuestionBox.setEnabled(false);
         VoiceRecButton.setEnabled(false);
         ErrorBtn.setEnabled(false);
-        ErrorPic.setEnabled(false);
+        //ErrorPic.setEnabled(false);
+        Gallery.setEnabled(false);
         SendQuestion.setEnabled(false);
         Clear.setEnabled(false);
         //pic1=null;
@@ -858,8 +874,10 @@ public class ModuleActivity extends AppCompatActivity implements AdapterView.OnI
         QuestionBox.setEnabled(true);
         VoiceRecButton.setEnabled(true);
         ErrorBtn.setEnabled(true);
-        ErrorPic.setEnabled(true);
+        //ErrorPic.setEnabled(true);
+        Gallery.setEnabled(true);
         SendQuestion.setEnabled(true);
+        SendQuestion.setVisibility(View.VISIBLE);
         Clear.setEnabled(true);
     }
 
@@ -875,8 +893,10 @@ public class ModuleActivity extends AppCompatActivity implements AdapterView.OnI
         QuestionBox.setText("");
 
         Path1 = "";
-        ErrorPic.setImageBitmap(null);
-        ErrorPic.setBackground(null);
+        //ErrorPic.setImageBitmap(null);
+        //ErrorPic.setBackground(null);
+        Gallery.setImageBitmap(null);
+        Gallery.setBackground(null);
         pic1 = null;
 
         progressStatus = 0;

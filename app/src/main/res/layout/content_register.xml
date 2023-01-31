@@ -113,6 +113,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:gravity="center_horizontal"
+                android:background="@drawable/epskadr"
                 android:orientation="vertical">
 
                 <LinearLayout
@@ -525,7 +526,7 @@
                         android:layout_marginRight="10dp"
                         android:layout_marginBottom="15dp"
                         android:background="@drawable/side_nav_bar"
-                        android:textColor="#E0E0E3"
+                        android:textColor="#0728DF"
                         android:textSize="20dp"
                         android:visibility="visible"
                         tools:layout_editor_absoluteX="38dp"
